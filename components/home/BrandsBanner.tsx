@@ -13,38 +13,25 @@ export function BrandsBanner() {
     offset: ["start end", "end center"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [0.78, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
 
   return (
-    <section ref={ref} className="py-16 bg-[#080808] overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Eyebrow */}
-        <motion.p
-          initial={prefersReduced ? undefined : { opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="text-center text-xs font-bold tracking-[0.25em] uppercase text-white/30 mb-8"
-        >
-          Trusted Brands We Work With
-        </motion.p>
-
-        {/* Banner image with scroll-driven scale */}
-        <motion.div
-          style={prefersReduced ? undefined : { scale, opacity }}
-          className="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/60"
-        >
-          <Image
-            src="/brands-banner.jpg"
-            alt="Brands we carry — Champion, Nike, New Era, Adidas, Carhartt, Under Armour and more"
-            width={1200}
-            height={630}
-            className="w-full h-auto object-cover"
-            priority={false}
-          />
-        </motion.div>
-      </div>
+    <section ref={ref} className="w-full overflow-hidden bg-[#080808]">
+      <motion.div
+        style={prefersReduced ? undefined : { scale, opacity, y }}
+        className="w-full"
+      >
+        <Image
+          src="/brands-banner.jpg"
+          alt="Printwear — Custom T-Shirts, Work Apparel, Accessories & More. Brands: Champion, Nike, Adidas, Carhartt and more."
+          width={1920}
+          height={240}
+          className="w-full h-auto object-cover block"
+          priority={false}
+        />
+      </motion.div>
     </section>
   );
 }
