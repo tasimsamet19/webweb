@@ -16,6 +16,7 @@ import { QuoteForm } from "@/components/products/QuoteForm";
 const schema = z.object({
   name: z.string().min(2, "Name required"),
   email: z.string().email("Valid email required"),
+  phone: z.string().min(7, "Valid phone required"),
   subject: z.string().min(3, "Subject required"),
   message: z.string().min(10, "Please write at least 10 characters"),
 });
@@ -83,6 +84,16 @@ function ContactForm() {
           className="bg-white/5 border-white/10 text-white placeholder:text-white/25 focus:border-[#E84520]/50"
         />
         {errors.email && <p className="text-[#E84520] text-xs mt-1">{errors.email.message}</p>}
+      </div>
+      <div>
+        <Label className="text-white/55 text-xs mb-1.5 block">Phone Number *</Label>
+        <Input
+          {...register("phone")}
+          type="tel"
+          placeholder="(555) 000-0000"
+          className="bg-white/5 border-white/10 text-white placeholder:text-white/25 focus:border-[#E84520]/50"
+        />
+        {errors.phone && <p className="text-[#E84520] text-xs mt-1">{errors.phone.message}</p>}
       </div>
       <div>
         <Label className="text-white/55 text-xs mb-1.5 block">Subject *</Label>

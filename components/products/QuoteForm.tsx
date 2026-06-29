@@ -136,7 +136,7 @@ export function QuoteForm({
           <>
             <DialogHeader>
               <DialogTitle className="text-xl font-bold text-white">
-                Bize Ulaşın
+                Contact Us
               </DialogTitle>
               <DialogDescription asChild>
                 <div className="space-y-1">
