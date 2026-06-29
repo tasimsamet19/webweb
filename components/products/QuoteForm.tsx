@@ -138,23 +138,21 @@ export function QuoteForm({
               <DialogTitle className="text-xl font-bold text-white">
                 Contact Us
               </DialogTitle>
-              <DialogDescription asChild>
-                <div className="space-y-1">
-                  <p className="text-white/40 text-sm">
-                    {productName
-                      ? `Ürün: ${productName} — Formu doldurun, 24 saat içinde döneceğiz.`
-                      : "Projenizi anlatın, 24 saat içinde size dönelim."}
-                  </p>
-                  <p className="text-sm text-white/55">
-                    Hemen konuşmak ister misiniz?{" "}
-                    <a
-                      href="tel:+19735804455"
-                      className="text-[#E84520] font-semibold hover:underline"
-                    >
-                      (973) 580-4455
-                    </a>
-                  </p>
-                </div>
+              <DialogDescription className="text-white/40 text-sm space-y-1">
+                <span className="block">
+                  {productName
+                    ? `Ürün: ${productName} — Formu doldurun, 24 saat içinde döneceğiz.`
+                    : "Projenizi anlatın, 24 saat içinde size dönelim."}
+                </span>
+                <span className="block text-white/55">
+                  Hemen konuşmak ister misiniz?{" "}
+                  <a
+                    href="tel:+19735804455"
+                    className="text-[#E84520] font-semibold hover:underline"
+                  >
+                    (973) 580-4455
+                  </a>
+                </span>
               </DialogDescription>
             </DialogHeader>
 

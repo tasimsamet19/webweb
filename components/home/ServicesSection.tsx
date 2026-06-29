@@ -38,10 +38,10 @@ const services = [
       "Full-color photo-quality prints directly onto fabric. No minimums, no screens — ideal for detailed artwork and short-run custom pieces.",
   },
   {
-    slug: "sublimation",
-    title: "Sublimation",
+    slug: "custom-mugs",
+    title: "Custom Mugs",
     description:
-      "All-over printing that becomes part of the fabric — never cracks or fades. The go-to for vibrant custom uniforms, jerseys, and performance wear.",
+      "Full-color sublimation printed mugs and travel cups — perfect for corporate gifts, events, and branded merchandise that keeps your logo in sight every morning.",
   },
   {
     slug: "varsity-tackle-twill",
