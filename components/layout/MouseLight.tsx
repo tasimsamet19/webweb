@@ -10,17 +10,25 @@ export function MouseLight() {
     if (!el) return;
 
     let rafId: number;
-    let x = -1000;
-    let y = -1000;
+    // Target (actual cursor)
+    let tx = -1000;
+    let ty = -1000;
+    // Current (lagging behind)
+    let cx = -1000;
+    let cy = -1000;
+    const LERP = 0.06; // lower = more lag (0.06 = ~16 frames to catch up)
 
     const onMove = (e: MouseEvent) => {
-      x = e.clientX;
-      y = e.clientY;
+      tx = e.clientX;
+      ty = e.clientY;
     };
 
     const tick = () => {
+      cx += (tx - cx) * LERP;
+      cy += (ty - cy) * LERP;
+
       if (el) {
-        el.style.background = `radial-gradient(700px circle at ${x}px ${y}px, rgba(232,69,32,0.07), transparent 45%)`;
+        el.style.background = `radial-gradient(700px circle at ${cx}px ${cy}px, rgba(232,69,32,0.08), transparent 45%)`;
       }
       rafId = requestAnimationFrame(tick);
     };
@@ -37,7 +45,7 @@ export function MouseLight() {
   return (
     <div
       ref={divRef}
-      className="pointer-events-none fixed inset-0 z-20 transition-none"
+      className="pointer-events-none fixed inset-0 z-20"
       aria-hidden
     />
   );

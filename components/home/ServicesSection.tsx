@@ -110,7 +110,7 @@ export function ServicesSection() {
                   src={`/images/services/${svc.slug}.jpg`}
                   alt={svc.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover scale-105 transition-transform duration-500 group-hover:scale-100"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
                 {/* Dark gradient overlay */}

@@ -367,6 +367,30 @@ export const products: Product[] = [
     leadTime: "7–10 business days",
   },
 
+  {
+    id: "op-003",
+    slug: "travel-mug-istanbul",
+    name: "Custom Travel Mug",
+    category: "other-products",
+    shortDescription: "Premium stainless steel travel mugs with full-color sublimation print.",
+    description:
+      "20 oz double-wall stainless steel travel mug with full-color sublimation wrap. Keeps drinks hot for 6 hours, cold for 12. Perfect for corporate gifts, tourism merchandise, events, and branded giveaways. Custom design printed all the way around.",
+    images: [img("travel-mug-istanbul")],
+    features: [
+      "20 oz stainless steel double-wall",
+      "Full-color 360° sublimation wrap",
+      "Keeps hot 6h / cold 12h",
+      "Leak-proof sliding lid",
+      "BPA-free",
+      "Dishwasher safe lid",
+    ],
+    decorationMethods: ["sublimation"],
+    minimumQuantity: 12,
+    leadTime: "7–10 business days",
+    featured: false,
+    isNew: true,
+  },
+
   // SUBLIMATED UNIFORMS
   {
     id: "su-001",
