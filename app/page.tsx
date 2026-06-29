@@ -1,5 +1,4 @@
 import { HeroSection } from "@/components/home/HeroSection";
-import { BrandsBanner } from "@/components/home/BrandsBanner";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { HowToOrderSection } from "@/components/home/HowToOrderSection";
@@ -12,7 +11,6 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <BrandsBanner />
       <ServicesSection />
       <CategoryGrid />
       <HowToOrderSection />
