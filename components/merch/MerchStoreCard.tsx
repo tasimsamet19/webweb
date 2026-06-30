@@ -18,14 +18,8 @@ export function MerchStoreCard({ store }: Props) {
     year: "numeric",
   });
 
-  return (
-    <div
-      className={`group relative flex flex-col rounded-2xl overflow-hidden border transition-all duration-300 ${
-        isExpired
-          ? "border-white/6 opacity-50 grayscale"
-          : "border-white/8 hover:border-white/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40"
-      }`}
-    >
+  const card = (
+    <>
       {/* Banner */}
       <div className="relative h-44 bg-[#111111] overflow-hidden">
         {store.bannerImage ? (
@@ -34,12 +28,12 @@ export function MerchStoreCard({ store }: Props) {
             alt={store.name}
             fill
             unoptimized={store.bannerImage.includes("placehold.co")}
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 transition-opacity duration-300"
             style={{ backgroundColor: store.accentColor + "22" }}
           />
         )}
@@ -54,7 +48,12 @@ export function MerchStoreCard({ store }: Props) {
           ) : (
             <span
               className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full"
-              style={{ backgroundColor: store.accentColor + "33", color: store.accentColor, borderColor: store.accentColor + "55", borderWidth: 1 }}
+              style={{
+                backgroundColor: store.accentColor + "33",
+                color: store.accentColor,
+                borderColor: store.accentColor + "55",
+                borderWidth: 1,
+              }}
             >
               Active
             </span>
@@ -79,7 +78,7 @@ export function MerchStoreCard({ store }: Props) {
         <p className="text-xs font-semibold uppercase tracking-widest text-white/35 mb-1">
           {store.organization}
         </p>
-        <h3 className="text-base font-bold text-white leading-snug mb-2">
+        <h3 className="text-base font-bold text-white leading-snug mb-2 group-hover:text-white/90 transition-colors">
           {store.name}
         </h3>
         <p className="text-sm text-white/45 leading-relaxed line-clamp-2 mb-4 flex-1">
@@ -94,18 +93,34 @@ export function MerchStoreCard({ store }: Props) {
             </div>
           ) : (
             <div className="flex items-center justify-between">
-              <MerchCountdown closeDate={store.closeDate} />
-              <Link
-                href={`/merch/${store.slug}`}
+              <MerchCountdown closeDate={store.closeDate} compact />
+              <span
                 className="flex items-center gap-1.5 text-sm font-semibold transition-colors"
                 style={{ color: store.accentColor }}
               >
-                Shop <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+                Shop <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </span>
             </div>
           )}
         </div>
       </div>
-    </div>
+    </>
+  );
+
+  if (isExpired) {
+    return (
+      <div className="group relative flex flex-col rounded-2xl overflow-hidden border border-white/6 opacity-50 grayscale">
+        {card}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={`/merch/${store.slug}`}
+      className="group relative flex flex-col rounded-2xl overflow-hidden border border-white/8 hover:border-white/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40 transition-all duration-300"
+    >
+      {card}
+    </Link>
   );
 }
