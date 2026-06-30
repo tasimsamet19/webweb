@@ -20,7 +20,7 @@ export function MerchStoreClient({ store }: Props) {
 
   if (store.requiresAccessCode && !unlocked) {
     return (
-      <div className="min-h-screen bg-[#080808] pt-24">
+      <div className="min-h-screen bg-[#080808] pt-20 lg:pt-24">
         <MerchAccessGate
           storeName={store.name}
           accentColor={store.accentColor}
@@ -35,11 +35,12 @@ export function MerchStoreClient({ store }: Props) {
     <div className="min-h-screen bg-[#080808]">
       {/* Store Header */}
       <div
-        className="relative pt-24 pb-12 overflow-hidden"
+        className="relative overflow-hidden"
         style={{ backgroundColor: store.accentColor + "0D" }}
       >
+        {/* Banner image behind, low opacity */}
         {store.bannerImage && (
-          <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 opacity-10 pointer-events-none">
             <Image
               src={store.bannerImage}
               alt=""
@@ -47,10 +48,16 @@ export function MerchStoreClient({ store }: Props) {
               unoptimized={store.bannerImage.includes("placehold.co")}
               className="object-cover"
               sizes="100vw"
+              priority
             />
           </div>
         )}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Top gradient to ensure navbar doesn't bleed through */}
+        <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#080808]/80 to-transparent pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 lg:pt-24 pb-10">
+          {/* Breadcrumb */}
           <Link
             href="/merch"
             className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-white/70 transition-colors mb-6"
@@ -59,8 +66,9 @@ export function MerchStoreClient({ store }: Props) {
             All Stores
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
+          {/* Header content */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div className="flex-1 min-w-0">
               <p
                 className="text-xs font-bold uppercase tracking-widest mb-2"
                 style={{ color: store.accentColor }}
@@ -75,9 +83,9 @@ export function MerchStoreClient({ store }: Props) {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <div className="flex flex-row items-center gap-4 flex-shrink-0">
               {!isExpired && (
-                <MerchCountdown closeDate={store.closeDate} className="text-right" />
+                <MerchCountdown closeDate={store.closeDate} />
               )}
               <MerchCartButton />
             </div>
@@ -91,13 +99,11 @@ export function MerchStoreClient({ store }: Props) {
         </div>
       </div>
 
-      {/* Products */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-sm font-semibold uppercase tracking-widest text-white/40">
-            {store.products.length} {store.products.length === 1 ? "Item" : "Items"}
-          </h2>
-        </div>
+      {/* Product grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-6">
+          {store.products.length} {store.products.length === 1 ? "item" : "items"}
+        </p>
 
         {store.products.length === 0 ? (
           <div className="py-24 text-center">
@@ -117,10 +123,9 @@ export function MerchStoreClient({ store }: Props) {
           </div>
         )}
 
-        <div className="mt-12 p-5 rounded-xl border border-white/6 bg-white/2 text-sm text-white/35">
-          <strong className="text-white/60">Important:</strong> Please check size charts before
-          ordering. Youth and Ladies sizes tend to run small. All sales are final — we cannot
-          accept returns on custom printed items.
+        <div className="mt-10 p-5 rounded-xl border border-white/6 bg-white/2 text-sm text-white/35">
+          <strong className="text-white/60">Note:</strong> Check sizing carefully before ordering.
+          Youth and Ladies sizes run small. All sales are final on custom printed items.
         </div>
       </div>
     </div>

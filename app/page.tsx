@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/home/HeroSection";
 import { BrandsBanner } from "@/components/home/BrandsBanner";
 import { ServicesSection } from "@/components/home/ServicesSection";
+import { MerchSection } from "@/components/home/MerchSection";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
 import { HowToOrderSection } from "@/components/home/HowToOrderSection";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <HeroSection />
       <BrandsBanner />
       <ServicesSection />
+      <MerchSection />
       <CategoryGrid />
       <HowToOrderSection />
       <FeaturedProducts />

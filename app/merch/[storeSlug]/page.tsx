@@ -1,10 +1,14 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { getMerchStore } from "@/lib/data/merch";
+import { getMerchStore, merchStores } from "@/lib/data/merch";
 import { MerchStoreClient } from "./MerchStoreClient";
 
 interface Props {
   params: Promise<{ storeSlug: string }>;
+}
+
+export function generateStaticParams() {
+  return merchStores.map((s) => ({ storeSlug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

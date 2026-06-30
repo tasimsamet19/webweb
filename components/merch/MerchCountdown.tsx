@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface Props {
   closeDate: string;
   className?: string;
+  compact?: boolean;
 }
 
 interface TimeLeft {
@@ -27,7 +29,7 @@ function calcTimeLeft(closeDate: string): TimeLeft {
   };
 }
 
-export function MerchCountdown({ closeDate, className }: Props) {
+export function MerchCountdown({ closeDate, className, compact = false }: Props) {
   const [time, setTime] = useState<TimeLeft>(() => calcTimeLeft(closeDate));
 
   useEffect(() => {
@@ -35,11 +37,35 @@ export function MerchCountdown({ closeDate, className }: Props) {
     return () => clearInterval(id);
   }, [closeDate]);
 
-  if (time.expired)
-    return <span className={className}>This store is closed</span>;
+  if (time.expired) {
+    return (
+      <span className={cn("text-xs text-white/30", className)}>
+        Store closed
+      </span>
+    );
+  }
 
   const pad = (n: number) => String(n).padStart(2, "0");
 
+  // Compact: "32d 14h 22m" — single line for cards
+  if (compact) {
+    const parts: string[] = [];
+    if (time.days > 0) parts.push(`${time.days}d`);
+    parts.push(`${pad(time.hours)}h`);
+    parts.push(`${pad(time.minutes)}m`);
+    return (
+      <div className={cn("flex items-center gap-1", className)}>
+        <span className="text-[10px] text-white/30 mr-0.5">Closes in</span>
+        {parts.map((p) => (
+          <span key={p} className="text-xs font-bold text-white/70 tabular-nums">
+            {p}
+          </span>
+        ))}
+      </div>
+    );
+  }
+
+  // Full: days / hours / minutes / seconds block
   return (
     <div className={className}>
       <span className="text-xs text-white/40 uppercase tracking-wider block mb-1">
