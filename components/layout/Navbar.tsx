@@ -43,6 +43,7 @@ export function Navbar() {
                 src="/logo.jpeg"
                 alt="Printwear Ledgewood"
                 fill
+                sizes="56px"
                 className="object-contain"
                 priority
               />
@@ -117,6 +118,7 @@ export function Navbar() {
                         src="/logo.jpeg"
                         alt="Printwear Ledgewood"
                         fill
+                        sizes="48px"
                         className="object-contain"
                       />
                     </div>
