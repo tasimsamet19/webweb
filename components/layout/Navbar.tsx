@@ -14,6 +14,7 @@ import { motion } from "motion/react";
 
 const navLinks = [
   { href: "/products", label: "Products" },
+  { href: "/merch", label: "Merch" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

@@ -20,7 +20,7 @@ interface GalleryGridProps {
 export function GalleryGrid({ items }: GalleryGridProps) {
   const prefersReduced = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const transition = { duration: 0.4, ease: easing };
+  const transition = { duration: 0.45, ease: easing };
 
   return (
     <>

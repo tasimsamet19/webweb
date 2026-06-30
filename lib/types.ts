@@ -71,6 +71,50 @@ export interface Testimonial {
   rating: 1 | 2 | 3 | 4 | 5;
 }
 
+// ─── Merch / Group Stores ────────────────────────────────────────────────────
+
+export interface MerchProduct {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  images: string[];
+  price: number; // cents — 2500 = $25.00
+  sizes: string[];
+  colors: ColorOption[];
+  decorationMethod: DecorationMethod;
+  stripePriceId?: string;
+}
+
+export interface MerchStore {
+  id: string;
+  slug: string;
+  name: string;
+  organization: string;
+  description: string;
+  closeDate: string; // ISO date string
+  isActive: boolean;
+  requiresAccessCode: boolean;
+  accessCode?: string;
+  bannerImage?: string;
+  accentColor: string;
+  products: MerchProduct[];
+}
+
+export interface CartItem {
+  storeSlug: string;
+  storeName: string;
+  productId: string;
+  productName: string;
+  size: string;
+  color: string;
+  quantity: number;
+  price: number; // cents
+  image: string;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export interface QuoteFormData {
   firstName: string;
   lastName: string;
