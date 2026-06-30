@@ -6,11 +6,11 @@ import { LinkButton } from "@/components/ui/link-button";
 import { staggerContainer } from "@/lib/animations";
 
 const itemVariant = {
-  initial: { opacity: 0, y: 32 },
+  initial: { opacity: 0, y: 16 },
   animate: { opacity: 1, y: 0 },
 };
 
-const transition = { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const };
+const transition = { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const };
 
 export function HeroSection() {
   const prefersReduced = useReducedMotion();
@@ -51,7 +51,7 @@ export function HeroSection() {
           {/* Headline */}
           <motion.div
             variants={prefersReduced ? undefined : itemVariant}
-            transition={{ ...transition, delay: 0.1 }}
+            transition={{ ...transition, delay: 0.06 }}
           >
             <h1 className="font-display text-[clamp(60px,10vw,120px)] leading-[0.9] tracking-wider text-white uppercase mb-2">
               CUSTOM PRINTING
@@ -65,7 +65,7 @@ export function HeroSection() {
           {/* Sub */}
           <motion.p
             variants={prefersReduced ? undefined : itemVariant}
-            transition={{ ...transition, delay: 0.2 }}
+            transition={{ ...transition, delay: 0.12 }}
             className="text-lg md:text-xl text-white/50 max-w-2xl leading-relaxed mb-10"
           >
             Premium screen printing, embroidery, and sublimation for businesses,
@@ -75,7 +75,7 @@ export function HeroSection() {
           {/* CTAs */}
           <motion.div
             variants={prefersReduced ? undefined : itemVariant}
-            transition={{ ...transition, delay: 0.3 }}
+            transition={{ ...transition, delay: 0.18 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <LinkButton
@@ -98,7 +98,7 @@ export function HeroSection() {
           {/* Stats */}
           <motion.div
             variants={prefersReduced ? undefined : itemVariant}
-            transition={{ ...transition, delay: 0.45 }}
+            transition={{ ...transition, delay: 0.26 }}
             className="flex flex-wrap justify-center gap-8 mt-16 pt-8 border-t border-white/8 w-full max-w-2xl"
           >
             {[

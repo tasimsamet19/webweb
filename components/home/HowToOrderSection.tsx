@@ -74,9 +74,9 @@ export function HowToOrderSection() {
     <section className="py-24 bg-[#0A0A0A] border-y border-white/6 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={prefersReduced ? undefined : { opacity: 0, y: 24 }}
+          initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-40px" }}
           transition={transition}
         >
           <SectionHeader
@@ -156,7 +156,7 @@ export function HowToOrderSection() {
         <motion.div
           initial={prefersReduced ? undefined : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-40px" }}
           transition={{ ...transition, delay: 0.4 }}
           className="mt-14 flex flex-col items-center gap-4 text-center"
         >

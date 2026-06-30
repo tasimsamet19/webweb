@@ -40,9 +40,9 @@ export function ProcessSteps() {
     <section className="py-24 bg-[#0A0A0A] border-y border-white/6">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={prefersReduced ? undefined : { opacity: 0, y: 24 }}
+          initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-40px" }}
           transition={transition}
         >
           <SectionHeader

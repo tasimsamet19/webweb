@@ -75,9 +75,9 @@ export function ServicesSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={prefersReduced ? undefined : { opacity: 0, y: 24 }}
+          initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-40px" }}
           transition={transition}
         >
           <SectionHeader
@@ -141,7 +141,7 @@ export function ServicesSection() {
         <motion.div
           initial={prefersReduced ? undefined : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-40px" }}
           transition={{ ...transition, delay: 0.3 }}
           className="mt-16 flex justify-center"
         >

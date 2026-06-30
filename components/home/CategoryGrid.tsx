@@ -11,15 +11,16 @@ import { staggerContainer, scaleIn, easing } from "@/lib/animations";
 export function CategoryGrid() {
   const prefersReduced = useReducedMotion();
   const transition = { duration: 0.5, ease: easing };
+  const sectionTransition = { duration: 0.55, ease: easing };
 
   return (
     <section className="py-24 bg-[#080808]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={prefersReduced ? undefined : { opacity: 0, y: 24 }}
+          initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={transition}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={sectionTransition}
         >
           <SectionHeader
             eyebrow="What We Print"
@@ -34,7 +35,7 @@ export function CategoryGrid() {
           variants={prefersReduced ? undefined : staggerContainer}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, margin: "-40px" }}
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
         >
           {categories.map((cat) => (

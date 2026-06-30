@@ -4,6 +4,9 @@ import { Phone } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { AnchorButton } from "@/components/ui/link-button";
 import { QuoteFormTrigger } from "@/components/products/QuoteFormTrigger";
+import { easing } from "@/lib/animations";
+
+const t = { ease: easing };
 
 export function CTASection() {
   const prefersReduced = useReducedMotion();
@@ -18,28 +21,28 @@ export function CTASection() {
         <motion.span
           initial={prefersReduced ? undefined : { opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ ...t, duration: 0.45 }}
           className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-[#E84520] mb-4"
         >
           Ready to Get Started?
         </motion.span>
 
         <motion.h2
-          initial={prefersReduced ? undefined : { opacity: 0, y: 20 }}
+          initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ ...t, duration: 0.5, delay: 0.06 }}
           className="font-display text-[clamp(40px,6vw,72px)] text-white uppercase tracking-wider leading-none mb-6"
         >
           Start Your <span className="text-[#E84520]">Custom Order</span> Today
         </motion.h2>
 
         <motion.p
-          initial={prefersReduced ? undefined : { opacity: 0, y: 16 }}
+          initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ ...t, duration: 0.5, delay: 0.12 }}
           className="text-lg text-white/45 mb-10 max-w-xl mx-auto leading-relaxed"
         >
           No job too big or too small. From 12 custom tees to 500 sublimated uniforms —
@@ -47,10 +50,10 @@ export function CTASection() {
         </motion.p>
 
         <motion.div
-          initial={prefersReduced ? undefined : { opacity: 0, y: 16 }}
+          initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ ...t, duration: 0.5, delay: 0.18 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <QuoteFormTrigger label="Get a Free Quote" />

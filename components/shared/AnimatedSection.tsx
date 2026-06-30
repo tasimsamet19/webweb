@@ -1,7 +1,7 @@
 "use client";
 
 import { useReducedMotion, motion } from "motion/react";
-import { fadeInUp, defaultTransition } from "@/lib/animations";
+import { defaultTransition } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
 interface AnimatedSectionProps {
@@ -12,14 +12,11 @@ interface AnimatedSectionProps {
 
 export function AnimatedSection({ children, className, delay = 0 }: AnimatedSectionProps) {
   const prefersReduced = useReducedMotion();
-  const variants = prefersReduced ? {} : fadeInUp;
-
   return (
     <motion.div
-      variants={variants}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, margin: "-60px" }}
+      initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-40px" }}
       transition={{ ...defaultTransition, delay }}
       className={cn(className)}
     >
