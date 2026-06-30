@@ -3,7 +3,7 @@ import type { GalleryItem } from "@/lib/types";
 const BASE = "https://placehold.co";
 
 function img(label: string) {
-  return `${BASE}/800x600/111111/E84520?text=${encodeURIComponent(label)}`;
+  return `${BASE}/800x600/111111/E84520?text=${label.replace(/ /g, "+")}`;
 }
 
 export const galleryItems: GalleryItem[] = [

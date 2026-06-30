@@ -6,7 +6,12 @@ import { Check, Clock, Package, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnchorButton } from "@/components/ui/link-button";
 import { ProductGallery } from "@/components/products/ProductGallery";
-import { QuoteForm } from "@/components/products/QuoteForm";
+import dynamic from "next/dynamic";
+
+const QuoteForm = dynamic(
+  () => import("@/components/products/QuoteForm").then((m) => ({ default: m.QuoteForm })),
+  { ssr: false }
+);
 import type { Product } from "@/lib/types";
 import { formatDecorationMethod } from "@/lib/utils";
 import { categories } from "@/lib/data/categories";

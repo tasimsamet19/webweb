@@ -49,6 +49,7 @@ export function GalleryPreview() {
                 src={item.image}
                 alt={item.title}
                 fill
+                unoptimized={item.image.includes("placehold.co")}
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 50vw, 25vw"
               />

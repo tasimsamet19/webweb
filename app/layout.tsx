@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { MouseLight } from "@/components/layout/MouseLight";
+import { WebVitals } from "@/components/analytics/WebVitals";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -63,6 +64,7 @@ export default function RootLayout({
       className={`${inter.variable} ${bebasNeue.variable} ${geistMono.variable} dark`}
     >
       <body className="min-h-screen flex flex-col antialiased bg-[#080808] text-[#F0F0F0]">
+        <WebVitals />
         <MouseLight />
         <Navbar />
         <PageTransition>

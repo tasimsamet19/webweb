@@ -3,7 +3,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
-import { GalleryLightbox } from "@/components/gallery/GalleryLightbox";
+import dynamic from "next/dynamic";
+
+const GalleryLightbox = dynamic(
+  () => import("@/components/gallery/GalleryLightbox").then((m) => ({ default: m.GalleryLightbox })),
+  { ssr: false }
+);
 import type { GalleryItem } from "@/lib/types";
 import { formatDecorationMethod } from "@/lib/utils";
 import { staggerContainer, scaleIn, easing } from "@/lib/animations";
@@ -39,6 +44,7 @@ export function GalleryGrid({ items }: GalleryGridProps) {
               src={item.image}
               alt={item.title}
               fill
+              unoptimized={item.image.includes("placehold.co")}
               className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
