@@ -13,8 +13,15 @@ interface Props {
   store: MerchStore;
 }
 
+const UPSIZE_SURCHARGE = 500; // cents
+const UPSIZE_SIZES = ["2XL", "3XL"];
+
 function formatPrice(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
+}
+
+function effectivePrice(basePrice: number, size: string | null) {
+  return basePrice + (size && UPSIZE_SIZES.includes(size) ? UPSIZE_SURCHARGE : 0);
 }
 
 export function MerchProductDetail({ product, store }: Props) {
@@ -50,7 +57,7 @@ export function MerchProductDetail({ product, store }: Props) {
       size: selectedSize,
       color: selectedColor?.name ?? "",
       quantity,
-      price: product.price,
+      price: effectivePrice(product.price, selectedSize),
       image: product.images[0],
     });
     setAdded(true);
@@ -146,9 +153,17 @@ export function MerchProductDetail({ product, store }: Props) {
           <h1 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
             {product.name}
           </h1>
-          <p className="text-2xl font-bold" style={{ color: store.accentColor }}>
-            {formatPrice(product.price)}
-          </p>
+          <div className="flex items-baseline gap-2">
+            <p className="text-2xl font-bold" style={{ color: store.accentColor }}>
+              {formatPrice(effectivePrice(product.price, selectedSize))}
+            </p>
+            {selectedSize && UPSIZE_SIZES.includes(selectedSize) && (
+              <span className="text-sm text-white/40 line-through">{formatPrice(product.price)}</span>
+            )}
+          </div>
+          {!selectedSize && (
+            <p className="text-xs text-white/35 mt-0.5">+$5.00 for 2XL / 3XL</p>
+          )}
         </div>
 
         <p className="text-sm text-white/50 leading-relaxed">{product.description}</p>
@@ -195,13 +210,16 @@ export function MerchProductDetail({ product, store }: Props) {
                 key={size}
                 onClick={() => setSelectedSize(size)}
                 className={cn(
-                  "px-4 py-2 text-sm font-medium rounded-lg border transition-all",
+                  "relative px-4 py-2 text-sm font-medium rounded-lg border transition-all",
                   selectedSize === size
                     ? "text-white border-white/60 bg-white/10"
                     : "text-white/50 border-white/10 hover:border-white/30 hover:text-white/80"
                 )}
               >
                 {size}
+                {UPSIZE_SIZES.includes(size) && (
+                  <span className="absolute -top-2 -right-1 text-[9px] font-bold text-white/40">+$5</span>
+                )}
               </button>
             ))}
           </div>
