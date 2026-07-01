@@ -13,7 +13,7 @@ interface Props {
   store: MerchStore;
 }
 
-const UPSIZE_SURCHARGE = 500; // cents
+const UPSIZE_SURCHARGE = 500;
 const UPSIZE_SIZES = ["2XL", "3XL"];
 
 function formatPrice(cents: number) {
@@ -205,23 +205,35 @@ export function MerchProductDetail({ product, store }: Props) {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
-            {product.sizes.map((size) => (
-              <button
-                key={size}
-                onClick={() => setSelectedSize(size)}
-                className={cn(
-                  "flex flex-col items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all leading-tight",
-                  selectedSize === size
-                    ? "text-white border-white/60 bg-white/10"
-                    : "text-white/50 border-white/10 hover:border-white/30 hover:text-white/80"
-                )}
-              >
-                <span>{size}</span>
-                <span className="text-[9px] font-semibold opacity-50">
-                  {UPSIZE_SIZES.includes(size) ? "+$5" : " "}
-                </span>
-              </button>
-            ))}
+            {product.sizes.map((size) => {
+              const isUpsize = UPSIZE_SIZES.includes(size);
+              return (
+                <button
+                  key={size}
+                  onClick={() => setSelectedSize(size)}
+                  style={isUpsize ? {
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    minWidth: "72px",
+                    padding: "6px 16px",
+                  } : {}}
+                  className={cn(
+                    "border rounded-lg transition-all text-sm font-medium",
+                    !isUpsize && "px-4 py-2",
+                    selectedSize === size
+                      ? "text-white border-white/60 bg-white/10"
+                      : "text-white/50 border-white/10 hover:border-white/30 hover:text-white/80"
+                  )}
+                >
+                  <span style={{ lineHeight: 1.3 }}>{size}</span>
+                  {isUpsize && (
+                    <span style={{ display: "block", fontSize: "10px", opacity: 0.55, lineHeight: 1.2, fontWeight: 600 }}>+$5.00</span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -253,20 +265,14 @@ export function MerchProductDetail({ product, store }: Props) {
           size="lg"
           className={cn(
             "h-14 font-bold text-base transition-all duration-300",
-            added
-              ? "bg-green-600 hover:bg-green-600"
-              : "text-white shadow-lg"
+            added ? "bg-green-600 hover:bg-green-600" : "text-white shadow-lg"
           )}
           style={added ? {} : { backgroundColor: store.accentColor }}
         >
           {added ? (
-            <>
-              <Check className="w-5 h-5 mr-2" /> Added to Cart!
-            </>
+            <><Check className="w-5 h-5 mr-2" /> Added to Cart!</>
           ) : (
-            <>
-              <ShoppingCart className="w-5 h-5 mr-2" /> Add to Cart
-            </>
+            <><ShoppingCart className="w-5 h-5 mr-2" /> Add to Cart</>
           )}
         </Button>
 
