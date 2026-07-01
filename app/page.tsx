@@ -3,7 +3,6 @@ import { BrandsBanner } from "@/components/home/BrandsBanner";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { MerchSection } from "@/components/home/MerchSection";
 import { CategoryGrid } from "@/components/home/CategoryGrid";
-import { HowToOrderSection } from "@/components/home/HowToOrderSection";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { GalleryPreview } from "@/components/home/GalleryPreview";
 import { Testimonials } from "@/components/home/Testimonials";
@@ -17,7 +16,6 @@ export default function HomePage() {
       <MerchSection />
       <ServicesSection />
       <CategoryGrid />
-      <HowToOrderSection />
       <FeaturedProducts />
       <GalleryPreview />
       <Testimonials />
