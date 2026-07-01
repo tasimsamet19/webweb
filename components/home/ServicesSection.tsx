@@ -10,48 +10,56 @@ const services = [
   {
     slug: "screen-printing",
     title: "Screen Printing",
+    image: "/images/gallery/custom-event-shirts.jpg",
     description:
       "A strong, cost-effective way to promote your brand. Vibrant, long-lasting prints on tees, hoodies, and more. Perfect for bulk orders and events.",
   },
   {
     slug: "embroidery",
     title: "Embroidery",
+    image: "/images/gallery/rutgers-nursing-embroidery.jpg",
     description:
       "Embroidered hats and polo shirts advertise your business with class. An employee wearing an embroidered cap gets seen 3,000+ times by potential customers.",
   },
   {
     slug: "graphic-design",
     title: "Graphic Design",
+    image: "/images/gallery/custom-apparel-3.jpg",
     description:
       "Eye-catching designs make people look twice. Our in-house team creates logos and artwork that people will want to wear — and others will want to see.",
   },
   {
     slug: "heat-transfer",
     title: "Heat Transfer",
+    image: "/images/gallery/fire-ems-christmas-shirt.jpg",
     description:
       "High-definition transfers for complex multi-color designs. Great for small runs, individual names and numbers, and specialty finishes.",
   },
   {
     slug: "dtg-printing",
     title: "Direct-to-Garment (DTG)",
+    image: "/images/gallery/sports-simulator-shirt.jpg",
     description:
       "Full-color photo-quality prints directly onto fabric. No minimums, no screens — ideal for detailed artwork and short-run custom pieces.",
   },
   {
     slug: "custom-mugs",
     title: "Custom Mugs",
+    image: "/images/gallery/custom-apparel-1.jpg",
     description:
       "Full-color sublimation printed mugs and travel cups — perfect for corporate gifts, events, and branded merchandise that keeps your logo in sight every morning.",
   },
   {
     slug: "varsity-tackle-twill",
     title: "Varsity & Tackle Twill",
+    image: "/images/gallery/fire-dept-denim-jacket.jpg",
     description:
       "Classic letterman jackets, team jerseys, and chenille patches. Sewn letters and numbers with a premium athletic look that stands the test of time.",
   },
   {
     slug: "promotional-products",
     title: "Promotional Products",
+    image: "/images/gallery/custom-tote-bags.jpg",
     description:
       "Beyond apparel — custom tote bags, mugs, hats, and branded merchandise that keeps your logo in front of customers long after the event.",
   },
@@ -63,7 +71,6 @@ export function ServicesSection() {
 
   return (
     <section className="py-24 bg-[#080808] relative overflow-hidden">
-      {/* Subtle background grid */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
         style={{
@@ -104,19 +111,15 @@ export function ServicesSection() {
               whileHover="hover"
               className="group flex flex-col bg-[#111111] rounded-xl border border-white/6 hover:border-[#E84520]/40 transition-colors duration-300 overflow-hidden cursor-default"
             >
-              {/* Image */}
               <div className="relative h-44 overflow-hidden">
                 <Image
-                  src={`/images/services/${svc.slug}.jpg`}
+                  src={svc.image}
                   alt={svc.title}
                   fill
                   className="object-cover scale-105 transition-transform duration-500 group-hover:scale-100"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                {/* Dark gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/40 to-transparent" />
-
-                {/* Title pinned over image bottom */}
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <h3 className="text-[15px] font-bold text-white group-hover:text-[#E84520] transition-colors duration-300 leading-tight">
                     {svc.title}
@@ -124,20 +127,16 @@ export function ServicesSection() {
                 </div>
               </div>
 
-              {/* Description */}
               <div className="p-4 flex-1 flex flex-col gap-3">
                 <p className="text-sm text-white/50 leading-relaxed flex-1">
                   {svc.description}
                 </p>
-
-                {/* Bottom accent line */}
                 <div className="h-px bg-gradient-to-r from-[#E84520]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Centered Get a Quote CTA */}
         <motion.div
           initial={prefersReduced ? undefined : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

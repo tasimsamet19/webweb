@@ -7,7 +7,7 @@ export const categories: CategoryDefinition[] = [
     label: "Tee Shirts",
     description: "Custom screen printed and embroidered tees for any occasion",
     icon: "Shirt",
-    image: "/images/categories/tee-shirts.jpg",
+    image: "/images/gallery/custom-event-shirts.jpg",
   },
   {
     id: "sweatshirts",
@@ -15,7 +15,7 @@ export const categories: CategoryDefinition[] = [
     label: "Sweatshirts",
     description: "Premium hoodies and crewnecks with your custom design",
     icon: "Wind",
-    image: "/images/categories/sweatshirts.jpg",
+    image: "/images/gallery/nashville-road-trip-hoodie.jpg",
   },
   {
     id: "jackets",
@@ -23,7 +23,7 @@ export const categories: CategoryDefinition[] = [
     label: "Jackets",
     description: "Softshell, fleece, and performance jackets — branded to impress",
     icon: "Layers",
-    image: "/images/categories/jackets.jpg",
+    image: "/images/gallery/fire-dept-denim-jacket.jpg",
   },
   {
     id: "hats",
@@ -31,7 +31,7 @@ export const categories: CategoryDefinition[] = [
     label: "Hats",
     description: "Structured caps, beanies, and headwear with custom embroidery",
     icon: "HardHat",
-    image: "/images/categories/hats.jpg",
+    image: "/images/gallery/custom-hats-embroidery.jpg",
   },
   {
     id: "polo-shirts",
@@ -39,7 +39,7 @@ export const categories: CategoryDefinition[] = [
     label: "Polo Shirts",
     description: "Professional polo shirts perfect for corporate and team branding",
     icon: "Briefcase",
-    image: "/images/categories/polo-shirts.jpg",
+    image: "/images/gallery/training-center-shirt.jpg",
   },
   {
     id: "pants-shorts",
@@ -47,7 +47,7 @@ export const categories: CategoryDefinition[] = [
     label: "Pants & Shorts",
     description: "Custom athletic and casual bottoms for teams and businesses",
     icon: "Ruler",
-    image: "/images/categories/pants-shorts.jpg",
+    image: "/images/gallery/sports-sublimation-top.jpg",
   },
   {
     id: "sports-apparel",
@@ -55,7 +55,7 @@ export const categories: CategoryDefinition[] = [
     label: "Sports Apparel",
     description: "High-performance jerseys, warm-ups, and athletic wear",
     icon: "Trophy",
-    image: "/images/categories/sports-apparel.jpg",
+    image: "/images/gallery/softball-team-embroidery.jpg",
   },
   {
     id: "varsity-jackets",
@@ -63,7 +63,7 @@ export const categories: CategoryDefinition[] = [
     label: "Varsity Jackets",
     description: "Classic letterman and varsity jackets for schools and organizations",
     icon: "Star",
-    image: "/images/categories/varsity-jackets.jpg",
+    image: "/images/gallery/fire-chief-carhartt-hoodie.jpg",
   },
   {
     id: "other-products",
@@ -71,7 +71,7 @@ export const categories: CategoryDefinition[] = [
     label: "Other Products",
     description: "Promotional items: bags, mugs, pens, and branded merchandise",
     icon: "Gift",
-    image: "/images/categories/other-products.jpg",
+    image: "/images/gallery/custom-tote-bags.jpg",
   },
   {
     id: "sublimated-uniforms",
@@ -79,7 +79,7 @@ export const categories: CategoryDefinition[] = [
     label: "Sublimated Uniforms",
     description: "Fully custom all-over sublimation print uniforms for any sport",
     icon: "Palette",
-    image: "/images/categories/sublimated-uniforms.jpg",
+    image: "/images/gallery/sports-sublimation-top.jpg",
   },
 ];
 

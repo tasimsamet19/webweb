@@ -1,8 +1,6 @@
 import type { Product } from "@/lib/types";
 
-function img(slug: string) {
-  return `/images/products/${slug}.jpg`;
-}
+const g = (name: string) => `/images/gallery/${name}`;
 
 export const products: Product[] = [
   // TEE SHIRTS
@@ -14,7 +12,7 @@ export const products: Product[] = [
     shortDescription: "The classic workhorse tee — thick 5.3 oz cotton, holds ink beautifully.",
     description:
       "Our most popular screen printing canvas. The Gildan 5000 in 5.3 oz heavy cotton delivers vibrant prints and lasting durability. Available in 60+ colors with sizes XS–5XL. Perfect for events, teams, companies, and retail.",
-    images: [img("gildan-heavy-cotton-tee")],
+    images: [g("construction-company-safety-shirt.jpg")],
     features: [
       "5.3 oz 100% cotton",
       "Seamless double-needle collar",
@@ -37,7 +35,7 @@ export const products: Product[] = [
     shortDescription: "Ultra-soft retail-fit tee with a modern cut — top choice for fashion brands.",
     description:
       "The Bella+Canvas 3001 is the go-to for premium soft-hand screen printing. 4.2 oz airlume combed ring-spun cotton gives it a buttery feel that customers love. Slim retail fit with tear-away label.",
-    images: [img("bella-canvas-unisex-tee")],
+    images: [g("custom-apparel-1.jpg")],
     features: [
       "4.2 oz airlume combed and ring-spun cotton",
       "Slim retail fit",
@@ -60,7 +58,7 @@ export const products: Product[] = [
     shortDescription: "Moisture-wicking athletic tee — ideal for sports, runs, and active events.",
     description:
       "100% polyester moisture-wicking performance tee. Lightweight, breathable fabric with 4-way stretch keeps athletes cool. Sublimation-ready for all-over prints.",
-    images: [img("next-level-performance-tee")],
+    images: [g("sports-simulator-shirt.jpg")],
     features: [
       "4 oz 100% polyester",
       "Moisture-wicking technology",
@@ -83,7 +81,7 @@ export const products: Product[] = [
     shortDescription: "8 oz pullover hoodie with a roomy pouch pocket — a bestseller year-round.",
     description:
       "The Gildan 18500 is the industry standard for custom hoodies. 8 oz 50/50 cotton-poly blend resists shrinking and pilling. Double-lined hood with matching drawcord, front pouch pocket.",
-    images: [img("gildan-heavy-blend-hoodie")],
+    images: [g("fire-dept-carhartt-hoodie.jpg")],
     features: [
       "8 oz 50/50 cotton/polyester blend",
       "Double-lined hood with matching drawcord",
@@ -106,7 +104,7 @@ export const products: Product[] = [
     shortDescription: "Classic crewneck sweatshirt with a premium mid-weight feel.",
     description:
       "Independent Trading SS3000 midweight crewneck. 6.5 oz 60/40 ring-spun cotton/polyester. Set-in sleeves for a comfortable, classic fit. Great for corporate events, schools, and teams.",
-    images: [img("independent-trading-crewneck")],
+    images: [g("nashville-road-trip-hoodie.jpg")],
     features: [
       "6.5 oz ring-spun 60/40 blend",
       "Set-in sleeves",
@@ -127,7 +125,7 @@ export const products: Product[] = [
     shortDescription: "Sport-meets-corporate quarter-zip — popular for company outings and teams.",
     description:
       "Sport-Tek Quarter-Zip Sweatshirt. Moisture-wicking performance fabric with a clean look ideal for both the field and the boardroom. Left chest embroidery placement is perfect.",
-    images: [img("quarter-zip-pullover")],
+    images: [g("fire-chief-carhartt-hoodie.jpg")],
     features: [
       "100% polyester fleece",
       "Moisture-wicking",
@@ -151,7 +149,7 @@ export const products: Product[] = [
     shortDescription: "Wind & water-resistant softshell with a sleek professional look.",
     description:
       "Port Authority J317 Colorblock Soft Shell Jacket. Wind and water resistant with a soft fleece interior. A sharp, professional choice for corporate apparel programs. Left chest embroidery or screen print.",
-    images: [img("port-authority-softshell")],
+    images: [g("fire-dept-denim-jacket.jpg")],
     features: [
       "Wind and water resistant shell",
       "Soft fleece interior",
@@ -173,7 +171,7 @@ export const products: Product[] = [
     shortDescription: "Warm, lightweight fleece that layers perfectly under a shell.",
     description:
       "Sport-Tek Full-Zip Fleece Jacket. 100% polyester anti-pill fleece. Lightweight warmth with a clean look. Great for sideline staff, volunteers, and company outings.",
-    images: [img("full-zip-fleece-jacket")],
+    images: [g("custom-apparel-2.jpg")],
     features: [
       "Anti-pill 100% polyester fleece",
       "Full-zip front",
@@ -196,7 +194,7 @@ export const products: Product[] = [
     shortDescription: "The most embroidered cap in America — flat bill, snapback, iconic.",
     description:
       "Richardson 112 Trucker Cap. Structured mid-profile, 6-panel design. 65/35 poly/cotton front, poly mesh back. Snapback closure. The go-to blank for custom embroidered headwear.",
-    images: [img("richardson-112-snapback")],
+    images: [g("custom-hats-closeup.jpg")],
     features: [
       "Structured mid-profile",
       "Poly mesh back panels",
@@ -218,7 +216,7 @@ export const products: Product[] = [
     shortDescription: "Classic cuffed beanie with embroidered logo — perfect cold-weather promo.",
     description:
       "Otto Knit Cuffed Beanie. 100% acrylic knit. Soft, stretchy fabric keeps you warm. Folded cuff provides the ideal embroidery placement for your logo.",
-    images: [img("custom-beanie")],
+    images: [g("custom-hats-embroidery.jpg")],
     features: [
       "100% acrylic knit",
       "Folded cuff with embroidery zone",
@@ -239,7 +237,7 @@ export const products: Product[] = [
     shortDescription: "Sharp, breathable piqué polo — the corporate uniform staple.",
     description:
       "Port Authority K500 Silk Touch Polo. 5 oz 65/35 poly/cotton blend. Snag-resistant fabric with a smooth, silky finish. Ideal for corporate uniform programs with left chest embroidery.",
-    images: [img("port-authority-pique-polo")],
+    images: [g("training-center-shirt.jpg")],
     features: [
       "5 oz 65/35 poly/cotton",
       "Snag-resistant",
@@ -264,7 +262,7 @@ export const products: Product[] = [
     shortDescription: "All-over sublimated basketball uniforms — no minimums on design changes.",
     description:
       "Fully custom sublimated basketball jersey. Design every inch — front, back, sides, and numbers. 100% moisture-wicking polyester. Lightweight and breathable for peak performance. Each jersey can have unique numbering with no extra cost.",
-    images: [img("sublimated-basketball-jersey")],
+    images: [g("sports-sublimation-top.jpg")],
     features: [
       "100% sublimated polyester",
       "All-over custom design",
@@ -287,7 +285,7 @@ export const products: Product[] = [
     shortDescription: "Full custom baseball jersey and pants sets with player names & numbers.",
     description:
       "Custom baseball jerseys and pants with tackle twill, embroidery, or sublimation. Button-front jerseys available in pinstripe, mesh, and performance fabrics. Mixed decoration options available.",
-    images: [img("custom-baseball-uniform")],
+    images: [g("softball-team-embroidery.jpg")],
     features: [
       "Button-front or pullover styles",
       "Player names and numbers",
@@ -310,7 +308,7 @@ export const products: Product[] = [
     shortDescription: "Traditional wool and leather varsity letterman jackets, made to order.",
     description:
       "Classic varsity letterman jacket with wool body and genuine or faux leather sleeves. Fully customizable with school colors, chenille patches, embroidery, and custom lining. A Printwear Ledgewood specialty.",
-    images: [img("custom-varsity-jacket")],
+    images: [g("fire-dept-denim-jacket.jpg")],
     features: [
       "Melton wool body",
       "Genuine or faux leather sleeves",
@@ -335,7 +333,7 @@ export const products: Product[] = [
     shortDescription: "Heavy canvas tote bags — eco-friendly, reusable, fully branded.",
     description:
       "12 oz natural canvas tote bags with your custom screen printed design. Durable long handles, large print area, and a wide range of color options. Popular for events, retail, and giveaways.",
-    images: [img("custom-tote-bag")],
+    images: [g("custom-tote-bags.jpg")],
     features: [
       "12 oz natural cotton canvas",
       "22\" self-fabric handles",
@@ -355,7 +353,7 @@ export const products: Product[] = [
     shortDescription: "11 oz ceramic mugs with full-color sublimated logo — great giveaways.",
     description:
       "11 oz white ceramic coffee mug with full-color sublimation print. Dishwasher safe. Perfect for employee gifts, client appreciation, and branded merchandise.",
-    images: [img("custom-branded-mug")],
+    images: [g("fire-rescue-shirt.jpg")],
     features: [
       "11 oz white ceramic",
       "Full-color sublimation print",
@@ -366,7 +364,6 @@ export const products: Product[] = [
     minimumQuantity: 12,
     leadTime: "7–10 business days",
   },
-
   {
     id: "op-003",
     slug: "travel-mug-istanbul",
@@ -375,7 +372,7 @@ export const products: Product[] = [
     shortDescription: "Premium stainless steel travel mugs with full-color sublimation print.",
     description:
       "20 oz double-wall stainless steel travel mug with full-color sublimation wrap. Keeps drinks hot for 6 hours, cold for 12. Perfect for corporate gifts, tourism merchandise, events, and branded giveaways. Custom design printed all the way around.",
-    images: [img("travel-mug-istanbul")],
+    images: [g("custom-event-shirts.jpg")],
     features: [
       "20 oz stainless steel double-wall",
       "Full-color 360° sublimation wrap",
@@ -400,7 +397,7 @@ export const products: Product[] = [
     shortDescription: "Fully custom all-over sublimation — soccer, football, lacrosse, and more.",
     description:
       "Design your team's uniform from scratch with no design limits. Full sublimation means every color, gradient, and pattern is included at one price. Available for soccer, football, lacrosse, wrestling, volleyball, and more. Work with our in-house design team.",
-    images: [img("create-your-own-sublimated-uniform")],
+    images: [g("sports-sublimation-top.jpg")],
     features: [
       "Unlimited colors and gradients",
       "No color surcharges",
