@@ -146,14 +146,18 @@ export const merchStores: MerchStore[] = [
     isActive: true,
     requiresAccessCode: false,
     accentColor: "#E07B00",
-    bannerImage: "/images/merch/mhs-1976-banner.jpg",
+    bannerImage: "/images/merch/mhs-1976-mockup-main.jpg",
     products: [
       {
         id: "mhs-001",
         slug: "mhs-1976-class-tee",
-        name: "MHS Class of 1976 Tee",
-        description: "Gildan 6400 Ultra Cotton unisex tee. Orange tiger crest printed front-center at 9–12 inches. 100% preshrunk cotton, classic fit.",
-        images: ["/images/merch/mhs-1976-tee-mockup.jpg"],
+        name: "MHS Class of 1976 — 50th Reunion Tee",
+        description: "Gildan Softstyle 64000 unisex tee. Orange & white tiger crest with '50th Year Reunion' printed front-center at 9–12 inches. 4.5 oz, 100% ring-spun cotton, modern classic fit.",
+        images: [
+          "/images/merch/mhs-1976-mockup-main.jpg",
+          "/images/merch/mhs-1976-product-sheet.jpg",
+          "/images/merch/mhs-1976-size-chart.jpg",
+        ],
         price: 2500,
         sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
         colors: [
