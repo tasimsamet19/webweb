@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { ShoppingCart, Check } from "lucide-react";
+import { ShoppingCart, Check, X, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "./MerchCartProvider";
 import type { MerchProduct, MerchStore } from "@/lib/types";
@@ -25,6 +25,16 @@ export function MerchProductDetail({ product, store }: Props) {
   const [mainImage, setMainImage] = useState(0);
   const [added, setAdded] = useState(false);
   const [sizeError, setSizeError] = useState(false);
+  const [lightbox, setLightbox] = useState(false);
+
+  const closeLightbox = useCallback(() => setLightbox(false), []);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeLightbox(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, closeLightbox]);
 
   function handleAddToCart() {
     if (!selectedSize) {
@@ -51,7 +61,10 @@ export function MerchProductDetail({ product, store }: Props) {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
       {/* Images */}
       <div className="space-y-3">
-        <div className="relative aspect-square rounded-2xl overflow-hidden bg-[#111111]">
+        <div
+          className="relative aspect-square rounded-2xl overflow-hidden bg-[#111111] cursor-zoom-in group"
+          onClick={() => setLightbox(true)}
+        >
           <Image
             src={product.images[mainImage] ?? product.images[0]}
             alt={product.name}
@@ -61,7 +74,39 @@ export function MerchProductDetail({ product, store }: Props) {
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20">
+            <ZoomIn className="w-8 h-8 text-white drop-shadow-lg" />
+          </div>
         </div>
+
+        {/* Lightbox */}
+        {lightbox && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={closeLightbox}
+          >
+            <button
+              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+              onClick={closeLightbox}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <div
+              className="relative w-full max-w-4xl max-h-[90vh] aspect-square"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image
+                src={product.images[mainImage] ?? product.images[0]}
+                alt={product.name}
+                fill
+                unoptimized={product.images[0].includes("placehold.co")}
+                className="object-contain"
+                sizes="100vw"
+              />
+            </div>
+          </div>
+        )}
+
         {product.images.length > 1 && (
           <div className="flex gap-2">
             {product.images.map((img, i) => (
