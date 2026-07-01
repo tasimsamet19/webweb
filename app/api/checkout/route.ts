@@ -1,8 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import type { CartItem } from "@/lib/types";
+import { getClientIp, isRateLimited } from "@/lib/rate-limit";
 
 export async function POST(req: NextRequest) {
+  const ip = getClientIp(req);
+  if (isRateLimited(ip, "checkout", 10)) {
+    return NextResponse.json(
+      { error: "Too many requests. Please try again later." },
+      { status: 429 }
+    );
+  }
+
   if (!process.env.STRIPE_SECRET_KEY) {
     return NextResponse.json(
       { error: "Stripe is not configured. Please add STRIPE_SECRET_KEY to .env.local" },

@@ -1,9 +1,5 @@
 import type { MerchStore } from "@/lib/types";
 
-const BASE = "https://placehold.co";
-const img = (label: string, w = 600, h = 600) =>
-  `${BASE}/${w}x${h}/111111/E84520?text=${label.replace(/ /g, "+")}`;
-
 export const merchStores: MerchStore[] = [
   {
     id: "ms-001",
@@ -16,14 +12,14 @@ export const merchStores: MerchStore[] = [
     isActive: true,
     requiresAccessCode: false,
     accentColor: "#1A5FA8",
-    bannerImage: img("Ledgewood+Yacht+Club", 1200, 400),
+    bannerImage: "/images/merch/merch-banner-salon.jpg",
     products: [
       {
         id: "lyc-001",
         slug: "yacht-club-performance-polo",
         name: "Club Performance Polo",
         description: "Moisture-wicking performance polo with embroidered yacht club crest. Perfect for the deck or the clubhouse.",
-        images: [img("Club+Polo"), img("Club+Polo+Back")],
+        images: ["/images/merch/merch-product-blue-tee.jpg"],
         price: 4500,
         sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
         colors: [
@@ -38,7 +34,7 @@ export const merchStores: MerchStore[] = [
         slug: "yacht-club-quarter-zip",
         name: "Club Quarter-Zip Pullover",
         description: "Soft fleece quarter-zip with full chest crest embroidery. Ideal for cool evenings on the water.",
-        images: [img("Quarter+Zip"), img("Quarter+Zip+Side")],
+        images: ["/images/merch/merch-product-blue-tee.jpg"],
         price: 6500,
         sizes: ["S", "M", "L", "XL", "2XL"],
         colors: [
@@ -52,7 +48,7 @@ export const merchStores: MerchStore[] = [
         slug: "yacht-club-cap",
         name: "Club Structured Cap",
         description: "Richardson 112 trucker cap with embroidered club logo. Adjustable snapback — one size fits all.",
-        images: [img("Club+Cap"), img("Club+Cap+Side")],
+        images: ["/images/merch/merch-product-cap.jpg"],
         price: 2800,
         sizes: ["One Size"],
         colors: [
@@ -66,7 +62,7 @@ export const merchStores: MerchStore[] = [
         slug: "yacht-club-tee",
         name: "Club Premium Tee",
         description: "Bella+Canvas 3001 unisex jersey tee with screen-printed club graphic on the back.",
-        images: [img("Club+Tee"), img("Club+Tee+Back")],
+        images: ["/images/merch/merch-product-tee.jpg"],
         price: 2500,
         sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
         colors: [
@@ -90,14 +86,14 @@ export const merchStores: MerchStore[] = [
     requiresAccessCode: true,
     accessCode: "DOVER26",
     accentColor: "#C41E3A",
-    bannerImage: img("Dover+Cheer+2026", 1200, 400),
+    bannerImage: "/images/merch/merch-banner-caps.jpg",
     products: [
       {
         id: "dc-001",
         slug: "cheer-spirit-hoodie",
         name: "Spirit Hoodie",
         description: "Gildan Heavy Blend hoodie with screen-printed squad design on the back. Cheer logo on left chest.",
-        images: [img("Spirit+Hoodie"), img("Spirit+Hoodie+Back")],
+        images: ["/images/merch/merch-product-tee.jpg"],
         price: 4200,
         sizes: ["YS", "YM", "YL", "S", "M", "L", "XL", "2XL"],
         colors: [
@@ -112,7 +108,7 @@ export const merchStores: MerchStore[] = [
         slug: "cheer-spirit-tee",
         name: "Spirit Tee",
         description: "Lightweight Next Level tee with front and back cheer squad graphics.",
-        images: [img("Spirit+Tee"), img("Spirit+Tee+Back")],
+        images: ["/images/merch/merch-product-tee.jpg"],
         price: 2200,
         sizes: ["YXS", "YS", "YM", "YL", "S", "M", "L", "XL", "2XL"],
         colors: [
@@ -128,7 +124,7 @@ export const merchStores: MerchStore[] = [
         slug: "cheer-fan-tote",
         name: "Fan Tote Bag",
         description: "Heavy canvas tote with screen-printed cheer design. Great for game days.",
-        images: [img("Cheer+Tote")],
+        images: ["/images/merch/merch-product-tote.jpg"],
         price: 1800,
         sizes: ["One Size"],
         colors: [
@@ -150,14 +146,14 @@ export const merchStores: MerchStore[] = [
     isActive: false,
     requiresAccessCode: false,
     accentColor: "#0E7490",
-    bannerImage: img("Lake+Tranquility+CC", 1200, 400),
+    bannerImage: "/images/merch/merch-banner-hats.jpg",
     products: [
       {
         id: "ltcc-001",
         slug: "community-club-tee",
         name: "Community Tee",
         description: "Classic community club tee with lakeside artwork.",
-        images: [img("Community+Tee")],
+        images: ["/images/merch/merch-product-blue-tee.jpg"],
         price: 2400,
         sizes: ["S", "M", "L", "XL", "2XL"],
         colors: [

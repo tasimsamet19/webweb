@@ -59,6 +59,15 @@ The `/merch` section is a full e-commerce flow built without external state libr
 - **Cart state**: `useReducer` + `localStorage` in `components/merch/MerchCartProvider.tsx`. Wrap any page that needs cart access in `<MerchCartProvider>` — this is already done in `app/merch/layout.tsx`.
 - **Checkout**: `POST /api/checkout` creates a Stripe Checkout Session (hosted). Stripe is initialized **inside the handler** (not at module level) to avoid build-time errors when `STRIPE_SECRET_KEY` is absent.
 - **Access gates**: Stores with `requiresAccessCode: true` use `MerchAccessGate` — client-side only, code checked in-browser against `store.accessCode`.
+- **SSG**: Both `/merch/[storeSlug]` and `/merch/[storeSlug]/[productSlug]` use `generateStaticParams()` to pre-render at build time (instant load). Without this they'd be `ƒ Dynamic` (slow).
+- **Hydration safety**: Never use `Date.now()` or `new Date()` in initial render. Use `useState<T | null>(null)` + populate in `useEffect`. Render `opacity-0` placeholder until hydrated. See `MerchCountdown.tsx` and `MerchStoreCard.tsx` for the pattern.
+
+### Homepage Section Order
+
+`app/page.tsx` renders sections in this order:
+```
+HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → HowToOrderSection → FeaturedProducts → GalleryPreview → Testimonials → CTASection
+```
 
 Required env vars (add to `.env.local`):
 ```
