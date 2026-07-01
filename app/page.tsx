@@ -14,8 +14,8 @@ export default function HomePage() {
     <>
       <HeroSection />
       <BrandsBanner />
-      <ServicesSection />
       <MerchSection />
+      <ServicesSection />
       <CategoryGrid />
       <HowToOrderSection />
       <FeaturedProducts />
