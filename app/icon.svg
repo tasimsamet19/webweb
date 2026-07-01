@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Black background -->
+  <rect width="100" height="100" rx="16" fill="#111111"/>
+
+  <!-- Orange top accent line -->
+  <rect x="12" y="10" width="76" height="5" rx="2.5" fill="#E84520"/>
+
+  <!-- Bold PW in orange -->
+  <text
+    x="50"
+    y="74"
+    text-anchor="middle"
+    font-family="Arial Black, Arial, Helvetica, sans-serif"
+    font-weight="900"
+    font-size="52"
+    fill="#E84520"
+    letter-spacing="-2"
+  >PW</text>
+
+  <!-- Thin orange bottom bar -->
+  <rect x="12" y="84" width="76" height="3" rx="1.5" fill="#E84520" opacity="0.4"/>
+</svg>
