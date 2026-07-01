@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { ArrowRight, Lock, Clock } from "lucide-react";
 import { MerchCountdown } from "./MerchCountdown";
 import type { MerchStore } from "@/lib/types";
@@ -11,7 +12,11 @@ interface Props {
 }
 
 export function MerchStoreCard({ store }: Props) {
-  const isExpired = !store.isActive || new Date(store.closeDate) < new Date();
+  // Defer date check to client to avoid SSR hydration mismatch
+  const [isExpired, setIsExpired] = useState(!store.isActive);
+  useEffect(() => {
+    setIsExpired(!store.isActive || new Date(store.closeDate) < new Date());
+  }, [store.isActive, store.closeDate]);
   const closeLabel = new Date(store.closeDate).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",

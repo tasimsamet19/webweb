@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
@@ -15,8 +15,12 @@ interface Props {
 }
 
 export function MerchStoreClient({ store }: Props) {
-  const isExpired = !store.isActive || new Date(store.closeDate) < new Date();
+  const [isExpired, setIsExpired] = useState(!store.isActive);
   const [unlocked, setUnlocked] = useState(!store.requiresAccessCode);
+
+  useEffect(() => {
+    setIsExpired(!store.isActive || new Date(store.closeDate) < new Date());
+  }, [store.isActive, store.closeDate]);
 
   if (store.requiresAccessCode && !unlocked) {
     return (

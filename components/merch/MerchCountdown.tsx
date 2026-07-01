@@ -30,24 +30,47 @@ function calcTimeLeft(closeDate: string): TimeLeft {
 }
 
 export function MerchCountdown({ closeDate, className, compact = false }: Props) {
-  const [time, setTime] = useState<TimeLeft>(() => calcTimeLeft(closeDate));
+  // Start null to avoid SSR/client hydration mismatch — Date.now() differs between renders
+  const [time, setTime] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
+    setTime(calcTimeLeft(closeDate));
     const id = setInterval(() => setTime(calcTimeLeft(closeDate)), 1000);
     return () => clearInterval(id);
   }, [closeDate]);
 
-  if (time.expired) {
-    return (
-      <span className={cn("text-xs text-white/30", className)}>
-        Store closed
-      </span>
+  // Show placeholder with same dimensions until hydrated
+  if (!time) {
+    return compact ? (
+      <div className={cn("flex items-center gap-1 opacity-0", className)}>
+        <span className="text-[10px] text-white/30">Closes in</span>
+        <span className="text-xs font-bold text-white/70 tabular-nums">--d</span>
+        <span className="text-xs font-bold text-white/70 tabular-nums">--h</span>
+        <span className="text-xs font-bold text-white/70 tabular-nums">--m</span>
+      </div>
+    ) : (
+      <div className={cn("opacity-0", className)}>
+        <span className="text-xs text-white/40 uppercase tracking-wider block mb-1">Store closes in</span>
+        <div className="flex items-center gap-2">
+          {["d", "h", "m", "s"].map((l) => (
+            <div key={l} className="flex items-baseline gap-0.5">
+              <span className="text-lg font-bold text-white tabular-nums">--</span>
+              <span className="text-xs text-white/40">{l}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     );
   }
 
   const pad = (n: number) => String(n).padStart(2, "0");
 
-  // Compact: "32d 14h 22m" — single line for cards
+  if (time.expired) {
+    return (
+      <span className={cn("text-xs text-white/30", className)}>Store closed</span>
+    );
+  }
+
   if (compact) {
     const parts: string[] = [];
     if (time.days > 0) parts.push(`${time.days}d`);
@@ -65,7 +88,6 @@ export function MerchCountdown({ closeDate, className, compact = false }: Props)
     );
   }
 
-  // Full: days / hours / minutes / seconds block
   return (
     <div className={className}>
       <span className="text-xs text-white/40 uppercase tracking-wider block mb-1">
