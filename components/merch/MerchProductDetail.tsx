@@ -57,7 +57,7 @@ export function MerchProductDetail({ product, store }: Props) {
             alt={product.name}
             fill
             unoptimized={product.images[0].includes("placehold.co")}
-            className="object-cover"
+            className={mainImage === 0 ? "object-cover" : "object-contain p-4"}
             sizes="(max-width: 1024px) 100vw, 50vw"
             priority
           />
@@ -78,7 +78,7 @@ export function MerchProductDetail({ product, store }: Props) {
                   alt=""
                   fill
                   unoptimized={img.includes("placehold.co")}
-                  className="object-cover"
+                  className={i === 0 ? "object-cover" : "object-contain p-1"}
                   sizes="64px"
                 />
               </button>

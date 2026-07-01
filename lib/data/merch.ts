@@ -155,8 +155,8 @@ export const merchStores: MerchStore[] = [
         description: "Gildan Softstyle 64000 unisex tee. Orange & white tiger crest with '50th Year Reunion' printed front-center at 9–12 inches. 4.5 oz, 100% ring-spun cotton, modern classic fit.",
         images: [
           "/images/merch/mhs-1976-mockup-main.jpg",
-          "/images/merch/mhs-1976-product-sheet.jpg",
           "/images/merch/mhs-1976-size-chart.jpg",
+          "/images/merch/mhs-1976-product-sheet.jpg",
         ],
         price: 2500,
         sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
