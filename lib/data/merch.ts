@@ -136,6 +136,34 @@ export const merchStores: MerchStore[] = [
     ],
   },
   {
+    id: "ms-004",
+    slug: "mhs-class-of-1976",
+    name: "MHS Class of 1976 — Reunion Tee",
+    organization: "Morristown High School Class of 1976",
+    description:
+      "Official reunion t-shirt for the MHS Class of 1976. Gildan 6400 Ultra Cotton tee featuring the class tiger crest in orange. Orders are limited — get yours before they're gone!",
+    closeDate: "2026-09-30T23:59:59",
+    isActive: true,
+    requiresAccessCode: false,
+    accentColor: "#E07B00",
+    bannerImage: "/images/merch/mhs-1976-banner.jpg",
+    products: [
+      {
+        id: "mhs-001",
+        slug: "mhs-1976-class-tee",
+        name: "MHS Class of 1976 Tee",
+        description: "Gildan 6400 Ultra Cotton unisex tee. Orange tiger crest printed front-center at 9–12 inches. 100% preshrunk cotton, classic fit.",
+        images: ["/images/merch/mhs-1976-tee-mockup.jpg"],
+        price: 2500,
+        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        colors: [
+          { name: "Black", hex: "#111111" },
+        ],
+        decorationMethod: "screen-printing",
+      },
+    ],
+  },
+  {
     id: "ms-003",
     slug: "lake-tranquility-cc-2026",
     name: "Lake Tranquility CC — Summer 2026",
