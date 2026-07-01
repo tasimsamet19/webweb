@@ -210,15 +210,15 @@ export function MerchProductDetail({ product, store }: Props) {
                 key={size}
                 onClick={() => setSelectedSize(size)}
                 className={cn(
-                  "relative px-4 py-2 text-sm font-medium rounded-lg border transition-all",
+                  "flex flex-col items-center px-4 py-2 text-sm font-medium rounded-lg border transition-all leading-tight",
                   selectedSize === size
                     ? "text-white border-white/60 bg-white/10"
                     : "text-white/50 border-white/10 hover:border-white/30 hover:text-white/80"
                 )}
               >
-                {size}
+                <span>{size}</span>
                 {UPSIZE_SIZES.includes(size) && (
-                  <span className="absolute -top-2 -right-1 text-[9px] font-bold text-white/40">+$5</span>
+                  <span className="text-[9px] font-semibold opacity-50">+$5</span>
                 )}
               </button>
             ))}
