@@ -217,9 +217,9 @@ export function MerchProductDetail({ product, store }: Props) {
                 )}
               >
                 <span>{size}</span>
-                {UPSIZE_SIZES.includes(size) && (
-                  <span className="text-[9px] font-semibold opacity-50">+$5</span>
-                )}
+                <span className="text-[9px] font-semibold opacity-50">
+                  {UPSIZE_SIZES.includes(size) ? "+$5" : " "}
+                </span>
               </button>
             ))}
           </div>
