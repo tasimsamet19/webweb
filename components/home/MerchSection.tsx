@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, ShoppingBag, Clock, Lock } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ShoppingBag, Lock } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { getActiveStores } from "@/lib/data/merch";
 import { MerchCountdown } from "@/components/merch/MerchCountdown";
@@ -17,39 +18,31 @@ export function MerchSection() {
 
   return (
     <section className="py-20 bg-[#060606] relative overflow-hidden">
-      {/* Background accent */}
+      {/* Background accents */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#E84520]/4 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#1A5FA8]/6 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+
+        {/* Header — centered */}
         <motion.div
           initial={prefersReduced ? undefined : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={transition}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10"
+          className="text-center mb-12"
         >
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E84520] mb-2">
-              Limited-Time Collections
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-              Group{" "}
-              <span className="text-[#E84520]">Merch Stores</span>
-            </h2>
-            <p className="text-white/45 text-sm mt-2 max-w-md">
-              Shop exclusive custom apparel for local teams, clubs, and organizations — open for a limited time only.
-            </p>
-          </div>
-          <Link
-            href="/merch"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-white/60 hover:text-white transition-colors flex-shrink-0"
-          >
-            View All Stores <ArrowRight className="w-4 h-4" />
-          </Link>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#E84520] mb-3">
+            Limited-Time Collections
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+            Group <span className="text-[#E84520]">Merch Stores</span>
+          </h2>
+          <p className="text-white/45 text-sm max-w-lg mx-auto leading-relaxed">
+            Shop exclusive custom apparel for local teams, clubs, and organizations — open for a limited time only.
+          </p>
         </motion.div>
 
         {/* Store cards */}
@@ -58,7 +51,7 @@ export function MerchSection() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, margin: "-40px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {activeStores.slice(0, 3).map((store) => (
             <motion.div
@@ -68,21 +61,40 @@ export function MerchSection() {
             >
               <Link
                 href={`/merch/${store.slug}`}
-                className="group flex flex-col h-full bg-[#111111] rounded-2xl border border-white/6 hover:border-white/18 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                className="group flex flex-col h-full bg-[#111111] rounded-2xl border border-white/6 hover:border-white/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/50 transition-all duration-300 overflow-hidden"
               >
-                {/* Color strip */}
-                <div
-                  className="h-1.5 w-full"
-                  style={{ backgroundColor: store.accentColor }}
-                />
+                {/* Image area */}
+                <div className="relative h-48 overflow-hidden bg-[#0A0A0A]">
+                  {store.bannerImage ? (
+                    <Image
+                      src={store.bannerImage}
+                      alt={store.name}
+                      fill
+                      unoptimized={store.bannerImage.includes("placehold.co")}
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div
+                      className="absolute inset-0"
+                      style={{ backgroundColor: store.accentColor + "18" }}
+                    />
+                  )}
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-black/20 to-transparent" />
 
-                <div className="p-5 flex flex-col flex-1">
+                  {/* Accent bar at top */}
+                  <div
+                    className="absolute top-0 inset-x-0 h-1"
+                    style={{ backgroundColor: store.accentColor }}
+                  />
+
                   {/* Badges */}
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="absolute top-3 left-3 flex gap-2">
                     <span
                       className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full flex items-center gap-1"
                       style={{
-                        backgroundColor: store.accentColor + "22",
+                        backgroundColor: store.accentColor + "33",
                         color: store.accentColor,
                       }}
                     >
@@ -90,13 +102,22 @@ export function MerchSection() {
                       Open Now
                     </span>
                     {store.requiresAccessCode && (
-                      <span className="px-2.5 py-1 text-[10px] font-medium text-white/40 bg-white/5 rounded-full flex items-center gap-1">
+                      <span className="px-2.5 py-1 text-[10px] font-medium text-white/50 bg-black/50 rounded-full flex items-center gap-1">
                         <Lock className="w-2.5 h-2.5" /> Members Only
                       </span>
                     )}
                   </div>
 
-                  {/* Store info */}
+                  {/* Item count */}
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2.5 py-1 text-[10px] font-medium text-white/60 bg-black/50 rounded-full">
+                      {store.products.length} items
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5 flex flex-col flex-1">
                   <p className="text-xs font-semibold uppercase tracking-widest text-white/30 mb-1">
                     {store.organization}
                   </p>
@@ -107,17 +128,14 @@ export function MerchSection() {
                     {store.description}
                   </p>
 
-                  {/* Footer */}
                   <div className="flex items-center justify-between pt-4 border-t border-white/6">
-                    <div className="flex items-center gap-1.5 text-xs text-white/30">
-                      <ShoppingBag className="w-3.5 h-3.5" />
-                      {store.products.length} items
-                    </div>
-                    <MerchCountdown
-                      closeDate={store.closeDate}
-                      compact
-                      className="text-right"
-                    />
+                    <MerchCountdown closeDate={store.closeDate} compact />
+                    <span
+                      className="flex items-center gap-1 text-xs font-semibold group-hover:gap-2 transition-all"
+                      style={{ color: store.accentColor }}
+                    >
+                      Shop <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -131,7 +149,7 @@ export function MerchSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ ...transition, delay: 0.2 }}
-          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
             href="/merch"
@@ -144,7 +162,8 @@ export function MerchSection() {
             href="/contact"
             className="text-sm text-white/40 hover:text-white/70 transition-colors"
           >
-            Want a store for your group? <span className="underline">Contact us →</span>
+            Want a store for your group?{" "}
+            <span className="underline underline-offset-2">Contact us →</span>
           </Link>
         </motion.div>
       </div>
