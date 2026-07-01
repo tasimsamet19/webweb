@@ -33,14 +33,14 @@ No test suite is configured. Playwright is installed as a devDependency for manu
 
 All static content lives in `lib/data/*.ts` as typed arrays:
 - `products.ts` — `Product[]`, queried via `getProductBySlug()`, `getRelatedProducts()`
-- `gallery.ts` — `GalleryItem[]`
+- `gallery.ts` — `GalleryItem[]` — 20 real business photos, all in `/images/gallery/`
 - `categories.ts` — `CategoryDefinition[]`
-- `testimonials.ts` — `Testimonial[]`
+- `testimonials.ts` — `Testimonial[]` (currently empty; Testimonials section shows a Google CTA instead)
 - `merch.ts` — `MerchStore[]`, queried via `getMerchStore()`, `getMerchProduct()`, `getActiveStores()`
 
 All types are in `lib/types.ts`. When adding new data shapes, define the type there first.
 
-**Placeholder images** use `placehold.co`. Spaces in labels must be replaced with `+`, not `encodeURIComponent` (which causes double-encoding via Next.js image optimization). Add `unoptimized={src.includes("placehold.co")}` to any `<Image>` using placeholder URLs.
+**Images**: All product, category, and service images use real photos from `/images/gallery/`. Do NOT use `placehold.co` — the `next.config.ts` remote pattern is kept as a fallback only.
 
 ### Animations
 
@@ -61,13 +61,17 @@ The `/merch` section is a full e-commerce flow built without external state libr
 - **Access gates**: Stores with `requiresAccessCode: true` use `MerchAccessGate` — client-side only, code checked in-browser against `store.accessCode`.
 - **SSG**: Both `/merch/[storeSlug]` and `/merch/[storeSlug]/[productSlug]` use `generateStaticParams()` to pre-render at build time (instant load). Without this they'd be `ƒ Dynamic` (slow).
 - **Hydration safety**: Never use `Date.now()` or `new Date()` in initial render. Use `useState<T | null>(null)` + populate in `useEffect`. Render `opacity-0` placeholder until hydrated. See `MerchCountdown.tsx` and `MerchStoreCard.tsx` for the pattern.
+- **Size surcharges**: `MerchProductDetail.tsx` has `UPSIZE_SIZES = ["2XL", "3XL"]` with a `+$5.00` surcharge via `effectivePrice()`. Size buttons use inline styles (not Tailwind classes) for the two-line layout — Tailwind v4 had purging issues with dynamic flex-col on buttons.
+- **Active stores**: Currently only `mhs-class-of-1976` (MHS Class of 1976 Reunion Tee, closes 2026-09-30).
 
 ### Homepage Section Order
 
 `app/page.tsx` renders sections in this order:
 ```
-HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → HowToOrderSection → FeaturedProducts → GalleryPreview → Testimonials → CTASection
+HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → FeaturedProducts → GalleryPreview → Testimonials → CTASection
 ```
+
+Note: `HowToOrderSection` was removed. `Testimonials` no longer shows customer quotes — it renders a Google Review CTA with 5 orange stars and a "Leave a Review" link.
 
 Required env vars (add to `.env.local`):
 ```
@@ -92,10 +96,19 @@ The merch section has its own nested layout (`app/merch/layout.tsx`) that adds `
 
 ### API Routes
 
+All three routes apply in-memory IP-based rate limiting via `lib/rate-limit.ts`:
 - `POST /api/quote` — sends quote request email via Resend (accepts `multipart/form-data` with optional artwork file)
 - `POST /api/contact` — sends contact form email via Resend
 - `POST /api/checkout` — creates Stripe Checkout Session, returns `{ url }` for redirect
 
+### Favicon
+
+`app/icon.svg` (PW monogram, orange on black) is the primary favicon. `app/icon.png` (512×512) and `app/apple-icon.png` (180×180) are pre-generated PNG variants. Do not delete these — Next.js App Router serves them automatically at `/favicon.ico` and for Apple touch icons.
+
 ### Stripe API Version
 
 The installed `stripe` package requires API version `"2026-06-24.dahlia"`. Update this string when upgrading the Stripe package.
+
+### Windows / CRLF Note
+
+This repo is developed on Windows. Git converts LF→CRLF on checkout. The **Edit tool** matches exact strings including line endings — if an Edit fails with "String not found", the file likely has CRLF endings. Use the **Write tool** to rewrite the entire file in that case.
