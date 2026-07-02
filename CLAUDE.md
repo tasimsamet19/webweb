@@ -25,7 +25,7 @@ No test suite is configured. Playwright is installed as a devDependency for manu
 - **Tailwind CSS v4** — no `tailwind.config.js`; configured via `globals.css` directly
 - **shadcn/ui** backed by **Base UI** (`@base-ui/react`) — NOT Radix UI
 - **Resend** — transactional email (quote + contact API routes)
-- **Stripe** — Checkout (hosted) for the Merch section
+- **Stripe** — Checkout (hosted) for the Merch section, live keys in production
 
 ## Architecture
 
@@ -33,14 +33,14 @@ No test suite is configured. Playwright is installed as a devDependency for manu
 
 All static content lives in `lib/data/*.ts` as typed arrays:
 - `products.ts` — `Product[]`, queried via `getProductBySlug()`, `getRelatedProducts()`
-- `gallery.ts` — `GalleryItem[]` — 20 real business photos, all in `/images/gallery/`
+- `gallery.ts` — `GalleryItem[]` — photos in `/images/gallery/` (mix of real business photos and AI-generated images via Pollinations.ai)
 - `categories.ts` — `CategoryDefinition[]`
 - `testimonials.ts` — `Testimonial[]` (currently empty; Testimonials section shows a Google CTA instead)
 - `merch.ts` — `MerchStore[]`, queried via `getMerchStore()`, `getMerchProduct()`, `getActiveStores()`
 
 All types are in `lib/types.ts`. When adding new data shapes, define the type there first.
 
-**Images**: All gallery photos are in `/images/gallery/`. Product cards and detail pages intentionally have **no images** — `products[].images` arrays are defined but not rendered in `ProductCard` or `ProductDetail`. Category cards in `CategoryGrid` also show no images (text-only tiles). Do not add image display back to these components without being asked.
+**Images**: Gallery photos live in `/images/gallery/`. Product cards and detail pages intentionally have **no images** — `products[].images` arrays are defined but not rendered in `ProductCard` or `ProductDetail`. Category cards in `CategoryGrid` also show no images (text-only tiles). Do not add image display back to these components without being asked.
 
 ### Homepage Section Order
 
@@ -67,6 +67,7 @@ The `/merch` section is a full e-commerce flow built without external state libr
 
 - **Cart state**: `useReducer` + `localStorage` in `components/merch/MerchCartProvider.tsx`. Wrap any page that needs cart access in `<MerchCartProvider>` — already done in `app/merch/layout.tsx`.
 - **Checkout**: `POST /api/checkout` creates a Stripe Checkout Session (hosted). Stripe is initialized **inside the handler** (not at module level) to avoid build-time errors when `STRIPE_SECRET_KEY` is absent.
+- **Webhook**: `POST /api/webhook` verifies Stripe signature and handles `checkout.session.completed`. Requires `STRIPE_WEBHOOK_SECRET` env var. Currently logs confirmed payments; extend here to trigger order emails or save orders.
 - **Access gates**: Stores with `requiresAccessCode: true` use `MerchAccessGate` — client-side only, code checked in-browser against `store.accessCode`.
 - **SSG**: Both `/merch/[storeSlug]` and `/merch/[storeSlug]/[productSlug]` use `generateStaticParams()` to pre-render at build time. Without this they'd be `ƒ Dynamic` (slow).
 - **Hydration safety**: Never use `Date.now()` or `new Date()` in initial render. Use `useState<T | null>(null)` + populate in `useEffect`. Render `opacity-0` placeholder until hydrated. See `MerchCountdown.tsx` and `MerchStoreCard.tsx` for the pattern.
@@ -89,10 +90,19 @@ The merch section has its own nested layout (`app/merch/layout.tsx`) that adds `
 
 ### API Routes
 
-All three routes apply in-memory IP-based rate limiting via `lib/rate-limit.ts`:
+All routes apply in-memory IP-based rate limiting via `lib/rate-limit.ts`. Email fields are validated with a regex before sending:
 - `POST /api/quote` — sends quote request email via Resend (accepts `multipart/form-data` with optional artwork file)
 - `POST /api/contact` — sends contact form email via Resend
 - `POST /api/checkout` — creates Stripe Checkout Session, returns `{ url }` for redirect
+- `POST /api/webhook` — Stripe webhook; verifies `stripe-signature` header against `STRIPE_WEBHOOK_SECRET`
+
+### Security Headers
+
+`next.config.ts` sets the following headers on all routes (`source: "/(.*)")`):
+- `X-Frame-Options: DENY`
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy: camera=(), microphone=(), geolocation=()`
 
 ### Favicon
 
@@ -110,7 +120,10 @@ This repo is developed on Windows. Git converts LF→CRLF on checkout. The **Edi
 
 Add to `.env.local`:
 ```
-STRIPE_SECRET_KEY=sk_test_...
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_live_...          # sk_test_... for local dev
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...  # pk_test_... for local dev
 RESEND_API_KEY=re_...
+STRIPE_WEBHOOK_SECRET=whsec_...        # from Stripe Dashboard → Developers → Webhooks
 ```
+
+`.env.local` is gitignored. Vercel env vars must be set separately in the Vercel dashboard.
