@@ -81,7 +81,7 @@ export const products: Product[] = [
     shortDescription: "8 oz pullover hoodie with a roomy pouch pocket — a bestseller year-round.",
     description:
       "The Gildan 18500 is the industry standard for custom hoodies. 8 oz 50/50 cotton-poly blend resists shrinking and pilling. Double-lined hood with matching drawcord, front pouch pocket.",
-    images: [g("fire-dept-carhartt-hoodie.jpg")],
+    images: [g("nashville-road-trip-hoodie.jpg")],
     features: [
       "8 oz 50/50 cotton/polyester blend",
       "Double-lined hood with matching drawcord",
@@ -104,7 +104,7 @@ export const products: Product[] = [
     shortDescription: "Classic crewneck sweatshirt with a premium mid-weight feel.",
     description:
       "Independent Trading SS3000 midweight crewneck. 6.5 oz 60/40 ring-spun cotton/polyester. Set-in sleeves for a comfortable, classic fit. Great for corporate events, schools, and teams.",
-    images: [g("nashville-road-trip-hoodie.jpg")],
+    images: [],
     features: [
       "6.5 oz ring-spun 60/40 blend",
       "Set-in sleeves",
@@ -125,7 +125,7 @@ export const products: Product[] = [
     shortDescription: "Sport-meets-corporate quarter-zip — popular for company outings and teams.",
     description:
       "Sport-Tek Quarter-Zip Sweatshirt. Moisture-wicking performance fabric with a clean look ideal for both the field and the boardroom. Left chest embroidery placement is perfect.",
-    images: [g("fire-chief-carhartt-hoodie.jpg")],
+    images: [],
     features: [
       "100% polyester fleece",
       "Moisture-wicking",
@@ -149,7 +149,7 @@ export const products: Product[] = [
     shortDescription: "Wind & water-resistant softshell with a sleek professional look.",
     description:
       "Port Authority J317 Colorblock Soft Shell Jacket. Wind and water resistant with a soft fleece interior. A sharp, professional choice for corporate apparel programs. Left chest embroidery or screen print.",
-    images: [g("fire-dept-denim-jacket.jpg")],
+    images: [],
     features: [
       "Wind and water resistant shell",
       "Soft fleece interior",
@@ -171,7 +171,7 @@ export const products: Product[] = [
     shortDescription: "Warm, lightweight fleece that layers perfectly under a shell.",
     description:
       "Sport-Tek Full-Zip Fleece Jacket. 100% polyester anti-pill fleece. Lightweight warmth with a clean look. Great for sideline staff, volunteers, and company outings.",
-    images: [g("custom-apparel-2.jpg")],
+    images: [],
     features: [
       "Anti-pill 100% polyester fleece",
       "Full-zip front",
@@ -237,7 +237,7 @@ export const products: Product[] = [
     shortDescription: "Sharp, breathable piqué polo — the corporate uniform staple.",
     description:
       "Port Authority K500 Silk Touch Polo. 5 oz 65/35 poly/cotton blend. Snag-resistant fabric with a smooth, silky finish. Ideal for corporate uniform programs with left chest embroidery.",
-    images: [g("training-center-shirt.jpg")],
+    images: [],
     features: [
       "5 oz 65/35 poly/cotton",
       "Snag-resistant",
@@ -308,7 +308,7 @@ export const products: Product[] = [
     shortDescription: "Traditional wool and leather varsity letterman jackets, made to order.",
     description:
       "Classic varsity letterman jacket with wool body and genuine or faux leather sleeves. Fully customizable with school colors, chenille patches, embroidery, and custom lining. A Printwear Ledgewood specialty.",
-    images: [g("fire-dept-denim-jacket.jpg")],
+    images: [],
     features: [
       "Melton wool body",
       "Genuine or faux leather sleeves",
@@ -353,7 +353,7 @@ export const products: Product[] = [
     shortDescription: "11 oz ceramic mugs with full-color sublimated logo — great giveaways.",
     description:
       "11 oz white ceramic coffee mug with full-color sublimation print. Dishwasher safe. Perfect for employee gifts, client appreciation, and branded merchandise.",
-    images: [g("fire-rescue-shirt.jpg")],
+    images: [],
     features: [
       "11 oz white ceramic",
       "Full-color sublimation print",
@@ -372,7 +372,7 @@ export const products: Product[] = [
     shortDescription: "Premium stainless steel travel mugs with full-color sublimation print.",
     description:
       "20 oz double-wall stainless steel travel mug with full-color sublimation wrap. Keeps drinks hot for 6 hours, cold for 12. Perfect for corporate gifts, tourism merchandise, events, and branded giveaways. Custom design printed all the way around.",
-    images: [g("custom-event-shirts.jpg")],
+    images: [],
     features: [
       "20 oz stainless steel double-wall",
       "Full-color 360° sublimation wrap",

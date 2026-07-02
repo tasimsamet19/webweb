@@ -13,6 +13,14 @@ interface ProductGalleryProps {
 export function ProductGallery({ images, name }: ProductGalleryProps) {
   const [active, setActive] = useState(0);
 
+  if (images.length === 0) {
+    return (
+      <div className="relative aspect-square rounded-xl overflow-hidden bg-[#111111] border border-white/6 flex items-center justify-center">
+        <span className="text-white/20 text-sm font-medium uppercase tracking-widest">Photo Coming Soon</span>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-3">
       {/* Main image */}

@@ -26,13 +26,19 @@ export function ProductCard({ product }: ProductCardProps) {
       >
         {/* Image */}
         <div className="relative h-52 bg-[#0E0E0E] overflow-hidden flex-shrink-0">
-          <Image
-            src={product.images[0]}
-            alt={product.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          {product.images.length > 0 ? (
+            <Image
+              src={product.images[0]}
+              alt={product.name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-white/20 text-xs font-medium uppercase tracking-widest">Photo Coming Soon</span>
+            </div>
+          )}
           <div className="absolute top-3 left-3 flex gap-1.5">
             {product.popular && (
               <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider bg-[#E84520] text-white rounded-full">
