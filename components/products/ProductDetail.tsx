@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, Clock, Package, ChevronRight } from "lucide-react";
+import { Check, Clock, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AnchorButton } from "@/components/ui/link-button";
-import { ProductGallery } from "@/components/products/ProductGallery";
 import dynamic from "next/dynamic";
 
 const QuoteForm = dynamic(
@@ -42,11 +41,8 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <span className="text-white/60">{product.name}</span>
       </nav>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        {/* Left: Gallery */}
-        <ProductGallery images={product.images} name={product.name} />
-
-        {/* Right: Info */}
+      <div className="max-w-2xl">
+        {/* Info */}
         <div className="flex flex-col gap-6">
           {/* Badges */}
           <div className="flex flex-wrap gap-2">
@@ -81,10 +77,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
           {/* Meta */}
           <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2 text-sm text-white/50">
-              <Package className="w-4 h-4 text-[#E84520]" />
-              <span>Min. quantity: <strong className="text-white">{product.minimumQuantity} pcs</strong></span>
-            </div>
             <div className="flex items-center gap-2 text-sm text-white/50">
               <Clock className="w-4 h-4 text-[#E84520]" />
               <span>Lead time: <strong className="text-white">{product.leadTime}</strong></span>

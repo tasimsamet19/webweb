@@ -35,7 +35,7 @@ export const products: Product[] = [
     shortDescription: "Ultra-soft retail-fit tee with a modern cut — top choice for fashion brands.",
     description:
       "The Bella+Canvas 3001 is the go-to for premium soft-hand screen printing. 4.2 oz airlume combed ring-spun cotton gives it a buttery feel that customers love. Slim retail fit with tear-away label.",
-    images: [g("custom-apparel-1.jpg")],
+    images: [g("custom-apparel-3.jpg")],
     features: [
       "4.2 oz airlume combed and ring-spun cotton",
       "Slim retail fit",
@@ -216,7 +216,7 @@ export const products: Product[] = [
     shortDescription: "Classic cuffed beanie with embroidered logo — perfect cold-weather promo.",
     description:
       "Otto Knit Cuffed Beanie. 100% acrylic knit. Soft, stretchy fabric keeps you warm. Folded cuff provides the ideal embroidery placement for your logo.",
-    images: [g("custom-hats-embroidery.jpg")],
+    images: [],
     features: [
       "100% acrylic knit",
       "Folded cuff with embroidery zone",

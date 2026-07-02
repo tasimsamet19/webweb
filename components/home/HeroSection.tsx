@@ -95,26 +95,6 @@ export function HeroSection() {
             </LinkButton>
           </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            variants={prefersReduced ? undefined : itemVariant}
-            transition={{ ...transition, delay: 0.26 }}
-            className="flex flex-wrap justify-center gap-8 mt-16 pt-8 border-t border-white/8 w-full max-w-2xl"
-          >
-            {[
-              { value: "10,000+", label: "Orders Delivered" },
-              { value: "500+", label: "Happy Clients" },
-              { value: "25+", label: "Years Experience" },
-              { value: "48hr", label: "Rush Available" },
-            ].map((stat) => (
-              <div key={stat.value} className="text-center">
-                <div className="text-2xl font-bold text-[#E84520]">{stat.value}</div>
-                <div className="text-xs text-white/40 uppercase tracking-wider mt-0.5">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>

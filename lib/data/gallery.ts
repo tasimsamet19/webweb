@@ -17,8 +17,8 @@ export const galleryItems: GalleryItem[] = [
   { id: "g-14", image: "/images/gallery/rutgers-nursing-embroidery.jpg", title: "University Nursing Program Shirt", category: "tee-shirts", decorationMethod: "embroidery", client: "Rutgers Health — School of Nursing" },
   { id: "g-15", image: "/images/gallery/fire-rescue-shirt.jpg", title: "Fire Rescue EMS Shirt", category: "tee-shirts", decorationMethod: "screen-printing", client: "Flanders Fire Rescue — Mt. Olive Twp" },
   { id: "g-16", image: "/images/gallery/nashville-road-trip-hoodie.jpg", title: "Custom Event Hoodie", category: "sweatshirts", decorationMethod: "screen-printing", client: "Nashville Road Trip 2026" },
-  { id: "g-17", image: "/images/gallery/custom-apparel-1.jpg", title: "Custom Printed Apparel", category: "tee-shirts", decorationMethod: "screen-printing" },
-  { id: "g-18", image: "/images/gallery/custom-apparel-2.jpg", title: "Custom Branded Wear", category: "tee-shirts", decorationMethod: "screen-printing" },
+  { id: "g-17", image: "/images/gallery/custom-apparel-1.jpg", title: "Custom Embroidered Caps", category: "hats", decorationMethod: "embroidery", client: "MadMinds" },
+  { id: "g-18", image: "/images/gallery/custom-apparel-2.jpg", title: "Custom Embroidered Caps", category: "hats", decorationMethod: "embroidery", client: "MadMinds" },
   { id: "g-19", image: "/images/gallery/custom-apparel-3.jpg", title: "Event Night Custom Shirt", category: "tee-shirts", decorationMethod: "screen-printing", client: "Ride or Cry — Emo Night Morristown NJ" },
   { id: "g-20", image: "/images/gallery/custom-apparel-4.jpg", title: "Bulk Order Production", category: "tee-shirts", decorationMethod: "screen-printing" },
 ];

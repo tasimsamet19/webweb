@@ -11,12 +11,12 @@ Key breaking change: **page `params` is now a `Promise`**. Always type it as `Pr
 ## Commands
 
 ```bash
-npm run dev      # start dev server (usually port 3000, falls back to 3001 if occupied)
+npm run dev      # start dev server (port 3000, falls back to 3001 if occupied)
 npm run build    # production build + TypeScript check
 npm run lint     # ESLint
 ```
 
-No test suite is configured. Playwright is installed as a devDependency for manual browser scripts.
+No test suite is configured. Playwright is installed as a devDependency for manual browser scripts only.
 
 ## Stack
 
@@ -40,7 +40,16 @@ All static content lives in `lib/data/*.ts` as typed arrays:
 
 All types are in `lib/types.ts`. When adding new data shapes, define the type there first.
 
-**Images**: All product, category, and service images use real photos from `/images/gallery/`. Do NOT use `placehold.co` — the `next.config.ts` remote pattern is kept as a fallback only.
+**Images**: All gallery photos are in `/images/gallery/`. Product cards and detail pages intentionally have **no images** — `products[].images` arrays are defined but not rendered in `ProductCard` or `ProductDetail`. Category cards in `CategoryGrid` also show no images (text-only tiles). Do not add image display back to these components without being asked.
+
+### Homepage Section Order
+
+`app/page.tsx` currently renders:
+```
+HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → GalleryPreview → Testimonials → CTASection
+```
+
+Removed sections (do not re-add unless asked): `FeaturedProducts`, `HowToOrderSection`. The hero stats block (10,000+ orders, 500+ clients, etc.) was also removed from `HeroSection`.
 
 ### Animations
 
@@ -56,29 +65,13 @@ For scroll-triggered sections, use `<AnimatedSection>` (`components/shared/Anima
 
 The `/merch` section is a full e-commerce flow built without external state libraries:
 
-- **Cart state**: `useReducer` + `localStorage` in `components/merch/MerchCartProvider.tsx`. Wrap any page that needs cart access in `<MerchCartProvider>` — this is already done in `app/merch/layout.tsx`.
+- **Cart state**: `useReducer` + `localStorage` in `components/merch/MerchCartProvider.tsx`. Wrap any page that needs cart access in `<MerchCartProvider>` — already done in `app/merch/layout.tsx`.
 - **Checkout**: `POST /api/checkout` creates a Stripe Checkout Session (hosted). Stripe is initialized **inside the handler** (not at module level) to avoid build-time errors when `STRIPE_SECRET_KEY` is absent.
 - **Access gates**: Stores with `requiresAccessCode: true` use `MerchAccessGate` — client-side only, code checked in-browser against `store.accessCode`.
-- **SSG**: Both `/merch/[storeSlug]` and `/merch/[storeSlug]/[productSlug]` use `generateStaticParams()` to pre-render at build time (instant load). Without this they'd be `ƒ Dynamic` (slow).
+- **SSG**: Both `/merch/[storeSlug]` and `/merch/[storeSlug]/[productSlug]` use `generateStaticParams()` to pre-render at build time. Without this they'd be `ƒ Dynamic` (slow).
 - **Hydration safety**: Never use `Date.now()` or `new Date()` in initial render. Use `useState<T | null>(null)` + populate in `useEffect`. Render `opacity-0` placeholder until hydrated. See `MerchCountdown.tsx` and `MerchStoreCard.tsx` for the pattern.
 - **Size surcharges**: `MerchProductDetail.tsx` has `UPSIZE_SIZES = ["2XL", "3XL"]` with a `+$5.00` surcharge via `effectivePrice()`. Size buttons use inline styles (not Tailwind classes) for the two-line layout — Tailwind v4 had purging issues with dynamic flex-col on buttons.
 - **Active stores**: Currently only `mhs-class-of-1976` (MHS Class of 1976 Reunion Tee, closes 2026-09-30).
-
-### Homepage Section Order
-
-`app/page.tsx` renders sections in this order:
-```
-HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → FeaturedProducts → GalleryPreview → Testimonials → CTASection
-```
-
-Note: `HowToOrderSection` was removed. `Testimonials` no longer shows customer quotes — it renders a Google Review CTA with 5 orange stars and a "Leave a Review" link.
-
-Required env vars (add to `.env.local`):
-```
-STRIPE_SECRET_KEY=sk_test_...
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
-RESEND_API_KEY=re_...
-```
 
 ### Shared Components
 
@@ -112,3 +105,12 @@ The installed `stripe` package requires API version `"2026-06-24.dahlia"`. Updat
 ### Windows / CRLF Note
 
 This repo is developed on Windows. Git converts LF→CRLF on checkout. The **Edit tool** matches exact strings including line endings — if an Edit fails with "String not found", the file likely has CRLF endings. Use the **Write tool** to rewrite the entire file in that case.
+
+### Required env vars
+
+Add to `.env.local`:
+```
+STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+RESEND_API_KEY=re_...
+```
