@@ -22,6 +22,11 @@ export async function POST(request: Request) {
 
     const artworkFile = formData.get("artworkFile") as File | null;
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!fields.email || !emailRegex.test(fields.email)) {
+      return NextResponse.json({ success: false, error: "Invalid email address" }, { status: 400 });
+    }
+
     // Build email body
     const emailBody = `
 NEW QUOTE REQUEST — Printwear Ledgewood
