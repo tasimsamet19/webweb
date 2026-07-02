@@ -31,28 +31,28 @@ const services = [
   {
     slug: "heat-transfer",
     title: "Heat Transfer",
-    image: "/images/gallery/fire-ems-christmas-shirt.jpg",
+    image: "/images/gallery/construction-company-safety-shirt.jpg",
     description:
       "High-definition transfers for complex multi-color designs. Great for small runs, individual names and numbers, and specialty finishes.",
   },
   {
     slug: "dtg-printing",
     title: "Direct-to-Garment (DTG)",
-    image: "/images/gallery/sports-simulator-shirt.jpg",
+    image: "/images/gallery/dtg-printing-process.jpg",
     description:
       "Full-color photo-quality prints directly onto fabric. No minimums, no screens — ideal for detailed artwork and short-run custom pieces.",
   },
   {
     slug: "custom-mugs",
     title: "Custom Mugs",
-    image: "/images/gallery/custom-apparel-1.jpg",
+    image: "/images/gallery/custom-mugs-sublimation.jpg",
     description:
       "Full-color sublimation printed mugs and travel cups — perfect for corporate gifts, events, and branded merchandise that keeps your logo in sight every morning.",
   },
   {
     slug: "varsity-tackle-twill",
     title: "Varsity & Tackle Twill",
-    image: "/images/gallery/fire-dept-denim-jacket.jpg",
+    image: "/images/gallery/varsity-tackle-twill-jacket.jpg",
     description:
       "Classic letterman jackets, team jerseys, and chenille patches. Sewn letters and numbers with a premium athletic look that stands the test of time.",
   },
