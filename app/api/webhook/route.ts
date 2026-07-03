@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
-// Required: raw body for signature verification — do not parse with json()
-export const config = { api: { bodyParser: false } };
-
 export async function POST(req: NextRequest) {
   const sig = req.headers.get("stripe-signature");
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
