@@ -35,7 +35,7 @@ All static content lives in `lib/data/*.ts` as typed arrays:
 - `products.ts` — `Product[]`, queried via `getProductBySlug()`, `getRelatedProducts()`
 - `gallery.ts` — `GalleryItem[]` — photos in `/images/gallery/` (mix of real business photos and AI-generated images via Pollinations.ai)
 - `categories.ts` — `CategoryDefinition[]`
-- `testimonials.ts` — `Testimonial[]` (currently empty; Testimonials section shows a Google CTA instead)
+- `testimonials.ts` — `Testimonial[]` (currently empty; Testimonials section has been removed from homepage)
 - `merch.ts` — `MerchStore[]`, queried via `getMerchStore()`, `getMerchProduct()`, `getActiveStores()`
 
 All types are in `lib/types.ts`. When adding new data shapes, define the type there first.
@@ -46,10 +46,10 @@ All types are in `lib/types.ts`. When adding new data shapes, define the type th
 
 `app/page.tsx` currently renders:
 ```
-HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → GalleryPreview → Testimonials → CTASection
+HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → GalleryPreview → CTASection
 ```
 
-Removed sections (do not re-add unless asked): `FeaturedProducts`, `HowToOrderSection`. The hero stats block (10,000+ orders, 500+ clients, etc.) was also removed from `HeroSection`.
+Removed sections (do not re-add unless asked): `FeaturedProducts`, `HowToOrderSection`, `Testimonials`. The hero stats block (10,000+ orders, 500+ clients, etc.) was also removed from `HeroSection`.
 
 ### Animations
 
@@ -96,9 +96,13 @@ All routes apply in-memory IP-based rate limiting via `lib/rate-limit.ts`. Email
 - `POST /api/checkout` — creates Stripe Checkout Session, returns `{ url }` for redirect
 - `POST /api/webhook` — Stripe webhook; verifies `stripe-signature` header against `STRIPE_WEBHOOK_SECRET`
 
+### SEO
+
+`app/sitemap.ts` and `app/robots.ts` are auto-generated via Next.js conventions (served at `/sitemap.xml` and `/robots.txt`). The sitemap covers all static pages plus every product slug. `app/layout.tsx` includes a JSON-LD `LocalBusiness` schema in `<head>` for Google Maps / local search. Production domain: `https://printwearledgewood.com`.
+
 ### Security Headers
 
-`next.config.ts` sets the following headers on all routes (`source: "/(.*)")`):
+`next.config.ts` sets the following headers on all routes:
 - `X-Frame-Options: DENY`
 - `X-Content-Type-Options: nosniff`
 - `Referrer-Policy: strict-origin-when-cross-origin`
@@ -120,10 +124,10 @@ This repo is developed on Windows. Git converts LF→CRLF on checkout. The **Edi
 
 Add to `.env.local`:
 ```
-STRIPE_SECRET_KEY=sk_live_...          # sk_test_... for local dev
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...  # pk_test_... for local dev
+STRIPE_SECRET_KEY=sk_live_...                       # sk_test_... for local dev
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_...      # pk_test_... for local dev
 RESEND_API_KEY=re_...
-STRIPE_WEBHOOK_SECRET=whsec_...        # from Stripe Dashboard → Developers → Webhooks
+STRIPE_WEBHOOK_SECRET=whsec_...                     # Stripe Dashboard → Developers → Webhooks
 ```
 
 `.env.local` is gitignored. Vercel env vars must be set separately in the Vercel dashboard.
