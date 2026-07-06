@@ -366,7 +366,7 @@ export const products: Product[] = [
   },
   {
     id: "op-003",
-    slug: "travel-mug-istanbul",
+    slug: "custom-travel-mug",
     name: "Custom Travel Mug",
     category: "other-products",
     shortDescription: "Premium stainless steel travel mugs with full-color sublimation print.",

@@ -53,25 +53,22 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.instagram.com/printwearledgewood"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#E84520] hover:border-[#E84520]/40 transition-colors"
               >
                 <Camera className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/printwearledgewood"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#E84520] hover:border-[#E84520]/40 transition-colors"
               >
                 <Users className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#E84520] hover:border-[#E84520]/40 transition-colors"
-              >
-                <Briefcase className="w-4 h-4" />
               </a>
             </div>
           </div>

@@ -4,9 +4,19 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { CTASection } from "@/components/home/CTASection";
 
 export const metadata = {
-  title: "About Us",
+  title: "About Printwear Ledgewood | Screen Printing & Embroidery Shop NJ",
   description:
-    "Learn about Printwear Ledgewood — your trusted partner for custom screen printing, embroidery, and promotional products in NJ.",
+    "Printwear Ledgewood is a full-service custom apparel shop in Ledgewood, NJ. Screen printing, embroidery, sublimation, and DTG for businesses, schools, sports teams, and organizations across Morris County.",
+  alternates: { canonical: "https://printwearledgewood.com/about" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://printwearledgewood.com" },
+    { "@type": "ListItem", position: 2, name: "About", item: "https://printwearledgewood.com/about" },
+  ],
 };
 
 const values = [
@@ -54,6 +64,7 @@ const capabilities = [
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero
         eyebrow="Our Story"
         title="About"

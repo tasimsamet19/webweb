@@ -133,7 +133,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               Request a Quote
             </Button>
             <AnchorButton
-              href="tel:+19733476400"
+              href="tel:+19735804455"
               size="lg"
               variant="outline"
               className="border-white/15 text-white/70 hover:text-white hover:border-white/30 h-12"

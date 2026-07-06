@@ -5,9 +5,19 @@ import { ProductGrid } from "@/components/products/ProductGrid";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata = {
-  title: "Products",
+  title: "Custom Screen Printing & Embroidery Products | Ledgewood NJ",
   description:
-    "Browse custom tee shirts, sweatshirts, jackets, hats, polo shirts, sports apparel, varsity jackets, and sublimated uniforms.",
+    "Custom tee shirts, hoodies, jackets, hats, polo shirts, sports uniforms & varsity jackets. Screen printing, embroidery & sublimation in Ledgewood, NJ.",
+  alternates: { canonical: "https://printwearledgewood.com/products" },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://printwearledgewood.com" },
+    { "@type": "ListItem", position: 2, name: "Products", item: "https://printwearledgewood.com/products" },
+  ],
 };
 
 function GridSkeleton() {
@@ -31,6 +41,7 @@ function GridSkeleton() {
 export default function ProductsPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero
         eyebrow="Custom Printing & Embroidery"
         title="Our"

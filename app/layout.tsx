@@ -28,29 +28,137 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://printwearledgewood.com"),
   title: {
-    default: "Printwear Ledgewood | Custom Embroidery & Screen Printing",
+    default: "Printwear Ledgewood | Custom Embroidery & Screen Printing NJ",
     template: "%s | Printwear Ledgewood",
   },
   description:
-    "Professional custom screen printing, embroidery, and sublimation for apparel, uniforms, hats, and promotional products. Serving businesses, teams, and organizations across the USA.",
+    "Custom screen printing, embroidery, and sublimation in Ledgewood, NJ. T-shirts, hoodies, hats, polos, sports uniforms, and promotional products for businesses, teams, and schools across New Jersey.",
   keywords: [
-    "custom screen printing",
-    "embroidery",
-    "custom t-shirts",
-    "uniforms",
-    "promotional products",
-    "Ledgewood NJ",
-    "custom apparel",
+    "custom screen printing Ledgewood NJ",
+    "embroidery Ledgewood NJ",
+    "custom t-shirts New Jersey",
+    "custom uniforms NJ",
+    "custom apparel Morris County NJ",
+    "sublimation printing NJ",
+    "team jerseys NJ",
+    "custom hoodies NJ",
+    "embroidered hats NJ",
+    "promotional products NJ",
+    "screen printing Morris County",
+    "custom polo shirts NJ",
+    "varsity jackets NJ",
   ],
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "Printwear Ledgewood",
-    title: "Printwear Ledgewood | Custom Embroidery & Screen Printing",
+    title: "Printwear Ledgewood | Custom Embroidery & Screen Printing NJ",
     description:
-      "Professional custom screen printing, embroidery, and sublimation. Quality custom apparel and promotional products.",
+      "Custom screen printing, embroidery, and sublimation in Ledgewood, NJ. T-shirts, uniforms, hats, and promotional products for businesses, teams, and schools.",
+    url: "https://printwearledgewood.com",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Printwear Ledgewood — Custom Screen Printing & Embroidery NJ",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Printwear Ledgewood | Custom Embroidery & Screen Printing NJ",
+    description:
+      "Custom screen printing, embroidery, and sublimation in Ledgewood, NJ. T-shirts, uniforms, hats, and promotional products for businesses, teams, and schools.",
+    images: ["/og-image.jpg"],
+  },
+  alternates: {
+    canonical: "https://printwearledgewood.com",
+  },
+  verification: {
+    google: "Xwj53vjchuCMVMvk4-LigLVHcsuf3W4kKeSRKCn8A70",
+  },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "PrintingService"],
+  name: "Printwear Ledgewood",
+  description:
+    "Custom screen printing, embroidery, and sublimation for businesses, teams, schools, and organizations in New Jersey.",
+  url: "https://printwearledgewood.com",
+  logo: "https://printwearledgewood.com/logo.jpeg",
+  image: "https://printwearledgewood.com/og-image.jpg",
+  telephone: "+1-973-580-4455",
+  email: "printwearledgewood@gmail.com",
+  foundingDate: "2020",
+  paymentAccepted: "Cash, Credit Card, Check",
+  currenciesAccepted: "USD",
+  hasMap: "https://maps.google.com/?q=450+NJ-10+Unit+C+Ledgewood+NJ+07852",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "450 NJ-10 Unit C",
+    addressLocality: "Ledgewood",
+    addressRegion: "NJ",
+    postalCode: "07852",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 40.8779,
+    longitude: -74.6571,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "17:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "09:00",
+      closes: "13:00",
+      description: "By appointment only",
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Custom Apparel & Promotional Products",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Screen Printing" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Embroidery" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Sublimation Printing" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Heat Transfer" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Custom Uniforms" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direct-to-Garment Printing" } },
+    ],
+  },
+  areaServed: [
+    { "@type": "State", name: "New Jersey" },
+    { "@type": "AdministrativeArea", name: "Morris County, NJ" },
+    { "@type": "City", name: "Ledgewood, NJ" },
+    { "@type": "City", name: "Rockaway, NJ" },
+    { "@type": "City", name: "Randolph, NJ" },
+    { "@type": "City", name: "Dover, NJ" },
+    { "@type": "City", name: "Roxbury Township, NJ" },
+    { "@type": "City", name: "Mount Olive, NJ" },
+    { "@type": "City", name: "Hackettstown, NJ" },
+    { "@type": "City", name: "Chester, NJ" },
+    { "@type": "City", name: "Mine Hill, NJ" },
+    { "@type": "City", name: "Wharton, NJ" },
+    { "@type": "City", name: "Long Valley, NJ" },
+    { "@type": "City", name: "Washington Township, NJ" },
+    { "@type": "City", name: "Flanders, NJ" },
+  ],
+  sameAs: [
+    "https://www.facebook.com/printwearledgewood",
+    "https://www.instagram.com/printwearledgewood",
+  ],
+  priceRange: "$$",
 };
 
 export default function RootLayout({
@@ -63,6 +171,12 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${bebasNeue.variable} ${geistMono.variable} dark`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+      </head>
       <body className="min-h-screen flex flex-col antialiased bg-[#080808] text-[#F0F0F0]">
         <WebVitals />
         <MouseLight />
