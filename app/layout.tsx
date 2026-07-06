@@ -159,6 +159,13 @@ const localBusinessSchema = {
     "https://www.instagram.com/printwearledgewood",
   ],
   priceRange: "$$",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5.0",
+    reviewCount: "43",
+    bestRating: "5",
+    worstRating: "1",
+  },
 };
 
 export default function RootLayout({
