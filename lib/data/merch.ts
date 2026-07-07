@@ -4,10 +4,10 @@ export const merchStores: MerchStore[] = [
   {
     id: "ms-004",
     slug: "mhs-class-of-1976",
-    name: "MHS Class of 1976 — 50th Reunion",
-    organization: "Morristown High School Class of 1976",
+    name: "Mamaroneck HS Class of 1976 — 50th Reunion",
+    organization: "Mamaroneck High School Class of 1976",
     description:
-      "Official reunion apparel for the MHS Class of 1976. Tee and hoodie both feature the class tiger crest in orange. Orders are limited — get yours before they're gone!",
+      "Official reunion apparel for the Mamaroneck High School Class of 1976 — 50th Reunion, September 25–27, 2026. All items feature the class tiger crest in orange. Orders are limited — get yours before the store closes!",
     closeDate: "2026-09-30T23:59:59",
     isActive: true,
     requiresAccessCode: false,
@@ -18,7 +18,7 @@ export const merchStores: MerchStore[] = [
       {
         id: "mhs-001",
         slug: "mhs-1976-class-tee",
-        name: "MHS Class of 1976 — 50th Reunion Tee",
+        name: "Mamaroneck HS Class of 1976 — 50th Reunion Tee",
         description: "Gildan Softstyle 64000 unisex tee. Orange & white tiger crest with '50th Year Reunion' printed front-center at 9–12 inches. 4.5 oz, 100% ring-spun cotton, modern classic fit.",
         images: [
           "/images/merch/mhs-1976-tee-mockup.png",
@@ -33,7 +33,7 @@ export const merchStores: MerchStore[] = [
       {
         id: "mhs-004",
         slug: "mhs-1976-class-tank",
-        name: "MHS Class of 1976 — 50th Reunion Tank Top",
+        name: "Mamaroneck HS Class of 1976 — 50th Reunion Tank Top",
         description: "Gildan Softstyle 64200 tank top. Orange tiger crest screen-printed front-center. 4.5 oz, 100% ring-spun cotton, classic fit with semi-fitted side seams.",
         images: [
           "/images/merch/mhs-1976-tank-mockup.png",
@@ -48,7 +48,7 @@ export const merchStores: MerchStore[] = [
       {
         id: "mhs-003",
         slug: "mhs-1976-class-crewneck",
-        name: "MHS Class of 1976 — 50th Reunion Crewneck",
+        name: "Mamaroneck HS Class of 1976 — 50th Reunion Crewneck",
         description: "Gildan 18000 Heavy Blend crewneck sweatshirt. Orange tiger crest screen-printed front-center. 50% cotton / 50% polyester, pill-resistant fabric, 1x1 athletic rib with spandex, classic fit.",
         images: [
           "/images/merch/mhs-1976-crewneck-mockup.png",
@@ -65,7 +65,7 @@ export const merchStores: MerchStore[] = [
       {
         id: "mhs-002",
         slug: "mhs-1976-class-hoodie",
-        name: "MHS Class of 1976 — 50th Reunion Hoodie",
+        name: "Mamaroneck HS Class of 1976 — 50th Reunion Hoodie",
         description: "Gildan 18500 Heavy Blend hoodie. Orange tiger crest screen-printed front-center. 50% cotton / 50% polyester, double-lined hood, pouch pocket, classic fit.",
         images: [
           "/images/merch/mhs-1976-hoodie-mockup.png",
