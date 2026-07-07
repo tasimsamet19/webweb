@@ -13,6 +13,7 @@ export const merchStores: MerchStore[] = [
     requiresAccessCode: false,
     accentColor: "#E07B00",
     bannerImage: "/images/merch/mhs-1976-store-logo.png",
+    organizationUrl: "https://sites.google.com/trfd.com/mhs-1976/home",
     products: [
       {
         id: "mhs-001",

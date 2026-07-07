@@ -99,6 +99,7 @@ export interface MerchStore {
   requiresAccessCode: boolean;
   accessCode?: string;
   bannerImage?: string;
+  organizationUrl?: string;
   accentColor: string;
   products: MerchProduct[];
 }
