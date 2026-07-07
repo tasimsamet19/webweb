@@ -30,6 +30,21 @@ export const merchStores: MerchStore[] = [
         decorationMethod: "screen-printing",
       },
       {
+        id: "mhs-004",
+        slug: "mhs-1976-class-tank",
+        name: "MHS Class of 1976 — 50th Reunion Tank Top",
+        description: "Gildan Softstyle 64200 tank top. Orange tiger crest screen-printed front-center. 4.5 oz, 100% ring-spun cotton, classic fit with semi-fitted side seams.",
+        images: [
+          "/images/merch/mhs-1976-tank-mockup.png",
+        ],
+        price: 2500,
+        sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        colors: [
+          { name: "Black", hex: "#111111" },
+        ],
+        decorationMethod: "screen-printing",
+      },
+      {
         id: "mhs-003",
         slug: "mhs-1976-class-crewneck",
         name: "MHS Class of 1976 — 50th Reunion Crewneck",
