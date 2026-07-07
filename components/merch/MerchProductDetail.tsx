@@ -13,18 +13,18 @@ interface Props {
   store: MerchStore;
 }
 
-const UPSIZE_SURCHARGE = 500;
-const UPSIZE_SIZES = ["2XL", "3XL"];
-
 function formatPrice(cents: number) {
   return `$${(cents / 100).toFixed(2)}`;
 }
 
-function effectivePrice(basePrice: number, size: string | null) {
-  return basePrice + (size && UPSIZE_SIZES.includes(size) ? UPSIZE_SURCHARGE : 0);
+function effectivePrice(basePrice: number, size: string | null, upsizeSizes: string[], upsizeSurcharge: number) {
+  return basePrice + (size && upsizeSizes.includes(size) ? upsizeSurcharge : 0);
 }
 
 export function MerchProductDetail({ product, store }: Props) {
+  const upsizeSizes = product.upsizeSizes ?? ["2XL", "3XL"];
+  const upsizeSurcharge = product.upsizeSurcharge ?? 500;
+
   const { addItem } = useCart();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedColor, setSelectedColor] = useState(product.colors[0] ?? null);
@@ -57,7 +57,7 @@ export function MerchProductDetail({ product, store }: Props) {
       size: selectedSize,
       color: selectedColor?.name ?? "",
       quantity,
-      price: effectivePrice(product.price, selectedSize),
+      price: effectivePrice(product.price, selectedSize, upsizeSizes, upsizeSurcharge),
       image: product.images[0],
     });
     setAdded(true);
@@ -155,14 +155,14 @@ export function MerchProductDetail({ product, store }: Props) {
           </h1>
           <div className="flex items-baseline gap-2">
             <p className="text-2xl font-bold" style={{ color: store.accentColor }}>
-              {formatPrice(effectivePrice(product.price, selectedSize))}
+              {formatPrice(effectivePrice(product.price, selectedSize, upsizeSizes, upsizeSurcharge))}
             </p>
-            {selectedSize && UPSIZE_SIZES.includes(selectedSize) && (
+            {selectedSize && upsizeSizes.includes(selectedSize) && (
               <span className="text-sm text-white/40 line-through">{formatPrice(product.price)}</span>
             )}
           </div>
-          {!selectedSize && (
-            <p className="text-xs text-white/35 mt-0.5">+$5.00 for 2XL / 3XL</p>
+          {!selectedSize && upsizeSizes.length > 0 && (
+            <p className="text-xs text-white/35 mt-0.5">+{formatPrice(upsizeSurcharge)} for {upsizeSizes.join(" / ")}</p>
           )}
         </div>
 
@@ -206,7 +206,7 @@ export function MerchProductDetail({ product, store }: Props) {
           </div>
           <div className="flex flex-wrap gap-2">
             {product.sizes.map((size) => {
-              const isUpsize = UPSIZE_SIZES.includes(size);
+              const isUpsize = upsizeSizes.includes(size);
               return (
                 <button
                   key={size}
@@ -229,7 +229,7 @@ export function MerchProductDetail({ product, store }: Props) {
                 >
                   <span style={{ lineHeight: 1.3 }}>{size}</span>
                   {isUpsize && (
-                    <span style={{ display: "block", fontSize: "10px", opacity: 0.55, lineHeight: 1.2, fontWeight: 600 }}>+$5.00</span>
+                    <span style={{ display: "block", fontSize: "10px", opacity: 0.55, lineHeight: 1.2, fontWeight: 600 }}>+{formatPrice(upsizeSurcharge)}</span>
                   )}
                 </button>
               );

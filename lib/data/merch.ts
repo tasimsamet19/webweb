@@ -4,15 +4,15 @@ export const merchStores: MerchStore[] = [
   {
     id: "ms-004",
     slug: "mhs-class-of-1976",
-    name: "MHS Class of 1976 — Reunion Tee",
+    name: "MHS Class of 1976 — 50th Reunion",
     organization: "Morristown High School Class of 1976",
     description:
-      "Official reunion t-shirt for the MHS Class of 1976. Gildan 6400 Ultra Cotton tee featuring the class tiger crest in orange. Orders are limited — get yours before they're gone!",
+      "Official reunion apparel for the MHS Class of 1976. Tee and hoodie both feature the class tiger crest in orange. Orders are limited — get yours before they're gone!",
     closeDate: "2026-09-30T23:59:59",
     isActive: true,
     requiresAccessCode: false,
     accentColor: "#E07B00",
-    bannerImage: "/images/merch/mhs-1976-mockup-main.jpg",
+    bannerImage: "/images/merch/mhs-1976-store-logo.png",
     products: [
       {
         id: "mhs-001",
@@ -26,6 +26,23 @@ export const merchStores: MerchStore[] = [
         ],
         price: 2500,
         sizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+        colors: [
+          { name: "Black", hex: "#111111" },
+        ],
+        decorationMethod: "screen-printing",
+      },
+      {
+        id: "mhs-002",
+        slug: "mhs-1976-class-hoodie",
+        name: "MHS Class of 1976 — 50th Reunion Hoodie",
+        description: "Gildan 18500 Heavy Blend hoodie. Orange tiger crest screen-printed front-center. 50% cotton / 50% polyester, double-lined hood, pouch pocket, classic fit.",
+        images: [
+          "/images/merch/mhs-1976-hoodie-mockup.png",
+        ],
+        price: 3800,
+        sizes: ["S", "M", "L", "XL", "2XL", "3XL", "4XL"],
+        upsizeSizes: ["2XL", "3XL", "4XL"],
+        upsizeSurcharge: 700,
         colors: [
           { name: "Black", hex: "#111111" },
         ],

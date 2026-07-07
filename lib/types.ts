@@ -83,6 +83,8 @@ export interface MerchProduct {
   sizes: string[];
   colors: ColorOption[];
   decorationMethod: DecorationMethod;
+  upsizeSizes?: string[];    // sizes that carry a surcharge — defaults to ["2XL","3XL"]
+  upsizeSurcharge?: number;  // cents — defaults to 500
   stripePriceId?: string;
 }
 
