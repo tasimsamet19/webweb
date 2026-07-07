@@ -6,9 +6,10 @@ interface PageHeroProps {
   titleAccent?: string;
   description?: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
-export function PageHero({ eyebrow, title, titleAccent, description, className }: PageHeroProps) {
+export function PageHero({ eyebrow, title, titleAccent, description, className, children }: PageHeroProps) {
   return (
     <section
       className={cn(
@@ -42,6 +43,11 @@ export function PageHero({ eyebrow, title, titleAccent, description, className }
           <p className="mt-5 text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
             {description}
           </p>
+        )}
+        {children && (
+          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            {children}
+          </div>
         )}
       </div>
     </section>

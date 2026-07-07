@@ -3,14 +3,16 @@ import Image from "next/image";
 import { Mail, Phone, MapPin, Camera, Users, Briefcase } from "lucide-react";
 
 const productLinks = [
-  { href: "/products?category=tee-shirts", label: "Tee Shirts" },
-  { href: "/products?category=sweatshirts", label: "Sweatshirts" },
-  { href: "/products?category=jackets", label: "Jackets" },
-  { href: "/products?category=hats", label: "Hats" },
-  { href: "/products?category=polo-shirts", label: "Polo Shirts" },
-  { href: "/products?category=sports-apparel", label: "Sports Apparel" },
-  { href: "/products?category=varsity-jackets", label: "Varsity Jackets" },
-  { href: "/products?category=sublimated-uniforms", label: "Sublimated Uniforms" },
+  { href: "/products/custom-t-shirts", label: "Custom T-Shirts" },
+  { href: "/products/hoodies-sweatshirts", label: "Hoodies & Sweatshirts" },
+  { href: "/products/custom-hats-headwear", label: "Hats & Headwear" },
+  { href: "/products/polos-business-apparel", label: "Polos & Business Apparel" },
+  { href: "/products/jackets-outerwear", label: "Jackets & Outerwear" },
+  { href: "/products/workwear-safety-apparel", label: "Workwear & Safety Apparel" },
+  { href: "/products/sports-team-uniforms", label: "Sports Team Uniforms" },
+  { href: "/products/varsity-jackets-tackle-twill", label: "Varsity Jackets" },
+  { href: "/products/bags-mugs-promo-products", label: "Bags, Mugs & Promo" },
+  { href: "/products/custom-sublimated-uniforms", label: "Sublimated Uniforms" },
 ];
 
 const quickLinks = [
@@ -151,8 +153,8 @@ export function Footer() {
               <p className="text-xs font-semibold text-white/50 uppercase tracking-wider mb-1">
                 Business Hours
               </p>
-              <p className="text-xs text-white/40">Mon–Fri: 9am – 5pm</p>
-              <p className="text-xs text-white/40">Sat: By appointment</p>
+              <p className="text-xs text-white/40">Mon–Sat: 9am – 7pm</p>
+              <p className="text-xs text-white/40">Sun: 12pm – 5pm</p>
             </div>
           </div>
         </div>
