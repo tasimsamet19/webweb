@@ -26,7 +26,7 @@ export function MerchProductCard({ product, storeSlug, accentColor }: Props) {
           alt={product.name}
           fill
           unoptimized={product.images[0].includes("placehold.co")}
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover object-left group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
         {/* Quick view hint */}
