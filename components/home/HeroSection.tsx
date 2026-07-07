@@ -53,13 +53,13 @@ export function HeroSection() {
             variants={prefersReduced ? undefined : itemVariant}
             transition={{ ...transition, delay: 0.06 }}
           >
-            <h1 className="font-display text-[clamp(60px,10vw,120px)] leading-[0.9] tracking-wider text-white uppercase mb-2">
-              CUSTOM PRINTING
+            <h1 className="font-display text-[clamp(60px,10vw,120px)] leading-[0.9] tracking-wider uppercase mb-2">
+              <span className="text-white">CUSTOM PRINTING</span>
             </h1>
-            <h1 className="font-display text-[clamp(60px,10vw,120px)] leading-[0.9] tracking-wider uppercase mb-8">
+            <p className="font-display text-[clamp(60px,10vw,120px)] leading-[0.9] tracking-wider uppercase mb-8">
               <span className="text-white">THAT </span>
               <span className="text-[#E84520]">DELIVERS.</span>
-            </h1>
+            </p>
           </motion.div>
 
           {/* Sub */}
