@@ -8,7 +8,7 @@ export const merchStores: MerchStore[] = [
     organization: "Mamaroneck High School Class of 1976",
     description:
       "Official reunion apparel for the Mamaroneck High School Class of 1976 — 50th Reunion, September 25–27, 2026. All items feature the class tiger crest in orange. Orders are limited — get yours before the store closes!",
-    closeDate: "2026-09-30T23:59:59",
+    closeDate: "2026-08-06T23:59:59",
     isActive: true,
     requiresAccessCode: false,
     accentColor: "#E07B00",
