@@ -13,7 +13,7 @@ const QuoteForm = dynamic(
 );
 import type { Product } from "@/lib/types";
 import { formatDecorationMethod } from "@/lib/utils";
-import { categories } from "@/lib/data/categories";
+import { getCatalogCategoryById } from "@/lib/data/catalog-categories";
 
 interface ProductDetailProps {
   product: Product;
@@ -21,7 +21,7 @@ interface ProductDetailProps {
 
 export function ProductDetail({ product }: ProductDetailProps) {
   const [quoteOpen, setQuoteOpen] = useState(false);
-  const category = categories.find((c) => c.id === product.category);
+  const catalogCat = getCatalogCategoryById(product.category);
 
   return (
     <>
@@ -32,10 +32,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
         <Link href="/products" className="hover:text-white/70 transition-colors">Products</Link>
         <ChevronRight className="w-3 h-3 flex-shrink-0" />
         <Link
-          href={`/products?category=${product.category}`}
+          href={catalogCat ? `/products/${catalogCat.pageSlug}` : "/products"}
           className="hover:text-white/70 transition-colors"
         >
-          {category?.label ?? product.category}
+          {catalogCat?.displayName ?? product.category}
         </Link>
         <ChevronRight className="w-3 h-3 flex-shrink-0" />
         <span className="text-white/60">{product.name}</span>

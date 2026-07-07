@@ -253,6 +253,29 @@ export const products: Product[] = [
     popular: true,
   },
 
+  // HATS (additional)
+  {
+    id: "ht-003",
+    slug: "custom-dad-hat",
+    name: "Custom Embroidered Dad Hat",
+    category: "hats",
+    shortDescription: "Unstructured low-profile dad hat with custom embroidery — a retail-favorite style.",
+    description:
+      "The 47 Brand Clean Up or comparable unstructured dad hat with soft crown and pre-curved visor. Custom embroidery on the front panel with up to 3 colors of thread. Available in 20+ colors. Popular for brands, restaurants, events, and giveaways.",
+    images: [],
+    features: [
+      "Unstructured low-profile crown",
+      "Pre-curved visor",
+      "Adjustable strap closure",
+      "Up to 3-color embroidery",
+      "Available in 20+ colorways",
+    ],
+    decorationMethods: ["embroidery"],
+    minimumQuantity: 12,
+    leadTime: "7–10 business days",
+    popular: true,
+  },
+
   // SPORTS APPAREL
   {
     id: "sp-001",
@@ -297,6 +320,30 @@ export const products: Product[] = [
     minimumQuantity: 6,
     leadTime: "14–21 business days",
     availableSizes: ["YS", "YM", "YL", "S", "M", "L", "XL", "2XL", "3XL"],
+  },
+
+  // SPORTS APPAREL (additional)
+  {
+    id: "sp-003",
+    slug: "team-warm-up-set",
+    name: "Custom Team Warm-Up Set",
+    category: "sports-apparel",
+    shortDescription: "Matching warm-up jacket and pants with player names, numbers, and team logo.",
+    description:
+      "Full custom warm-up set — jacket and pants — with your team's colors, logo, player name, and number. Available in sublimation or screen print. Used by travel baseball, basketball, soccer, and wrestling teams. Mix-and-match sizes in a single order.",
+    images: [],
+    features: [
+      "Matching jacket and pants",
+      "Custom team colors and logo",
+      "Player name and number",
+      "Moisture-wicking polyester",
+      "Youth and adult sizes in same order",
+    ],
+    decorationMethods: ["sublimation", "screen-printing", "heat-transfer"],
+    minimumQuantity: 6,
+    leadTime: "14–18 business days",
+    availableSizes: ["YS", "YM", "YL", "S", "M", "L", "XL", "2XL", "3XL"],
+    popular: true,
   },
 
   // VARSITY JACKETS
@@ -571,6 +618,52 @@ export const products: Product[] = [
   },
 
   // SUBLIMATED UNIFORMS
+  {
+    id: "su-002",
+    slug: "sublimated-basketball-uniform",
+    name: "Sublimated Basketball Uniform",
+    category: "sublimated-uniforms",
+    shortDescription: "Full-dye basketball jersey and shorts set — unlimited colors, player names included.",
+    description:
+      "Custom sublimated basketball uniform set: reversible or single-sided jersey with matching shorts. Design covers every inch — chest logo, side panels, back number, and player name. 100% moisture-wicking polyester. No color limits, no setup fees after first order. Youth and adult sizing.",
+    images: [],
+    features: [
+      "Jersey + shorts set",
+      "All-over sublimation printing",
+      "Player names and numbers included",
+      "Reversible option available",
+      "Moisture-wicking 100% polyester",
+      "No color surcharges",
+    ],
+    decorationMethods: ["sublimation"],
+    minimumQuantity: 6,
+    leadTime: "14–18 business days",
+    availableSizes: ["YS", "YM", "YL", "S", "M", "L", "XL", "2XL", "3XL"],
+    popular: true,
+  },
+  {
+    id: "su-003",
+    slug: "sublimated-soccer-kit",
+    name: "Custom Sublimated Soccer Kit",
+    category: "sublimated-uniforms",
+    shortDescription: "Full custom soccer jersey and shorts — edge-to-edge color, sponsor logos included.",
+    description:
+      "Fully sublimated soccer uniform kit with jersey and shorts. Sponsor logos, team crest, player name, and number all printed at one price. Lightweight, breathable polyester with mesh side panels. Popular for travel leagues, high school programs, and recreational teams.",
+    images: [],
+    features: [
+      "Jersey + shorts kit",
+      "Sponsor logo and team crest printing",
+      "Player name and number",
+      "Mesh side panels for breathability",
+      "Lightweight performance polyester",
+      "Goalkeeper and outfield versions",
+    ],
+    decorationMethods: ["sublimation"],
+    minimumQuantity: 6,
+    leadTime: "14–21 business days",
+    availableSizes: ["YXS", "YS", "YM", "YL", "S", "M", "L", "XL", "2XL", "3XL"],
+    isNew: true,
+  },
   {
     id: "su-001",
     slug: "create-your-own-sublimated-uniform",

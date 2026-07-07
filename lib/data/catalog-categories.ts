@@ -147,3 +147,7 @@ export const catalogCategories: CatalogCategory[] = [
 export function getCatalogCategoryByPageSlug(pageSlug: string): CatalogCategory | undefined {
   return catalogCategories.find((c) => c.pageSlug === pageSlug);
 }
+
+export function getCatalogCategoryById(id: string): CatalogCategory | undefined {
+  return catalogCategories.find((c) => c.id === id);
+}
