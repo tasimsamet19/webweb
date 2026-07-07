@@ -15,6 +15,7 @@ export function MerchStoreCard({ store }: Props) {
   // Defer date check to client to avoid SSR hydration mismatch
   const [isExpired, setIsExpired] = useState(!store.isActive);
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defers date check to client to avoid SSR hydration mismatch
     setIsExpired(!store.isActive || new Date(store.closeDate) < new Date());
   }, [store.isActive, store.closeDate]);
   const closeLabel = new Date(store.closeDate).toLocaleDateString("en-US", {

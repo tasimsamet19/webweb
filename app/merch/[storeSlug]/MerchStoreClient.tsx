@@ -19,6 +19,7 @@ export function MerchStoreClient({ store }: Props) {
   const [unlocked, setUnlocked] = useState(!store.requiresAccessCode);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defers date check to client to avoid SSR hydration mismatch
     setIsExpired(!store.isActive || new Date(store.closeDate) < new Date());
   }, [store.isActive, store.closeDate]);
 

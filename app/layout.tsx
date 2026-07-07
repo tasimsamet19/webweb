@@ -58,21 +58,12 @@ export const metadata: Metadata = {
     description:
       "Custom screen printing, embroidery, and sublimation in Ledgewood, NJ. T-shirts, uniforms, hats, and promotional products for businesses, teams, and schools.",
     url: "https://printwearledgewood.com",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Printwear Ledgewood — Custom Screen Printing & Embroidery NJ",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Printwear Ledgewood | Custom Embroidery & Screen Printing NJ",
     description:
       "Custom screen printing, embroidery, and sublimation in Ledgewood, NJ. T-shirts, uniforms, hats, and promotional products for businesses, teams, and schools.",
-    images: ["/og-image.jpg"],
   },
   alternates: {
     canonical: "https://printwearledgewood.com",
@@ -90,7 +81,7 @@ const localBusinessSchema = {
     "Custom screen printing, embroidery, and sublimation for businesses, teams, schools, and organizations in New Jersey.",
   url: "https://printwearledgewood.com",
   logo: "https://printwearledgewood.com/logo.jpeg",
-  image: "https://printwearledgewood.com/og-image.jpg",
+  image: "https://printwearledgewood.com/opengraph-image",
   telephone: "+1-973-580-4455",
   email: "printwearledgewood@gmail.com",
   foundingDate: "2020",

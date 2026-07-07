@@ -35,7 +35,7 @@ All static content lives in `lib/data/*.ts` as typed arrays:
 - `products.ts` — `Product[]`, queried via `getProductBySlug()`, `getRelatedProducts()`
 - `gallery.ts` — `GalleryItem[]` — photos in `/images/gallery/` (mix of real business photos and AI-generated images via Pollinations.ai)
 - `categories.ts` — `CategoryDefinition[]`
-- `testimonials.ts` — `Testimonial[]` (currently empty; Testimonials section has been removed from homepage)
+- `testimonials.ts` — `Testimonial[]` — 6 real Google reviews; rendered by `components/home/Testimonials.tsx`
 - `merch.ts` — `MerchStore[]`, queried via `getMerchStore()`, `getMerchProduct()`, `getActiveStores()`
 
 All types are in `lib/types.ts`. When adding new data shapes, define the type there first.
@@ -46,10 +46,10 @@ All types are in `lib/types.ts`. When adding new data shapes, define the type th
 
 `app/page.tsx` currently renders:
 ```
-HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → GalleryPreview → CTASection
+HeroSection → BrandsBanner → MerchSection → ServicesSection → CategoryGrid → GalleryPreview → Testimonials → CTASection
 ```
 
-Removed sections (do not re-add unless asked): `FeaturedProducts`, `HowToOrderSection`, `Testimonials`. The hero stats block (10,000+ orders, 500+ clients, etc.) was also removed from `HeroSection`.
+Removed sections (do not re-add unless asked): `FeaturedProducts`, `HowToOrderSection`. The hero stats block (10,000+ orders, 500+ clients, etc.) was also removed from `HeroSection`.
 
 ### Animations
 
@@ -98,7 +98,16 @@ All routes apply in-memory IP-based rate limiting via `lib/rate-limit.ts`. Email
 
 ### SEO
 
-`app/sitemap.ts` and `app/robots.ts` are auto-generated via Next.js conventions (served at `/sitemap.xml` and `/robots.txt`). The sitemap covers all static pages plus every product slug. `app/layout.tsx` includes a JSON-LD `LocalBusiness` schema in `<head>` for Google Maps / local search. Production domain: `https://printwearledgewood.com`.
+`app/sitemap.ts` and `app/robots.ts` are auto-generated via Next.js conventions (served at `/sitemap.xml` and `/robots.txt`). The sitemap covers all static pages plus every product slug. Production domain: `https://printwearledgewood.com`.
+
+**Structured data in `app/layout.tsx`** (`<head>`):
+- `LocalBusiness` + `PrintingService` schema with `aggregateRating` (5.0 / 43 reviews), `areaServed` (15 Morris County cities), hours, geo, `hasOfferCatalog`
+
+**Structured data injected per-page** (via `<script type="application/ld+json">` in page components):
+- `app/products/[slug]/page.tsx` — `Product` schema + `BreadcrumbList`
+- `app/products/page.tsx`, `app/about/page.tsx`, `app/gallery/page.tsx`, `app/contact/page.tsx` — `BreadcrumbList`
+
+**OG image**: `app/opengraph-image.tsx` generates a dynamic 1200×630 image at build time.
 
 ### Security Headers
 

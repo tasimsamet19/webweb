@@ -8,7 +8,7 @@ import { fadeInUp } from "@/lib/animations";
 import { motion } from "motion/react";
 import { faqs } from "@/lib/data/faqs";
 
-function FAQItem({ faq, index }: { faq: (typeof faqs)[0]; index: number }) {
+function FAQItem({ faq }: { faq: (typeof faqs)[0] }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -53,7 +53,7 @@ export function FAQSection() {
         />
         <div className="max-w-3xl mx-auto bg-[#111111] rounded-2xl border border-white/8 px-6 sm:px-8">
           {faqs.map((faq, i) => (
-            <FAQItem key={i} faq={faq} index={i} />
+            <FAQItem key={i} faq={faq} />
           ))}
         </div>
       </div>

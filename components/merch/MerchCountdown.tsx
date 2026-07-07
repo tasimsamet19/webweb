@@ -34,6 +34,7 @@ export function MerchCountdown({ closeDate, className, compact = false }: Props)
   const [time, setTime] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional: defers date check to client to avoid SSR hydration mismatch
     setTime(calcTimeLeft(closeDate));
     const id = setInterval(() => setTime(calcTimeLeft(closeDate)), 1000);
     return () => clearInterval(id);

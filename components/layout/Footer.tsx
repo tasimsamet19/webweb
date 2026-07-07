@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, Camera, Users, Briefcase } from "lucide-react";
+import { Mail, Phone, MapPin, Camera, Users } from "lucide-react";
 
 const productLinks = [
   { href: "/products/custom-t-shirts", label: "Custom T-Shirts" },

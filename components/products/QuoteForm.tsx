@@ -82,6 +82,7 @@ export function QuoteForm({
     },
   });
 
+  // eslint-disable-next-line react-hooks/incompatible-library -- React Hook Form watch() is intentional; memoization risk is acceptable here
   const hasArtwork = watch("hasArtwork");
 
   async function onSubmit(data: FormValues) {
@@ -98,7 +99,7 @@ export function QuoteForm({
       if (!res.ok) throw new Error("Submission failed");
 
       setSubmitted(true);
-    } catch (_err) {
+    } catch {
       toast.error("Something went wrong. Please try again or call us directly.");
     }
   }

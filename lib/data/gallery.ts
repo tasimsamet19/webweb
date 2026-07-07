@@ -21,4 +21,7 @@ export const galleryItems: GalleryItem[] = [
   { id: "g-18", image: "/images/gallery/custom-apparel-2.jpg", title: "Custom Embroidered Caps", category: "hats", decorationMethod: "embroidery", client: "MadMinds" },
   { id: "g-19", image: "/images/gallery/custom-apparel-3.jpg", title: "Event Night Custom Shirt", category: "tee-shirts", decorationMethod: "screen-printing", client: "Ride or Cry — Emo Night Morristown NJ" },
   { id: "g-20", image: "/images/gallery/custom-apparel-4.jpg", title: "Bulk Order Production", category: "tee-shirts", decorationMethod: "screen-printing" },
+  { id: "g-21", image: "/images/gallery/custom-mugs-sublimation.jpg", title: "Custom Sublimated Mugs & Tumblers", category: "other-products", decorationMethod: "sublimation", client: "Printwear Ledgewood" },
+  { id: "g-22", image: "/images/gallery/dtg-printing-process.jpg", title: "DTG Printing — In-House Production", category: "tee-shirts", decorationMethod: "dtg" },
+  { id: "g-23", image: "/images/gallery/varsity-tackle-twill-jacket.jpg", title: "Custom Varsity Jacket — Tackle Twill", category: "varsity-jackets", decorationMethod: "embroidery" },
 ];
