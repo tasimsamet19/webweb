@@ -1,10 +1,5 @@
 export const faqs = [
   {
-    question: "What is the minimum order quantity for custom printing?",
-    answer:
-      "Our minimum order is 12 pieces for screen printing and embroidery. For sublimation and DTG (direct-to-garment), we can do smaller runs — even single pieces. Contact us for exact minimums on your specific order.",
-  },
-  {
     question: "How long does it take to get my order?",
     answer:
       "Standard turnaround is 7–10 business days after artwork approval. Rush production is available for tight deadlines — just let us know when you need it and we'll do our best to accommodate.",
