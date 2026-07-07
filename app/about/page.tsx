@@ -19,6 +19,18 @@ const breadcrumbSchema = {
   ],
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Shawn",
+  jobTitle: "Owner & Founder",
+  worksFor: {
+    "@type": "LocalBusiness",
+    name: "Printwear Ledgewood",
+    url: "https://printwearledgewood.com",
+  },
+};
+
 const values = [
   {
     icon: Award,
@@ -65,6 +77,7 @@ export default function AboutPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
       <PageHero
         eyebrow="Our Story"
         title="About"
@@ -85,10 +98,16 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-4 text-white/55 text-base leading-relaxed">
               <p>
-                Printwear Ledgewood is a full-service custom apparel and promotional products
-                company based in Ledgewood, New Jersey. We specialize in screen printing,
-                embroidery, and sublimation — delivering quality that businesses, sports teams,
-                schools, and organizations trust.
+                Printwear Ledgewood was founded in 2020 by Shawn, a custom apparel specialist
+                based in Ledgewood, New Jersey. What started as a local printing operation has
+                grown into a full-service shop trusted by businesses, sports teams, schools, and
+                organizations across Morris County and the rest of New Jersey.
+              </p>
+              <p>
+                Since opening, we&apos;ve completed over 5,000 orders for more than 200 clients —
+                from 12-piece embroidered polo runs for small businesses to 500-piece screen
+                printed tees for charity events and fully sublimated uniforms for travel sports
+                teams.
               </p>
               <p>
                 Whether you need 12 embroidered polo shirts for your sales team, 200 tees for a
@@ -101,6 +120,28 @@ export default function AboutPage() {
                 because we know your brand matters and your deadline is real.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-16 bg-[#080808]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { value: "2020", label: "Founded" },
+              { value: "5,000+", label: "Orders Completed" },
+              { value: "200+", label: "Clients Served" },
+              { value: "5.0 ★", label: "Google Rating" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="flex flex-col items-center text-center p-6 bg-[#111111] rounded-xl border border-white/6"
+              >
+                <span className="text-3xl font-bold text-[#E84520] mb-1">{stat.value}</span>
+                <span className="text-xs text-white/40 uppercase tracking-wider">{stat.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
