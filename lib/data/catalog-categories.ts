@@ -8,6 +8,7 @@ export type CatalogCategory = {
   bestFor: string;
   decorationMethods: string[];
   icon: string;
+  image?: string;
 };
 
 export const catalogCategories: CatalogCategory[] = [
@@ -22,6 +23,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Events, businesses, schools, clubs, nonprofits, fundraisers",
     decorationMethods: ["Screen Printing", "DTG", "Heat Transfer"],
     icon: "Shirt",
+    image: "/images/categories/tshirts.jpg",
   },
   {
     id: "sweatshirts",
@@ -34,6 +36,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Team apparel, school spirit wear, employee gear, winter merch",
     decorationMethods: ["Screen Printing", "Embroidery", "Heat Transfer"],
     icon: "Wind",
+    image: "/images/categories/hoodies.jpg",
   },
   {
     id: "jackets",
@@ -46,6 +49,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Company uniforms, outdoor crews, schools, coaches, premium gifts",
     decorationMethods: ["Embroidery", "Patches", "Heat Transfer"],
     icon: "Layers",
+    image: "/images/categories/jackets.jpg",
   },
   {
     id: "hats",
@@ -58,6 +62,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Businesses, teams, clubs, contractors, giveaways, merch brands",
     decorationMethods: ["Embroidery", "Patches", "Heat Transfer"],
     icon: "HardHat",
+    image: "/images/categories/hats.jpg",
   },
   {
     id: "polo-shirts",
@@ -70,6 +75,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Corporate teams, restaurants, real estate, service businesses, trade shows",
     decorationMethods: ["Embroidery", "Heat Transfer", "Patches"],
     icon: "Briefcase",
+    image: "/images/categories/polos.jpg",
   },
   {
     id: "pants-shorts",
@@ -82,6 +88,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Contractors, construction crews, fire/EMS, restaurants, service businesses",
     decorationMethods: ["Screen Printing", "Embroidery", "Heat Transfer"],
     icon: "Shield",
+    image: "/images/categories/workwear.jpg",
   },
   {
     id: "sports-apparel",
@@ -94,6 +101,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Baseball, softball, soccer, basketball, football, wrestling, cheer, schools",
     decorationMethods: ["Sublimation", "Screen Printing", "Names & Numbers"],
     icon: "Trophy",
+    image: "/images/categories/sports.jpg",
   },
   {
     id: "varsity-jackets",
@@ -106,6 +114,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Schools, senior classes, athletic teams, clubs, booster programs",
     decorationMethods: ["Tackle Twill", "Chenille", "Embroidery"],
     icon: "Star",
+    image: "/images/categories/varsity.jpg",
   },
   {
     id: "other-products",
@@ -118,6 +127,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Trade shows, school events, corporate giveaways, fundraisers, nonprofits",
     decorationMethods: ["Screen Printing", "Sublimation", "Vendor Decoration"],
     icon: "Gift",
+    image: "/images/categories/bags-mugs.jpg",
   },
   {
     id: "sublimated-uniforms",
@@ -130,6 +140,7 @@ export const catalogCategories: CatalogCategory[] = [
     bestFor: "Sports teams, travel leagues, schools, clubs, any team that wants full custom design",
     decorationMethods: ["All-Over Sublimation", "Names & Numbers"],
     icon: "Palette",
+    image: "/images/categories/sublimated.jpg",
   },
 ];
 

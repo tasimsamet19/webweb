@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CheckCircle2 } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
@@ -104,8 +105,19 @@ export function CategoryPageContent({ cat, products }: Props) {
               </ul>
             </div>
 
-            {/* Right: best for + decoration methods + CTA */}
+            {/* Right: photo + best for + decoration methods + CTA */}
             <div className="flex flex-col gap-8">
+              {cat.image && (
+                <div className="relative w-full h-56 rounded-2xl overflow-hidden border border-white/8">
+                  <Image
+                    src={cat.image}
+                    alt={cat.displayName}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover object-center"
+                  />
+                </div>
+              )}
               <div className="p-6 bg-[#111111] rounded-2xl border border-white/8">
                 <p className="text-xs font-bold tracking-[0.2em] uppercase text-white/30 mb-3">
                   Best For

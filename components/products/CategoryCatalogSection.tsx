@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import {
   Shirt, Wind, Layers, HardHat, Briefcase, Shield,
@@ -27,8 +28,25 @@ function CategoryCard({ cat, index }: { cat: CatalogCategory; index: number }) {
       variants={prefersReduced ? undefined : fadeInUp}
       transition={{ ...transition, delay: (index % 3) * 0.05 }}
       whileHover={prefersReduced ? undefined : { y: -4 }}
-      className="flex flex-col bg-[#111111] rounded-2xl border border-white/8 p-6 hover:border-[#E84520]/40 transition-colors"
+      className="flex flex-col bg-[#111111] rounded-2xl border border-white/8 overflow-hidden hover:border-[#E84520]/40 transition-colors"
     >
+      {/* Photo */}
+      {cat.image && (
+        <div className="relative w-full h-44 overflow-hidden">
+          <Image
+            src={cat.image}
+            alt={cat.displayName}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/20 to-transparent" />
+        </div>
+      )}
+
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-6">
+
       {/* Header */}
       <div className="flex items-center gap-3 mb-3">
         <div className="w-10 h-10 rounded-lg bg-[#E84520]/10 border border-[#E84520]/20 flex items-center justify-center flex-shrink-0">
@@ -88,6 +106,8 @@ function CategoryCard({ cat, index }: { cat: CatalogCategory; index: number }) {
         >
           Browse {cat.displayName}
         </LinkButton>
+      </div>
+
       </div>
     </motion.div>
   );
