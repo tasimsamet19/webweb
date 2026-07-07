@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/lib/data/products";
 import { merchStores } from "@/lib/data/merch";
+import { catalogCategories } from "@/lib/data/catalog-categories";
 
 const BASE = "https://printwearledgewood.com";
 const LAST_MODIFIED = new Date();
@@ -39,5 +40,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })),
     ]);
 
-  return [...staticPages, ...productPages, ...merchPages];
+  const categoryPages: MetadataRoute.Sitemap = catalogCategories.map((c) => ({
+    url: `${BASE}/products/${c.pageSlug}`,
+    priority: 0.85,
+    changeFrequency: "monthly" as const,
+    lastModified: LAST_MODIFIED,
+  }));
+
+  return [...staticPages, ...categoryPages, ...productPages, ...merchPages];
 }

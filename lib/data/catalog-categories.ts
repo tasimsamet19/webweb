@@ -1,5 +1,6 @@
 export type CatalogCategory = {
   id: string;
+  pageSlug: string;
   displayName: string;
   tagline: string;
   description: string;
@@ -12,6 +13,7 @@ export type CatalogCategory = {
 export const catalogCategories: CatalogCategory[] = [
   {
     id: "tee-shirts",
+    pageSlug: "custom-t-shirts",
     displayName: "Custom T-Shirts",
     tagline: "Go-to for events, teams & brand promotions",
     description:
@@ -23,6 +25,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "sweatshirts",
+    pageSlug: "hoodies-sweatshirts",
     displayName: "Hoodies & Sweatshirts",
     tagline: "Keep your group comfortable and on-brand",
     description:
@@ -34,6 +37,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "jackets",
+    pageSlug: "jackets-outerwear",
     displayName: "Jackets & Outerwear",
     tagline: "Premium branded outerwear for any crew",
     description:
@@ -45,6 +49,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "hats",
+    pageSlug: "custom-hats-headwear",
     displayName: "Hats & Headwear",
     tagline: "One of the most visible ways to promote your brand",
     description:
@@ -56,6 +61,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "polo-shirts",
+    pageSlug: "polos-business-apparel",
     displayName: "Polos & Business Apparel",
     tagline: "A clean, professional look for your team",
     description:
@@ -67,6 +73,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "pants-shorts",
+    pageSlug: "workwear-safety-apparel",
     displayName: "Workwear & Safety Apparel",
     tagline: "Durable branded gear built for the job site",
     description:
@@ -78,6 +85,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "sports-apparel",
+    pageSlug: "sports-team-uniforms",
     displayName: "Sports Apparel & Team Uniforms",
     tagline: "From practice to game day — fully custom",
     description:
@@ -89,6 +97,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "varsity-jackets",
+    pageSlug: "varsity-jackets-tackle-twill",
     displayName: "Varsity Jackets & Tackle Twill",
     tagline: "Classic athletic pride for schools & teams",
     description:
@@ -100,6 +109,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "other-products",
+    pageSlug: "bags-mugs-promo-products",
     displayName: "Bags, Mugs & Promo Products",
     tagline: "Put your brand on products people actually use",
     description:
@@ -111,6 +121,7 @@ export const catalogCategories: CatalogCategory[] = [
   },
   {
     id: "sublimated-uniforms",
+    pageSlug: "custom-sublimated-uniforms",
     displayName: "Custom Sublimated Uniforms",
     tagline: "All-over color, edge-to-edge design — no limits",
     description:
@@ -121,3 +132,7 @@ export const catalogCategories: CatalogCategory[] = [
     icon: "Palette",
   },
 ];
+
+export function getCatalogCategoryByPageSlug(pageSlug: string): CatalogCategory | undefined {
+  return catalogCategories.find((c) => c.pageSlug === pageSlug);
+}

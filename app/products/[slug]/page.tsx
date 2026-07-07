@@ -2,19 +2,34 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ProductDetail } from "@/components/products/ProductDetail";
 import { ProductCard } from "@/components/products/ProductCard";
-import { getProductBySlug, getRelatedProducts, products } from "@/lib/data/products";
+import { CategoryPageContent } from "@/components/products/CategoryPageContent";
+import { getProductBySlug, getRelatedProducts, getProductsByCategory, products } from "@/lib/data/products";
+import { catalogCategories, getCatalogCategoryByPageSlug } from "@/lib/data/catalog-categories";
 import { SectionHeader } from "@/components/shared/SectionHeader";
+import type { ProductCategory } from "@/lib/types";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  const productSlugs = products.map((p) => ({ slug: p.slug }));
+  const categorySlugs = catalogCategories.map((c) => ({ slug: c.pageSlug }));
+  return [...productSlugs, ...categorySlugs];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+
+  const category = getCatalogCategoryByPageSlug(slug);
+  if (category) {
+    return {
+      title: `${category.displayName} — Custom Printing NJ`,
+      description: `${category.description} Available from Printwear Ledgewood in Ledgewood, NJ.`,
+      alternates: { canonical: `https://printwearledgewood.com/products/${slug}` },
+    };
+  }
+
   const product = getProductBySlug(slug);
   if (!product) return {};
   return {
@@ -26,6 +41,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
+
+  // Category page
+  const category = getCatalogCategoryByPageSlug(slug);
+  if (category) {
+    const categoryProducts = getProductsByCategory(category.id as ProductCategory);
+    return <CategoryPageContent cat={category} products={categoryProducts} />;
+  }
+
+  // Individual product page
   const product = getProductBySlug(slug);
   if (!product) notFound();
 

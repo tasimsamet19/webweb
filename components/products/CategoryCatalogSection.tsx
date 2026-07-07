@@ -73,13 +73,20 @@ function CategoryCard({ cat, index }: { cat: CatalogCategory; index: number }) {
         ))}
       </div>
 
-      {/* CTA */}
-      <div className="mt-auto">
+      {/* CTAs */}
+      <div className="mt-auto flex flex-col gap-2">
         <LinkButton
           href="/contact#quote"
           className="w-full bg-[#E84520] hover:bg-[#FF6040] text-white font-bold text-sm justify-center"
         >
           Get a Free Quote <ArrowRight className="ml-2 w-3.5 h-3.5" />
+        </LinkButton>
+        <LinkButton
+          href={`/products/${cat.pageSlug}`}
+          variant="outline"
+          className="w-full border-white/15 text-white/60 hover:text-white hover:border-white/30 text-sm justify-center"
+        >
+          Browse {cat.displayName}
         </LinkButton>
       </div>
     </motion.div>
