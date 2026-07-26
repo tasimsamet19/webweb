@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowRight, Lock, Clock } from "lucide-react";
-import { MerchCountdown } from "./MerchCountdown";
 import type { MerchStore } from "@/lib/types";
 
 interface Props {
@@ -98,8 +97,7 @@ export function MerchStoreCard({ store }: Props) {
               Closed {closeLabel}
             </div>
           ) : (
-            <div className="flex items-center justify-between">
-              <MerchCountdown closeDate={store.closeDate} compact />
+            <div className="flex items-center justify-end">
               <span
                 className="flex items-center gap-1.5 text-sm font-semibold transition-colors"
                 style={{ color: store.accentColor }}

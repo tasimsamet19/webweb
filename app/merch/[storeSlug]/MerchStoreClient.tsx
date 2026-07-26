@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { MerchProductCard } from "@/components/merch/MerchProductCard";
-import { MerchCountdown } from "@/components/merch/MerchCountdown";
 import { MerchAccessGate } from "@/components/merch/MerchAccessGate";
 import { MerchCartButton } from "@/components/merch/MerchCart";
 import type { MerchStore } from "@/lib/types";
@@ -102,9 +101,6 @@ export function MerchStoreClient({ store }: Props) {
             </div>
 
             <div className="flex flex-row items-center gap-4 flex-shrink-0">
-              {!isExpired && (
-                <MerchCountdown closeDate={store.closeDate} />
-              )}
               <MerchCartButton />
             </div>
           </div>
