@@ -6,7 +6,7 @@ import { CTASection } from "@/components/home/CTASection";
 export const metadata = {
   title: "About Printwear Ledgewood | Screen Printing & Embroidery Shop NJ",
   description:
-    "Printwear Ledgewood is a full-service custom apparel shop in Ledgewood, NJ. Screen printing, embroidery, sublimation, and DTG for businesses, schools, sports teams, and organizations across Morris County.",
+    "Full-service custom apparel shop in Ledgewood, NJ. Screen printing, embroidery, sublimation & DTG for businesses, schools & teams across Morris County, NJ.",
   alternates: { canonical: "https://printwearledgewood.com/about" },
 };
 

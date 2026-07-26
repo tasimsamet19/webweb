@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | Printwear Ledgewood",
   },
   description:
-    "Custom screen printing, embroidery, and sublimation in Ledgewood, NJ. T-shirts, hoodies, hats, polos, sports uniforms, and promotional products for businesses, teams, and schools across New Jersey.",
+    "Custom screen printing, embroidery & sublimation in Ledgewood, NJ. T-shirts, uniforms, hats & promo products for businesses, teams and schools in NJ.",
   keywords: [
     "custom screen printing Ledgewood NJ",
     "embroidery Ledgewood NJ",

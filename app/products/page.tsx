@@ -6,7 +6,7 @@ import { DecorationMethodsSection } from "@/components/products/DecorationMethod
 import { CTASection } from "@/components/home/CTASection";
 
 export const metadata = {
-  title: "Custom Apparel & Promotional Products | Ledgewood NJ | Printwear Ledgewood",
+  title: "Custom Apparel & Promo Products | Printwear Ledgewood NJ",
   description:
     "Custom t-shirts, hoodies, embroidered hats, polos, workwear, sports uniforms & promo products. Screen printing, embroidery & sublimation in Ledgewood, NJ.",
   alternates: { canonical: "https://printwearledgewood.com/products" },
