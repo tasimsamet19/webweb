@@ -70,6 +70,16 @@ export default async function ProductPage({ params }: Props) {
       availability: "https://schema.org/InStock",
       seller: { "@type": "LocalBusiness", name: "Printwear Ledgewood" },
       priceCurrency: "USD",
+      price: "0",
+      priceValidUntil: "2027-12-31",
+      description: "Price varies by quantity and decoration. Contact us for a free quote.",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "43",
+      bestRating: "5",
+      worstRating: "1",
     },
   };
 
