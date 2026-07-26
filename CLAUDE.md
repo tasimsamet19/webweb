@@ -70,9 +70,10 @@ The `/merch` section is a full e-commerce flow built without external state libr
 - **Webhook**: `POST /api/webhook` verifies Stripe signature and handles `checkout.session.completed`. Requires `STRIPE_WEBHOOK_SECRET` env var. Currently logs confirmed payments; extend here to trigger order emails or save orders.
 - **Access gates**: Stores with `requiresAccessCode: true` use `MerchAccessGate` — client-side only, code checked in-browser against `store.accessCode`.
 - **SSG**: Both `/merch/[storeSlug]` and `/merch/[storeSlug]/[productSlug]` use `generateStaticParams()` to pre-render at build time. Without this they'd be `ƒ Dynamic` (slow).
-- **Hydration safety**: Never use `Date.now()` or `new Date()` in initial render. Use `useState<T | null>(null)` + populate in `useEffect`. Render `opacity-0` placeholder until hydrated. See `MerchCountdown.tsx` and `MerchStoreCard.tsx` for the pattern.
-- **Size surcharges**: `MerchProductDetail.tsx` has `UPSIZE_SIZES = ["2XL", "3XL"]` with a `+$5.00` surcharge via `effectivePrice()`. Size buttons use inline styles (not Tailwind classes) for the two-line layout — Tailwind v4 had purging issues with dynamic flex-col on buttons.
-- **Active stores**: Currently only `mhs-class-of-1976` (MHS Class of 1976 Reunion Tee, closes 2026-09-30).
+- **Hydration safety**: Never use `Date.now()` or `new Date()` in initial render. Use `useState<T | null>(null)` + populate in `useEffect`. Render `opacity-0` placeholder until hydrated. See `MerchStoreCard.tsx` for the pattern (`MerchCountdown.tsx` is kept as reference but no longer rendered in the UI).
+- **Cart drawer**: `MerchCart` uses `<SheetContent showCloseButton={false}>` because it renders its own close button in the header — do not remove this prop or two X buttons appear.
+- **Size surcharges**: Per-product config via `upsizeSizes?: string[]` and `upsizeSurcharge?: number` fields on `MerchProduct` (in `lib/types.ts`). `MerchProductDetail.tsx` reads these with fallback defaults (`["2XL","3XL"]` / 500¢). Size buttons use inline styles (not Tailwind classes) for the two-line layout — Tailwind v4 had purging issues with dynamic flex-col on buttons.
+- **Active stores**: `mhs-class-of-1976` — Mamaroneck HS Class of 1976 50th Reunion, 4 products (tee $25, tank $25, crewneck $35, hoodie $38), closes 2026-08-06. Crewneck and hoodie carry a +$7 surcharge for 2XL/3XL/4XL.
 
 ### Shared Components
 
@@ -100,11 +101,13 @@ All routes apply in-memory IP-based rate limiting via `lib/rate-limit.ts`. Email
 
 `app/sitemap.ts` and `app/robots.ts` are auto-generated via Next.js conventions (served at `/sitemap.xml` and `/robots.txt`). The sitemap covers all static pages plus every product slug. Production domain: `https://printwearledgewood.com`.
 
+**Sitemap `lastModified`**: Uses three static date constants (`D_CORE`, `D_CATALOG`, `D_MERCH`) — not `new Date()`. Update the relevant constant manually when content meaningfully changes; using `new Date()` causes every build to report all pages as freshly modified, which wastes Google's crawl budget.
+
 **Structured data in `app/layout.tsx`** (`<head>`):
 - `LocalBusiness` + `PrintingService` schema with `aggregateRating` (5.0 / 43 reviews), `areaServed` (15 Morris County cities), hours, geo, `hasOfferCatalog`
 
 **Structured data injected per-page** (via `<script type="application/ld+json">` in page components):
-- `app/products/[slug]/page.tsx` — `Product` schema + `BreadcrumbList`
+- `app/products/[slug]/page.tsx` — `Product` schema (includes `aggregateRating: 5.0/43` and `Offer` with `price: "0"` + `priceValidUntil` — required by Google; without a valid `Offer` or `aggregateRating` GSC reports a critical error) + `BreadcrumbList`
 - `app/products/page.tsx`, `app/about/page.tsx`, `app/gallery/page.tsx`, `app/contact/page.tsx` — `BreadcrumbList`
 
 **OG image**: `app/opengraph-image.tsx` generates a dynamic 1200×630 image at build time.
