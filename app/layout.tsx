@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Bebas_Neue, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -175,6 +176,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col antialiased bg-[#080808] text-[#F0F0F0]">
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-MSK7D3M0BK" strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-MSK7D3M0BK');
+        `}</Script>
         <WebVitals />
         <MouseLight />
         <Navbar />
