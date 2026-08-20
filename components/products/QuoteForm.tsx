@@ -37,6 +37,7 @@ const schema = z.object({
   decorationMethod: z.string().min(1, "Required"),
   quantity: z.coerce.number().min(1, "Minimum 1"),
   numberOfColors: z.coerce.number().min(1).max(20),
+  preferredBrand: z.string().optional(),
   sizesBreakdown: z.string().optional(),
   neededByDate: z.string().optional(),
   hasArtwork: z.enum(["yes", "no", "needs-design"]),
@@ -291,16 +292,25 @@ export function QuoteForm({
                   </div>
                   <div>
                     <Label className="text-white/60 text-xs mb-1.5 block">
-                      Number of Colors *
+                      Number of Ink/Thread Colors *
                     </Label>
-                    <Input
-                      {...register("numberOfColors")}
-                      type="number"
-                      min={1}
-                      max={20}
-                      placeholder="1"
-                      className="bg-white/5 border-white/10 text-white placeholder:text-white/25 focus:border-[#E84520]/50"
-                    />
+                    <Select
+                      defaultValue="1"
+                      onValueChange={(v) => { if (v) setValue("numberOfColors", Number(v)); }}
+                    >
+                      <SelectTrigger className="bg-white/5 border-white/10 text-white focus:border-[#E84520]/50">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#1A1A1A] border-white/10 text-white">
+                        <SelectItem value="1">1 color</SelectItem>
+                        <SelectItem value="2">2 colors</SelectItem>
+                        <SelectItem value="3">3 colors</SelectItem>
+                        <SelectItem value="4">4 colors</SelectItem>
+                        <SelectItem value="5">5 colors</SelectItem>
+                        <SelectItem value="6">6+ colors</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <p className="text-white/30 text-[11px] mt-1">How many different colors are in your logo/design?</p>
                   </div>
                   <div>
                     <Label className="text-white/60 text-xs mb-1.5 block">
@@ -311,6 +321,26 @@ export function QuoteForm({
                       type="date"
                       className="bg-white/5 border-white/10 text-white focus:border-[#E84520]/50"
                     />
+                  </div>
+                  <div>
+                    <Label className="text-white/60 text-xs mb-1.5 block">
+                      Preferred Brand
+                    </Label>
+                    <Select onValueChange={(v) => { if (v) setValue("preferredBrand", String(v)); }}>
+                      <SelectTrigger className="bg-white/5 border-white/10 text-white focus:border-[#E84520]/50">
+                        <SelectValue placeholder="No preference" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#1A1A1A] border-white/10 text-white">
+                        <SelectItem value="no-preference">No preference</SelectItem>
+                        <SelectItem value="Gildan">Gildan</SelectItem>
+                        <SelectItem value="Bella+Canvas">Bella+Canvas</SelectItem>
+                        <SelectItem value="Next Level">Next Level</SelectItem>
+                        <SelectItem value="Port Authority">Port Authority</SelectItem>
+                        <SelectItem value="Hanes">Hanes</SelectItem>
+                        <SelectItem value="Champion">Champion</SelectItem>
+                        <SelectItem value="Other">Other (specify in notes)</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                   <div className="col-span-2">
                     <Label className="text-white/60 text-xs mb-1.5 block">

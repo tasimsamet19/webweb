@@ -43,6 +43,7 @@ ORDER DETAILS
 -------------
 Product/Category: ${fields.category}
 Product Name: ${fields.productName || "N/A"}
+Preferred Brand: ${fields.preferredBrand || "No preference"}
 Decoration Method: ${fields.decorationMethod}
 Quantity: ${fields.quantity}
 Number of Colors: ${fields.numberOfColors}
