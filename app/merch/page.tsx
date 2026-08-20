@@ -11,9 +11,8 @@ export const metadata: Metadata = {
 };
 
 export default function MerchPage() {
-  const now = new Date();
-  const active = merchStores.filter((s) => s.isActive && new Date(s.closeDate) > now);
-  const closed = merchStores.filter((s) => !s.isActive || new Date(s.closeDate) <= now);
+  const active = merchStores.filter((s) => s.isActive);
+  const closed = merchStores.filter((s) => !s.isActive);
 
   return (
     <>

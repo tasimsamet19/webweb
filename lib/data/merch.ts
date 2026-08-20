@@ -93,6 +93,5 @@ export function getMerchProduct(storeSlug: string, productSlug: string) {
 }
 
 export function getActiveStores(): MerchStore[] {
-  const now = new Date();
-  return merchStores.filter((s) => s.isActive && new Date(s.closeDate) > now);
+  return merchStores.filter((s) => s.isActive);
 }
