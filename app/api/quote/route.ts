@@ -69,12 +69,22 @@ Submitted at: ${new Date().toLocaleString("en-US", { timeZone: "America/New_York
       const { Resend } = await import("resend");
       const resend = new Resend(resendKey);
 
+      const attachments: { filename: string; content: Buffer }[] = [];
+      if (artworkFile && artworkFile.size > 0) {
+        const arrayBuffer = await artworkFile.arrayBuffer();
+        attachments.push({
+          filename: artworkFile.name,
+          content: Buffer.from(arrayBuffer),
+        });
+      }
+
       await resend.emails.send({
         from: "quotes@printwearledgewood.com",
         to: "printwearledgewood@gmail.com",
         replyTo: fields.email,
         subject: `New Quote Request: ${fields.productName || fields.category} (${fields.quantity} pcs) — ${fields.firstName} ${fields.lastName}`,
         text: emailBody,
+        attachments: attachments.length > 0 ? attachments : undefined,
       });
     } else {
       // Development: log to console
