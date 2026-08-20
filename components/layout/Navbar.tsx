@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LinkButton } from "@/components/ui/link-button";
+import { QuoteForm } from "@/components/products/QuoteForm";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -23,8 +24,10 @@ export function Navbar() {
   const scrolled = useScrolled(30);
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [quoteOpen, setQuoteOpen] = useState(false);
 
   return (
+    <>
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
@@ -82,12 +85,12 @@ export function Navbar() {
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <LinkButton
-                href="/contact#quote"
-                className="bg-[#E84520] hover:bg-[#FF6040] text-white font-semibold text-sm tracking-wide shadow-md shadow-[#E84520]/30"
+              <button
+                onClick={() => setQuoteOpen(true)}
+                className="inline-flex items-center justify-center px-4 py-2 bg-[#E84520] hover:bg-[#FF6040] text-white font-semibold text-sm tracking-wide rounded-md shadow-md shadow-[#E84520]/30 transition-colors cursor-pointer"
               >
                 Get a Quote
-              </LinkButton>
+              </button>
             </motion.div>
 
             {/* Mobile menu */}
@@ -150,13 +153,12 @@ export function Navbar() {
                   </nav>
 
                   <div className="mt-auto pb-6">
-                    <LinkButton
-                      href="/contact#quote"
-                      className="w-full bg-[#E84520] hover:bg-[#FF6040] text-white font-semibold justify-center"
-                      onClick={() => setOpen(false)}
+                    <button
+                      onClick={() => { setOpen(false); setQuoteOpen(true); }}
+                      className="w-full inline-flex items-center justify-center px-4 py-2 bg-[#E84520] hover:bg-[#FF6040] text-white font-semibold rounded-md transition-colors cursor-pointer"
                     >
                       Get a Quote
-                    </LinkButton>
+                    </button>
                     <p className="text-center text-xs text-white/30 mt-4">
                       Call us: (973) 580-4455
                     </p>
@@ -168,5 +170,7 @@ export function Navbar() {
         </div>
       </div>
     </header>
+    <QuoteForm open={quoteOpen} onOpenChange={setQuoteOpen} />
+    </>
   );
 }

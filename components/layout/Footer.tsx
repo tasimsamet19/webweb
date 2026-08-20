@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Camera, Users } from "lucide-react";
+import { QuoteModalButton } from "@/components/products/QuoteModalButton";
 
 const productLinks = [
   { href: "/products/custom-t-shirts", label: "Custom T-Shirts" },
@@ -21,7 +22,6 @@ const quickLinks = [
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
-  { href: "/contact#quote", label: "Get a Quote" },
 ];
 
 export function Footer() {
@@ -91,6 +91,11 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <QuoteModalButton className="text-sm text-white/60 hover:text-[#E84520] transition-colors cursor-pointer bg-transparent border-0 p-0">
+                  Get a Quote
+                </QuoteModalButton>
+              </li>
             </ul>
           </div>
 

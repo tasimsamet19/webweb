@@ -5,7 +5,8 @@ import { Building2, GraduationCap, Trophy, Calendar, Shield, Heart, ArrowRight }
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
-import Link from "next/link";
+import { QuoteForm } from "@/components/products/QuoteForm";
+import { useState } from "react";
 
 const needs = [
   {
@@ -44,6 +45,7 @@ const transition = { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const };
 
 export function BrowseByNeedSection() {
   const prefersReduced = useReducedMotion();
+  const [quoteOpen, setQuoteOpen] = useState(false);
 
   return (
     <AnimatedSection className="py-24 bg-[#0A0A0A] border-t border-white/6">
@@ -70,9 +72,9 @@ export function BrowseByNeedSection() {
                 variants={prefersReduced ? undefined : fadeInUp}
                 transition={{ ...transition, delay: (i % 3) * 0.05 }}
               >
-                <Link
-                  href="/contact#quote"
-                  className="flex items-start gap-4 p-6 bg-[#111111] rounded-xl border border-white/6 hover:border-[#E84520]/40 hover:bg-[#E84520]/3 transition-colors group block"
+                <button
+                  onClick={() => setQuoteOpen(true)}
+                  className="flex items-start gap-4 p-6 bg-[#111111] rounded-xl border border-white/6 hover:border-[#E84520]/40 hover:bg-[#E84520]/3 transition-colors group block w-full text-left cursor-pointer"
                 >
                   <div className="w-10 h-10 rounded-lg bg-[#E84520]/10 border border-[#E84520]/20 flex items-center justify-center flex-shrink-0 mt-0.5">
                     <Icon className="w-5 h-5 text-[#E84520]" />
@@ -84,12 +86,13 @@ export function BrowseByNeedSection() {
                     </div>
                     <p className="text-xs text-white/50 leading-relaxed">{need.description}</p>
                   </div>
-                </Link>
+                </button>
               </motion.div>
             );
           })}
         </motion.div>
       </div>
+      <QuoteForm open={quoteOpen} onOpenChange={setQuoteOpen} />
     </AnimatedSection>
   );
 }

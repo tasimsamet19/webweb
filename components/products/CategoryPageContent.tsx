@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/shared/SectionHeader";
 import { ProductCard } from "@/components/products/ProductCard";
 import { CTASection } from "@/components/home/CTASection";
 import { LinkButton } from "@/components/ui/link-button";
+import { QuoteModalButton } from "@/components/products/QuoteModalButton";
 import type { CatalogCategory } from "@/lib/data/catalog-categories";
 import type { Product } from "@/lib/types";
 
@@ -141,13 +142,9 @@ export function CategoryPageContent({ cat, products }: Props) {
                 </div>
               </div>
 
-              <LinkButton
-                href="/contact#quote"
-                className="bg-[#E84520] hover:bg-[#FF6040] text-white font-bold px-8 justify-center"
-                size="lg"
-              >
+              <QuoteModalButton className="inline-flex items-center justify-center px-8 py-3 bg-[#E84520] hover:bg-[#FF6040] text-white font-bold rounded-md transition-colors cursor-pointer text-base w-full">
                 Get a Free Quote for {cat.displayName}
-              </LinkButton>
+              </QuoteModalButton>
             </div>
           </div>
         </div>

@@ -3,7 +3,9 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { LinkButton } from "@/components/ui/link-button";
+import { QuoteForm } from "@/components/products/QuoteForm";
 import { staggerContainer } from "@/lib/animations";
+import { useState } from "react";
 
 const itemVariant = {
   initial: { opacity: 0, y: 16 },
@@ -14,6 +16,7 @@ const transition = { duration: 0.55, ease: [0.16, 1, 0.3, 1] as const };
 
 export function HeroSection() {
   const prefersReduced = useReducedMotion();
+  const [quoteOpen, setQuoteOpen] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#080808]">
@@ -85,14 +88,13 @@ export function HeroSection() {
             >
               Browse Products <ArrowRight className="ml-2 h-4 w-4" />
             </LinkButton>
-            <LinkButton
-              href="/contact#quote"
-              size="lg"
-              variant="outline"
-              className="border-white/20 text-white hover:bg-white/8 hover:border-white/30 font-semibold text-base px-8"
+            <button
+              onClick={() => setQuoteOpen(true)}
+              className="inline-flex items-center justify-center px-8 py-3 border border-white/20 text-white hover:bg-white/8 hover:border-white/30 font-semibold text-base rounded-md transition-colors cursor-pointer"
             >
               Get a Free Quote
-            </LinkButton>
+            </button>
+            <QuoteForm open={quoteOpen} onOpenChange={setQuoteOpen} />
           </motion.div>
 
         </motion.div>

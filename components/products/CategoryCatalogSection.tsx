@@ -9,6 +9,7 @@ import {
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { LinkButton } from "@/components/ui/link-button";
+import { QuoteModalButton } from "@/components/products/QuoteModalButton";
 import { catalogCategories, type CatalogCategory } from "@/lib/data/catalog-categories";
 import { staggerContainer, fadeInUp } from "@/lib/animations";
 
@@ -93,12 +94,9 @@ function CategoryCard({ cat, index }: { cat: CatalogCategory; index: number }) {
 
       {/* CTAs */}
       <div className="mt-auto flex flex-col gap-2">
-        <LinkButton
-          href="/contact#quote"
-          className="w-full bg-[#E84520] hover:bg-[#FF6040] text-white font-bold text-sm justify-center"
-        >
+        <QuoteModalButton className="w-full inline-flex items-center justify-center px-4 py-2 bg-[#E84520] hover:bg-[#FF6040] text-white font-bold text-sm rounded-md transition-colors cursor-pointer">
           Get a Free Quote <ArrowRight className="ml-2 w-3.5 h-3.5" />
-        </LinkButton>
+        </QuoteModalButton>
         <LinkButton
           href={`/products/${cat.pageSlug}`}
           variant="outline"

@@ -1,5 +1,6 @@
 import { PageHero } from "@/components/shared/PageHero";
 import { LinkButton } from "@/components/ui/link-button";
+import { QuoteModalButton } from "@/components/products/QuoteModalButton";
 import { CategoryCatalogSection } from "@/components/products/CategoryCatalogSection";
 import { BrowseByNeedSection } from "@/components/products/BrowseByNeedSection";
 import { DecorationMethodsSection } from "@/components/products/DecorationMethodsSection";
@@ -31,13 +32,9 @@ export default function ProductsPage() {
         titleAccent="Promotional Products"
         description="Screen printing, embroidery, sublimation, and DTG — all in-house. From branded tees and embroidered hats to full sports uniforms, workwear, and promotional products. We outfit businesses, schools, teams, and organizations across New Jersey."
       >
-        <LinkButton
-          href="/contact"
-          size="lg"
-          className="bg-[#E84520] hover:bg-[#FF6040] text-white font-bold px-8"
-        >
+        <QuoteModalButton className="inline-flex items-center justify-center px-8 py-3 bg-[#E84520] hover:bg-[#FF6040] text-white font-bold rounded-md transition-colors cursor-pointer text-base">
           Get a Free Quote
-        </LinkButton>
+        </QuoteModalButton>
         <LinkButton
           href="/gallery"
           size="lg"
