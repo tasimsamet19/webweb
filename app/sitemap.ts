@@ -5,8 +5,8 @@ import { catalogCategories } from "@/lib/data/catalog-categories";
 
 const BASE = "https://printwearledgewood.com";
 // Fixed dates — update manually when page content meaningfully changes
-const D_CORE = new Date("2026-07-07");   // core site pages (last major SEO update)
-const D_CATALOG = new Date("2026-07-07"); // category + product pages (SEO Phase 2)
+const D_CORE = new Date("2026-10-04");   // core site pages (last major SEO update)
+const D_CATALOG = new Date("2026-10-04"); // category + product pages (pricing tiers + coming soon update)
 const D_MERCH = new Date("2026-07-26");  // merch (actively updated)
 
 export default function sitemap(): MetadataRoute.Sitemap {

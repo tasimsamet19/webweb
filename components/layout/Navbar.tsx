@@ -5,7 +5,6 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { LinkButton } from "@/components/ui/link-button";
 import { QuoteForm } from "@/components/products/QuoteForm";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
@@ -14,10 +13,12 @@ import { motion } from "motion/react";
 
 const navLinks = [
   { href: "/products", label: "Products" },
+  { href: "/customize", label: "Design" },
   { href: "/merch", label: "Merch" },
   { href: "/gallery", label: "Gallery" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/track-order", label: "Track Order" },
 ];
 
 export function Navbar() {

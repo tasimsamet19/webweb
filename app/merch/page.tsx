@@ -5,9 +5,10 @@ import { merchStores } from "@/lib/data/merch";
 import { PageHero } from "@/components/shared/PageHero";
 
 export const metadata: Metadata = {
-  title: "Merch Stores",
+  title: "Group Merch Stores | Custom Apparel for NJ Organizations",
   description:
-    "Shop exclusive limited-time collections from your favorite local organizations — sports teams, clubs, schools, and more.",
+    "Shop exclusive limited-time merch stores for local NJ sports teams, schools, clubs, and organizations. Powered by Printwear Ledgewood — custom screen printing & embroidery.",
+  alternates: { canonical: "https://printwearledgewood.com/merch" },
 };
 
 export default function MerchPage() {

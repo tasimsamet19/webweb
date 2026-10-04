@@ -1,3 +1,12 @@
+export type PrintLocation =
+  | "left-chest"
+  | "full-front"
+  | "full-back"
+  | "right-chest"
+  | "left-sleeve"
+  | "right-sleeve"
+  | "upper-back";
+
 export type ProductCategory =
   | "tee-shirts"
   | "sweatshirts"
@@ -22,6 +31,20 @@ export interface ColorOption {
   hex: string;
 }
 
+export interface PricingTier {
+  minQty: number;
+  maxQty: number | null;
+  label: string; // "12–23"
+  oneColor: number; // price per piece, dollars
+  twoColor: number;
+  threeColorPlus: number;
+}
+
+export interface SizeSurcharge {
+  sizes: string[];
+  surcharge: number; // dollars per piece
+}
+
 export interface Product {
   id: string;
   slug: string;
@@ -37,6 +60,17 @@ export interface Product {
   leadTime: string;
   availableSizes?: string[];
   availableColors?: ColorOption[];
+  colorImages?: Record<string, string>; // color name → /images/... path
+  specSheet?: string;  // path to downloadable PDF
+  brandLogo?: string;  // path to brand logo image
+  pricingTiers?: PricingTier[];
+  sizeSurcharges?: SizeSurcharge[];
+  freeShippingMinQty?: number;
+  packageQuantity?: number;
+  pricePerPiece?: number;
+  totalPrice?: number;
+  featuredColor?: string;
+  printLocations?: PrintLocation[];
   featured?: boolean;
   popular?: boolean;
   isNew?: boolean;

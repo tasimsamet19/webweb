@@ -5,7 +5,6 @@ import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { ProductCard } from "@/components/products/ProductCard";
 import { CTASection } from "@/components/home/CTASection";
-import { LinkButton } from "@/components/ui/link-button";
 import { QuoteModalButton } from "@/components/products/QuoteModalButton";
 import type { CatalogCategory } from "@/lib/data/catalog-categories";
 import type { Product } from "@/lib/types";

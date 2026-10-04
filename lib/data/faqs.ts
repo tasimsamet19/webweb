@@ -32,7 +32,7 @@ export const faqs = [
   {
     question: "Do you offer bulk or volume discounts?",
     answer:
-      "Yes. Screen printing costs drop significantly at higher quantities — common breakpoints are 24, 48, 72, and 144+ pieces. Embroidery pricing scales similarly. The more you order, the lower the per-piece cost.",
+      "Yes. Screen printing costs drop significantly at higher quantities — common breakpoints are 24, 48, 72, and 100+ pieces. Embroidery pricing scales similarly. The more you order, the lower the per-piece cost.",
   },
 ];
 

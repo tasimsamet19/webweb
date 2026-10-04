@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { ArrowRight, Lock, Clock } from "lucide-react";
 import type { MerchStore } from "@/lib/types";
 
@@ -11,10 +10,7 @@ interface Props {
 }
 
 export function MerchStoreCard({ store }: Props) {
-  const [isExpired, setIsExpired] = useState(!store.isActive);
-  useEffect(() => {
-    setIsExpired(!store.isActive);
-  }, [store.isActive]);
+  const isExpired = !store.isActive;
   const closeLabel = new Date(store.closeDate).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
