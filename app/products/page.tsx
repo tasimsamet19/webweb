@@ -1,15 +1,13 @@
 import { PageHero } from "@/components/shared/PageHero";
-import { LinkButton } from "@/components/ui/link-button";
 import { QuoteModalButton } from "@/components/products/QuoteModalButton";
-import { CategoryCatalogSection } from "@/components/products/CategoryCatalogSection";
-import { BrowseByNeedSection } from "@/components/products/BrowseByNeedSection";
-import { DecorationMethodsSection } from "@/components/products/DecorationMethodsSection";
-import { CTASection } from "@/components/home/CTASection";
+import { LinkButton } from "@/components/ui/link-button";
+import { ProductsShopClient } from "@/components/products/ProductsShopClient";
+import { products } from "@/lib/data/products";
 
 export const metadata = {
-  title: "Custom Apparel & Promo Products | Printwear Ledgewood NJ",
+  title: "Custom Apparel — Gildan Blanks | Printwear Ledgewood NJ",
   description:
-    "Custom t-shirts, hoodies, embroidered hats, polos, workwear, sports uniforms & promo products. Screen printing, embroidery & sublimation in Ledgewood, NJ.",
+    "Shop our Gildan blank catalog: Heavy Cotton, SoftStyle, DryBlend, Long Sleeve, Crewneck Sweatshirt, and Hoodie. Screen printing, DTG, and heat transfer. Ledgewood, NJ.",
   alternates: { canonical: "https://printwearledgewood.com/products" },
 };
 
@@ -27,10 +25,10 @@ export default function ProductsPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <PageHero
-        eyebrow="Custom Printing & Embroidery — Ledgewood, NJ"
-        title="Custom Apparel &"
-        titleAccent="Promotional Products"
-        description="Screen printing, embroidery, sublimation, and DTG — all in-house. From branded tees and embroidered hats to full sports uniforms, workwear, and promotional products. We outfit businesses, schools, teams, and organizations across New Jersey."
+        eyebrow="Gildan Blanks — Screen Printing, DTG & More"
+        title="Custom Apparel"
+        titleAccent="Built to Print"
+        description="Industry-leading Gildan blanks with the widest color selection we carry. From the classic Heavy Cotton tee to the ultra-soft SoftStyle and the DryBlend performance tee — every blank is print-ready and available with a 12-piece minimum."
       >
         <QuoteModalButton className="inline-flex items-center justify-center px-8 py-3 bg-[#E84520] hover:bg-[#FF6040] text-white font-bold rounded-md transition-colors cursor-pointer text-base">
           Get a Free Quote
@@ -44,10 +42,7 @@ export default function ProductsPage() {
           View Our Work
         </LinkButton>
       </PageHero>
-      <CategoryCatalogSection />
-      <BrowseByNeedSection />
-      <DecorationMethodsSection />
-      <CTASection />
+      <ProductsShopClient products={products} />
     </>
   );
 }

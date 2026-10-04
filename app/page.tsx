@@ -15,8 +15,8 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <HeroSection />
       <BrandsBanner />
-      <MerchSection />
       <ServicesSection />
+      <MerchSection />
       <CategoryGrid />
       <GalleryPreview />
       <Testimonials />

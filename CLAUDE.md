@@ -35,12 +35,46 @@ All static content lives in `lib/data/*.ts` as typed arrays:
 - `products.ts` — `Product[]`, queried via `getProductBySlug()`, `getRelatedProducts()`
 - `gallery.ts` — `GalleryItem[]` — photos in `/images/gallery/` (mix of real business photos and AI-generated images via Pollinations.ai)
 - `categories.ts` — `CategoryDefinition[]`
+- `catalog-categories.ts` — `CatalogCategory[]`, used for breadcrumbs via `getCatalogCategoryById()`
 - `testimonials.ts` — `Testimonial[]` — 6 real Google reviews; rendered by `components/home/Testimonials.tsx`
+- `faqs.ts` — `FAQ[]` — rendered on the FAQ page
 - `merch.ts` — `MerchStore[]`, queried via `getMerchStore()`, `getMerchProduct()`, `getActiveStores()`
 
 All types are in `lib/types.ts`. When adding new data shapes, define the type there first.
 
-**Images**: Gallery photos live in `/images/gallery/`. Product cards and detail pages intentionally have **no images** — `products[].images` arrays are defined but not rendered in `ProductCard` or `ProductDetail`. Category cards in `CategoryGrid` also show no images (text-only tiles). Do not add image display back to these components without being asked.
+### Product Model — 7 Configurable Products
+
+There are **7 products** (one per Gildan garment, no pack-size variants). The detail page is a live pricing configurator — not a fixed-price page. Key fields:
+
+| Field | Purpose |
+|---|---|
+| `pricingTiers` | `PricingTier[]` — 5 volume tiers (12–23, 24–47, 48–95, 96–191, 192+), each with `oneColor / twoColor / threeColorPlus` prices |
+| `printLocations` | `PrintLocation[]` — which of the 7 locations are available; all products use `ALL_LOCATIONS` |
+| `decorationMethods` | All 7 products support `["screen-printing", "embroidery", "heat-transfer"]` |
+| `minimumQuantity` | `12` for all products |
+| `featuredColor` | which `colorImages` key to use as the card thumbnail |
+
+Tier constants (`TEE_TIERS`, `LS_TIERS`, `CREW_TIERS`, `HOOD_TIERS`) are defined once at the top of `products.ts` and shared across products of the same garment type — do not duplicate.
+
+Product images live in `/images/products/<model>/` (e.g. `/images/products/gildan-5000/navy.jpg`). Color image maps are defined as shared constants at the top of `products.ts` (e.g. `G5000_IMAGES`).
+
+**Location picker images** live in `public/images/ui/` as `loc-<id>.png` (7 files: `loc-left-chest.png`, `loc-right-chest.png`, `loc-left-sleeve.png`, `loc-right-sleeve.png`, `loc-full-front.png`, `loc-upper-back.png`, `loc-full-back.png`). Source files are in `loc/` at the project root. After replacing source files, clear `.next/cache/images/` and restart the dev server.
+
+### Product Detail Configurator
+
+`components/products/ProductDetail.tsx` is a `"use client"` live-pricing configurator with these sections in order:
+
+1. **Decoration method** — "Screen Print" / "Embroidery" toggle (filters by `product.decorationMethods`)
+2. **Print location picker** — 7 cards from `LOCATION_IMAGES`; each extra location beyond the first adds `LOCATION_SURCHARGE` ($1.50) per piece
+3. **Ink colors / stitch count** — 3 options that change based on selected decoration method; for embroidery uses `EMBROIDERY_MULTIPLIERS` (1.45×, 1.80×, 2.20×) applied to `tier.oneColor`
+4. **Combined size + pricing table** — one table showing all 5 tier price columns + qty input + subtotal per size row; active tier column highlights in orange; `minWidth: 500px` with `overflow-x-auto`
+5. **Price summary + CTA** — live total, "Get a Quote" / "Order X Pieces" button
+
+`pricePerPiece` is derived via `useMemo` from: base tier price (method + complexity) + `(selectedLocations.size - 1) × LOCATION_SURCHARGE`.
+
+`QuoteForm` is lazy-loaded (`dynamic(..., { ssr: false })`). It receives `selectedLocations`, `prefilledSizeBreakdown`, `defaultQuantity`, and `defaultColors` props; a `useEffect` on `open` syncs these into the form each time the dialog opens.
+
+**Dual-card warning**: The `/products` listing page renders `ProductsShopClient.tsx`, which contains its own **inline** `ProductShopCard` component — it is NOT the same as `components/products/ProductCard.tsx`. Both components must be updated in sync when changing card image logic. `ProductsShopClient.tsx` checks `product.featuredColor` first, then falls back to `PREFERRED_COLORS`; `ProductCard.tsx` also checks `featuredColor` first. `CategoryGrid` tiles remain text-only (no images).
 
 ### Homepage Section Order
 
@@ -73,7 +107,7 @@ The `/merch` section is a full e-commerce flow built without external state libr
 - **Hydration safety**: Never use `Date.now()` or `new Date()` in initial render. Use `useState<T | null>(null)` + populate in `useEffect`. Render `opacity-0` placeholder until hydrated. See `MerchStoreCard.tsx` for the pattern (`MerchCountdown.tsx` is kept as reference but no longer rendered in the UI).
 - **Cart drawer**: `MerchCart` uses `<SheetContent showCloseButton={false}>` because it renders its own close button in the header — do not remove this prop or two X buttons appear.
 - **Size surcharges**: Per-product config via `upsizeSizes?: string[]` and `upsizeSurcharge?: number` fields on `MerchProduct` (in `lib/types.ts`). `MerchProductDetail.tsx` reads these with fallback defaults (`["2XL","3XL"]` / 500¢). Size buttons use inline styles (not Tailwind classes) for the two-line layout — Tailwind v4 had purging issues with dynamic flex-col on buttons.
-- **Active stores**: `mhs-class-of-1976` — Mamaroneck HS Class of 1976 50th Reunion, 4 products (tee $25, tank $25, crewneck $35, hoodie $38), closes 2026-08-06. Crewneck and hoodie carry a +$7 surcharge for 2XL/3XL/4XL.
+- **Active stores**: Check `lib/data/merch.ts` for current stores and close dates — they change frequently.
 
 ### Shared Components
 
@@ -88,6 +122,10 @@ The `/merch` section is a full e-commerce flow built without external state libr
 `app/layout.tsx` wraps everything in: `WebVitals` (dev-only perf logging) → `MouseLight` → `Navbar` → `PageTransition` → `main` → `Footer` → `Toaster`.
 
 The merch section has its own nested layout (`app/merch/layout.tsx`) that adds `MerchCartProvider` and `MerchCart` (drawer) only for `/merch/**` routes.
+
+### Order Tracking
+
+Order types (`OrderStatus`, `Order`, `OrderHistoryEntry`, `ORDER_STATUS_LABELS`, `ORDER_STATUSES`) live in **`lib/order-types.ts`** — this file has no Node.js imports and is safe to use in `"use client"` components. Server-only functions (`readOrders`, `writeOrders`, `createOrder`, `updateOrderStatus`) live in **`lib/orders.ts`**, which imports `fs/promises` and re-exports the types from `order-types.ts`. Always import order types from `lib/order-types.ts` in client components — importing from `lib/orders.ts` will cause a build error (`Can't resolve 'fs/promises'`).
 
 ### API Routes
 
