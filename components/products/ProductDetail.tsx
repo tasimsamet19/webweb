@@ -209,17 +209,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
                   <span className="text-gray-400 text-sm">No image</span>
                 </div>
               )}
-              {product.brandLogo && (
-                <div className="absolute top-3 left-3 bg-white rounded-lg px-2 py-1 shadow-sm">
-                  <Image
-                    src={product.brandLogo}
-                    alt="Brand"
-                    width={64}
-                    height={24}
-                    className="object-contain h-6 w-auto"
-                  />
-                </div>
-              )}
             </div>
 
             {/* Color swatches */}

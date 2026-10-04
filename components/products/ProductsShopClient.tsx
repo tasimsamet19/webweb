@@ -28,7 +28,7 @@ const DECORATION_LABELS: Record<string, string> = {
 
 const PREFERRED_COLORS = ["Navy", "Black", "Charcoal", "Dark Heather", "Royal", "Maroon", "Forest"];
 
-function ProductShopCard({ product }: { product: Product }) {
+function ProductShopCard({ product, priority = false }: { product: Product; priority?: boolean }) {
   const cardImage = (() => {
     if (product.colorImages) {
       // Use the explicitly assigned featured color per product
@@ -61,6 +61,7 @@ function ProductShopCard({ product }: { product: Product }) {
             src={cardImage}
             alt={product.name}
             fill
+            priority={priority}
             className="object-contain p-5 group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
@@ -360,14 +361,14 @@ export function ProductsShopClient({ products }: ProductsShopClientProps) {
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                {filtered.map((product) => (
+                {filtered.map((product, i) => (
                   <motion.div
                     key={product.id}
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <ProductShopCard product={product} />
+                    <ProductShopCard product={product} priority={i < 3} />
                   </motion.div>
                 ))}
               </div>

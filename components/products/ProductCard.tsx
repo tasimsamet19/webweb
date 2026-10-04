@@ -9,9 +9,10 @@ import { easing } from "@/lib/animations";
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, priority = false }: ProductCardProps) {
   const prefersReduced = useReducedMotion();
 
   const cardImage = (() => {
@@ -45,6 +46,7 @@ export function ProductCard({ product }: ProductCardProps) {
               src={cardImage}
               alt={product.name}
               fill
+              priority={priority}
               className="object-contain p-5 group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
