@@ -10,7 +10,6 @@ import {
   CATALOG_PRODUCTS,
   CATALOG_CATEGORIES,
   getProductsByCategory,
-  MOCKUP_TO_PRICE_TYPE,
   DECORATION_LABELS,
   type CatalogProduct,
   type ProductColor,
@@ -18,10 +17,8 @@ import {
   type DecorationMethod,
 } from "@/lib/customize-catalog";
 import {
-  calculatePrice,
   PRINT_COLORS,
   MIN_QTY,
-  type PrintLocation,
   type PrintColor,
 } from "@/lib/pricing";
 import { cn } from "@/lib/utils";
@@ -347,9 +344,6 @@ export function CustomizerClient() {
   const mockupType      = selectedProduct.mockupType;
   const containerH      = PRODUCT_DIMS[mockupType][2];
   const zone            = activeZone.coords[mockupType];
-  const location: PrintLocation = activeZone.side === "back" ? "back" : "front";
-  const priceType       = MOCKUP_TO_PRICE_TYPE[mockupType];
-  const price           = calculatePrice(quantity, printColors.length || 1, priceType, location);
   const categoryProducts = getProductsByCategory(category);
 
   const handleSetCategory = (cat: string) => {
@@ -698,35 +692,24 @@ export function CustomizerClient() {
 
             {/* Pricing */}
             <div className="p-4 border-b border-gray-200">
-              {decoration === "embroidery" ? (
-                <div className="rounded-xl bg-white border border-gray-200 p-4">
-                  <p className="text-gray-500 text-sm mb-1">Embroidery pricing</p>
-                  <p className="text-gray-900 font-bold text-sm">Contact us for a quote</p>
-                  <p className="mt-2 text-gray-400 text-[10px] leading-relaxed">
-                    Price varies by stitch count and design complexity. Fast turnaround guaranteed.
+              <div className="rounded-xl bg-white border border-gray-200 overflow-hidden">
+                <div className="h-[3px] bg-gradient-to-r from-transparent via-[#E84520] to-transparent" />
+                <div className="p-4">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#E84520]">Pricing</span>
+                    <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-orange-50 border border-orange-100">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#E84520] animate-pulse" />
+                      <span className="text-[8px] font-bold uppercase tracking-wide text-[#E84520]">Updating soon</span>
+                    </span>
+                  </div>
+                  <p className="text-gray-900 font-bold text-sm leading-snug">
+                    Contact us for a quote
+                  </p>
+                  <p className="mt-1.5 text-gray-400 text-[11px] leading-relaxed">
+                    We&apos;re updating our pricing — reach out and we&apos;ll confirm current rates within a few hours.
                   </p>
                 </div>
-              ) : price ? (
-                <div className="rounded-xl bg-white border border-gray-200 p-4">
-                  <div className="flex justify-between text-sm mb-1.5">
-                    <span className="text-gray-500">Per piece</span>
-                    <span className="text-gray-900 font-bold">${price.perPiece.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-sm mb-1.5">
-                    <span className="text-gray-500">{printColors.length} ink color{printColors.length !== 1 ? "s" : ""}</span>
-                    <span className="text-gray-400">{price.breakdown}</span>
-                  </div>
-                  <div className="flex justify-between items-center border-t border-gray-100 pt-2.5 mt-1.5">
-                    <span className="text-gray-500 text-sm">Est. total</span>
-                    <span className="text-xl font-black text-[#E84520]">${price.total.toFixed(2)}</span>
-                  </div>
-                  <p className="mt-2 text-gray-400 text-[10px] leading-relaxed">
-                    Estimate only — includes garment + print. Final quote confirms exact price.
-                  </p>
-                </div>
-              ) : (
-                <p className="text-gray-400 text-sm">Minimum order: {MIN_QTY} pieces</p>
-              )}
+              </div>
             </div>
 
             {/* Quote CTA */}
